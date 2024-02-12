@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Field;
 
-class getUpdatesField
+final class GetUpdatesField
 {
     public const OFFSET = 'offset';
     public const LIMIT = 'limit';

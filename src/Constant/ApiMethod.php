@@ -23,6 +23,7 @@ final class ApiMethod
     public const DELETE_GENERAL_FORUM_TOPIC = 'deleteGeneralForumTopic';
     public const DELETE_MESSAGE = 'deleteMessage';
     public const DELETE_MESSAGES = 'deleteMessages';
+    public const DELETE_MY_COMMANDS = 'deleteMyCommands';
     public const DECLINE_CHAT_JOIN_REQUEST = 'declineChatJoinRequest';
     public const EDIT_CHAT_INVITE_LINK = 'editChatInviteLink';
     public const EDIT_FORUM_TOPIC = 'editForumTopic';

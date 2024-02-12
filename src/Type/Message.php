@@ -2,7 +2,6 @@
 
 namespace LaravelBot\BotFather\Type;
 
-use Carbon\Carbon;
 use LaravelBot\BotFather\Trait\DataConstructor;
 
 class Message

@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Type;
 
-class Animation
+final class Animation
 {
 
 }

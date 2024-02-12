@@ -11,6 +11,16 @@ class HttpResponse
         $this->response = $response;
     }
 
+    public function GetErrorCode(): int|false
+    {
+        return $this->response['content']['error_code'] ?? false;
+    }
+
+    public function GetErrorMessage(): string|false
+    {
+        return $this->response['content']['description'] ?? false;
+    }
+
     public function GetStatusCode(): float
     {
         return $this->response['code'];
@@ -31,9 +41,19 @@ class HttpResponse
         return isset($this->response['content']['error']);
     }
 
-    public function GetContent(): array
+    public function GetContent(): array|bool
     {
         return $this->response['content']['result'] ?? [];
+    }
+
+    public function GetFirstContent(): array
+    {
+        return reset($this->response['content']['result']) ?? [];
+    }
+
+    public function GetLastContent(): array
+    {
+        return end($this->response['content']['result']) ?? [];
     }
 
     public function GetJson(): string|false

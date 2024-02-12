@@ -2,7 +2,9 @@
 
 namespace LaravelBot\BotFather\Type;
 
+use LaravelBot\BotFather\Trait\DataConstructor;
+
 class UserProfilePhotos
 {
-
+    use DataConstructor;
 }

@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Field;
 
-class SetWebhookField
+final class SetWebhookField
 {
     public const URL = "url";
     public const CERTIFICATE = "certificate";

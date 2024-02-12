@@ -10,7 +10,6 @@ use Symfony\Component\Stopwatch\Stopwatch;
 class Http
 {
     const VERIFY = false;
-
     public static function Request(string $token, string $method, array $data = []): HttpResponse
     {
         $stopwatch = new Stopwatch();

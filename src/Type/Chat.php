@@ -8,9 +8,9 @@ class Chat
 {
     use DataConstructor;
 
-    public function GetId(): ?int
+    public function GetId(): string|false
     {
-        return $this->data['id'] ?? null;
+        return $this->data['id'] ?? false;
     }
 
     public function GetType(): ?string

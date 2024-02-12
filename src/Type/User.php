@@ -2,66 +2,64 @@
 
 namespace LaravelBot\BotFather\Type;
 
-use LaravelBot\BotFather\Trait\CommonDataMethod;
 use LaravelBot\BotFather\Trait\DataConstructor;
 
 class User
 {
     use DataConstructor;
-    use CommonDataMethod;
 
-    public function GetId(): ?int
+    public function GetId(): string
     {
-        return $this->data['id'] ?? null;
+        return $this->data['id'] ?? false;
     }
 
-    public function GetIsBot(): ?bool
+    public function GetIsBot(): bool
     {
-        return $this->data['is_bot'] ?? null;
+        return $this->data['is_bot'] ?? false;
     }
 
-    public function GetFirstName(): ?string
+    public function GetFirstName(): string
     {
-        return $this->data['first_name'] ?? null;
+        return $this->data['first_name'] ?? '';
     }
 
-    public function GetLastName(): ?string
+    public function GetLastName(): string
     {
-        return $this->data['last_name'] ?? null;
+        return $this->data['last_name'] ?? '';
     }
 
-    public function GetUsername(): ?string
+    public function GetUsername(): string
     {
-        return $this->data['username'] ?? null;
+        return $this->data['username'] ?? '';
     }
 
-    public function GetLanguageCode(): ?string
+    public function GetLanguageCode(): string
     {
-        return $this->data['language_code'] ?? null;
+        return $this->data['language_code'] ?? '';
     }
 
-    public function GetIsPremium(): ?bool
+    public function GetIsPremium(): bool
     {
-        return $this->data['is_premium'] ?? null;
+        return $this->data['is_premium'] ?? false;
     }
 
-    public function GetAddedToAttachmentMenu(): ?bool
+    public function GetAddedToAttachmentMenu(): bool
     {
-        return $this->data['added_to_attachment_menu'] ?? null;
+        return $this->data['added_to_attachment_menu'] ?? false;
     }
 
-    public function GetCanJoinGroups(): ?bool
+    public function GetCanJoinGroups(): bool
     {
-        return $this->data['can_join_groups'] ?? null;
+        return $this->data['can_join_groups'] ?? false;
     }
 
-    public function GetCanReadAllGroupMessages(): ?bool
+    public function GetCanReadAllGroupMessages(): bool
     {
-        return $this->data['can_read_all_group_messages'] ?? null;
+        return $this->data['can_read_all_group_messages'] ?? false;
     }
 
-    public function GetSupportsInlineQueries(): ?bool
+    public function GetSupportsInlineQueries(): bool
     {
-        return $this->data['supports_inline_queries'] ?? null;
+        return $this->data['supports_inline_queries'] ?? false;
     }
 }
