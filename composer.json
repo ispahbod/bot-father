@@ -1,0 +1,47 @@
+{
+  "name": "ispahbod/bot-father",
+  "description": "bot-father for Laravel Framework",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "laravel",
+    "framework",
+    "php"
+  ],
+  "authors": [
+    {
+      "name": "Hamed Hadi",
+      "email": "hamed.hadi1010@gmail.com",
+      "homepage": "https://github.com/iSpahbod",
+      "role": "Developer"
+    }
+  ],
+  "homepage": "https://github.com/isphabod/bot-father",
+  "require": {
+    "php": "^8.0",
+    "guzzlehttp/guzzle": "^7.2.0",
+    "symfony/stopwatch": "^6.4.0",
+    "nesbot/carbon": "^2.67",
+    "illuminate/support": ">=6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  },
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Ispahbod\\BotFather\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ispahbod\\BotFather\\Tests\\": "tests"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  }
+}
