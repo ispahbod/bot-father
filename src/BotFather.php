@@ -1,12 +1,12 @@
 <?php
 
-namespace Ispahbod\BotFather;
+namespace LaravelBot\BotFather;
 
-use Ispahbod\BotFather\Class\Getter;
-use Ispahbod\BotFather\Class\Process;
-use Ispahbod\BotFather\Class\Sender;
-use Ispahbod\BotFather\Class\Update;
-use Ispahbod\BotFather\Class\Webhook;
+use LaravelBot\BotFather\Class\Getter;
+use LaravelBot\BotFather\Class\Process;
+use LaravelBot\BotFather\Class\Sender;
+use LaravelBot\BotFather\Class\Update;
+use LaravelBot\BotFather\Class\Webhook;
 
 class BotFather
 {
