@@ -1,9 +1,9 @@
 <?php
 
-namespace Ispahbod\BotFather\Type;
+namespace LaravelBot\BotFather\Type;
 
-use Ispahbod\BotFather\Trait\CommonDataMethod;
-use Ispahbod\BotFather\Trait\DataConstructor;
+use LaravelBot\BotFather\Trait\CommonDataMethod;
+use LaravelBot\BotFather\Trait\DataConstructor;
 
 class User
 {

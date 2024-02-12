@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Http;
+namespace LaravelBot\BotFather\Http;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;

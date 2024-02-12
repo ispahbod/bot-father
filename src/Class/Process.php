@@ -1,8 +1,8 @@
 <?php
 
-namespace Ispahbod\BotFather\Class;
+namespace LaravelBot\BotFather\Class;
 
-use Ispahbod\BotFather\Trait\DataConstructor;
+use LaravelBot\BotFather\Trait\DataConstructor;
 
 class Process
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Http;
+namespace LaravelBot\BotFather\Http;
 
 class HttpResponse
 {

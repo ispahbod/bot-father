@@ -1,9 +1,9 @@
 <?php
 
-namespace Ispahbod\BotFather\Type;
+namespace LaravelBot\BotFather\Type;
 
 use Carbon\Carbon;
-use Ispahbod\BotFather\Trait\DataConstructor;
+use LaravelBot\BotFather\Trait\DataConstructor;
 
 class Message
 {

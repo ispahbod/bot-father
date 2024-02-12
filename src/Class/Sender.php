@@ -1,8 +1,8 @@
 <?php
 
-namespace Ispahbod\BotFather\Class;
+namespace LaravelBot\BotFather\Class;
 
-use Ispahbod\BotFather\Trait\TokenConstructor;
+use LaravelBot\BotFather\Trait\TokenConstructor;
 
 class Sender
 {

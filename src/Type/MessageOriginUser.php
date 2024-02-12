@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Type;
+namespace LaravelBot\BotFather\Type;
 
 class MessageOriginUser
 {

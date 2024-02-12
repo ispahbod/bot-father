@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Constant;
+namespace LaravelBot\BotFather\Constant;
 
 final class ParseMode
 {

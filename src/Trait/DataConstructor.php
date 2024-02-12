@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Trait;
+namespace LaravelBot\BotFather\Trait;
 
 trait DataConstructor
 {
