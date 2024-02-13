@@ -5,8 +5,6 @@ namespace LaravelBot\BotFather\Plugin;
 class Commands
 {
     private array $commands = [];
-    private array $param_commands = [];
-
     public function SetCommand($command, $value): Commands
     {
         $this->commands[$command] = $value;
@@ -21,17 +19,11 @@ class Commands
         return $this;
     }
 
-    public function SetParamCommand($command, $key): Commands
-    {
-        $this->param_commands[$command] = $key;
-        return $this;
-    }
-
     public function GetCommand($text): string|array|null
     {
         $parameter = explode(":", $text);
         if (count($parameter) > 1) {
-            $command = $this->findKeyByValue($parameter[0], $this->param_commands);
+            $command = $this->findKeyByValue($parameter[0], $this->commands);
             preg_match_all('/(\w+):(\w+)/', $text, $matches);
             $result = array_combine($matches[1], $matches[2]);
             return [$command, $result];
