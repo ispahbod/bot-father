@@ -13,14 +13,14 @@ class InlineKeyboardMarkup
         }
     }
 
-    public static function Row($array): array
+    public static function Row($array, $exp = true): array
     {
-        return $array;
+        return $exp ? $array : [];
     }
 
-    public static function Keyboard($array): array
+    public static function Keyboard($array, $exp = true): array
     {
-        return $array;
+        return $exp ? $array : [];
     }
 
     public static function Empty(): array
