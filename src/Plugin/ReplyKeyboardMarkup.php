@@ -8,8 +8,8 @@ class ReplyKeyboardMarkup
 {
     public static function Create($array, $config = []): array
     {
-        if (empty($config)) {
-            $config = [ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD => true];
+        if (!isset($config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD])) {
+            $config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD] = true;
         }
         if (isset($array[0][0])) {
             return array_merge(['keyboard' => $array], $config);
