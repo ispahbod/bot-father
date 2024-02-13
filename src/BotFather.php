@@ -11,7 +11,7 @@ use LaravelBot\BotFather\Class\Payment;
 use LaravelBot\BotFather\Class\Process;
 use LaravelBot\BotFather\Class\Sender;
 use LaravelBot\BotFather\Class\Setter;
-use LaravelBot\BotFather\Class\Update;
+use LaravelBot\BotFather\Class\Modifier;
 use LaravelBot\BotFather\Class\Webhook;
 use LaravelBot\BotFather\Constant\WebhookType;
 use LaravelBot\BotFather\Interface\BotFatherInterface;
@@ -46,9 +46,9 @@ final class BotFather implements BotFatherInterface
         return new Getter($token);
     }
 
-    public static function Update(string $token): Update
+    public static function Modifier(string $token): Modifier
     {
-        return new Update($token);
+        return new Modifier($token);
     }
 
     public static function Webhook(string $token): Webhook

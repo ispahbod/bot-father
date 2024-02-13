@@ -8,7 +8,7 @@ use LaravelBot\BotFather\Trait\TokenConstructor;
 use LaravelBot\BotFather\Type\Message;
 use LaravelBot\BotFather\Type\Poll;
 
-class Update
+class Modifier
 {
     use TokenConstructor;
     use HttpResponseApiMethod;
