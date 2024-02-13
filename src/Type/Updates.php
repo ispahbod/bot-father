@@ -99,6 +99,16 @@ class Updates
         return $this->output($updates);
     }
 
+    public function GetLastMessageJson(): string
+    {
+        return $this->SetJsonFormat()->GetLastMessage();
+    }
+
+    public function GetFirstMessageJson(): string
+    {
+        return $this->SetJsonFormat()->GetFirstMessage();
+    }
+
     public function GetAllMessages(): Message|array|string
     {
         $updates = $this->SetOffset(0)->SetLimit(100)->getUpdates();
