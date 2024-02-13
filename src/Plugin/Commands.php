@@ -5,9 +5,9 @@ namespace LaravelBot\BotFather\Plugin;
 class Commands
 {
     private array $commands = [];
-    public function SetCommand($command, $value): Commands
+    public function SetCommand($command, $value = null): Commands
     {
-        $this->commands[$command] = $value;
+        $this->commands[$command] = empty($value) ? $command : $value;
         return $this;
     }
 
