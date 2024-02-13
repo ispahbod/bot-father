@@ -7,7 +7,7 @@ class Localization
     private array $locates = [];
     private array $translations = [];
     private array $fields = [];
-    private string $active_locate;
+    public string $active_locate;
 
     public function Locate($locate, $array): void
     {
@@ -20,7 +20,8 @@ class Localization
 
     public function Lang($key, $locate = null): string
     {
-        return $this->translations[$locate ?: $this->active_locate][$key] ?? '';
+        $locate = empty($locate) ? $this->active_locate : $locate;
+        return $this->translations[$locate][$key] ?? '';
     }
 
     public function ActiveLocate($locate): Localization
