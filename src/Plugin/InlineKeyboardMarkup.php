@@ -6,9 +6,9 @@ class InlineKeyboardMarkup
 {
     public static function Create($array): array
     {
-        if (isset($array[0][0])){
+        if (isset($array[0][0])) {
             return ['inline_keyboard' => $array];
-        }else{
+        } else {
             return ['inline_keyboard' => [$array]];
         }
     }
@@ -21,5 +21,10 @@ class InlineKeyboardMarkup
     public static function Keyboard($array): array
     {
         return $array;
+    }
+
+    public static function Empty(): array
+    {
+        return ['inline_keyboard' => []];
     }
 }
