@@ -16,15 +16,11 @@ class Http
         $client = new Client();
         $event = $stopwatch->start('request');
         try {
-            $response = $client->request("POST", "https://api.telegram.org/bot$token/$method", [
-                RequestOptions::HEADERS => [
-                    'content-type' => 'application/json',
-                ],
-                RequestOptions::JSON => $data,
+            $response = $client->request("GET", "https://api.telegram.org/bot$token/$method", [
+                RequestOptions::QUERY => $data,
                 RequestOptions::VERIFY => self::VERIFY,
                 RequestOptions::TIMEOUT => 10,
                 RequestOptions::HTTP_ERRORS => false,
-                RequestOptions::ALLOW_REDIRECTS => false,
                 RequestOptions::DECODE_CONTENT => true,
             ]);
             $status_code = $response->getStatusCode();
