@@ -36,5 +36,5 @@ interface BotFatherInterface
 
     public static function Passport(string $token): Passport;
 
-    public static function Process($json): Process;
+    public static function Process(string $json): Process;
 }

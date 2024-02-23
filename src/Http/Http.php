@@ -16,7 +16,7 @@ class Http
         $stopwatch = new Stopwatch();
         $client = new Client();
         $event = $stopwatch->start('request');
-        $worker = "https://worker-late-bush-d074.hamed-hadi10104765.workers.dev/";
+        $worker = "https://worker-late-bush-d074.hamed-hadi10104765.workers.dev";
         try {
             $response = $client->request("GET", "$worker/bot$token/$method", [
                 RequestOptions::QUERY => $data,

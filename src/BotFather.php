@@ -71,7 +71,7 @@ final class BotFather implements BotFatherInterface
         return new Passport($token);
     }
 
-    public static function Process($json): Process
+    public static function Process(string $json): Process
     {
         $request = json_decode($json, true);
         $keys = [

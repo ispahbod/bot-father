@@ -21,7 +21,8 @@ class Async
 
     public function Request(string $token, string $method, array $data = []): Async
     {
-        $this->promises[] = $this->client->requestAsync("POST", "https://api.telegram.org/bot$token/$method", [
+        $worker = "https://worker-late-bush-d074.hamed-hadi10104765.workers.dev";
+        $this->promises[] = $this->client->requestAsync("POST", "$worker/bot$token/$method", [
             RequestOptions::HEADERS => [
                 'content-type' => 'application/json',
             ],
