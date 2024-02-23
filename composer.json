@@ -21,6 +21,7 @@
     "php": "^8.0",
     "guzzlehttp/guzzle": "^7.2.0",
     "symfony/stopwatch": "^6.4.0",
+    "danog/madelineproto": "^8.0.0-beta190",
     "nesbot/carbon": "^2.67",
     "illuminate/support": ">=6"
   },
@@ -43,5 +44,6 @@
   },
   "scripts": {
     "test": "vendor/bin/phpunit"
-  }
+  },
+  "minimum-stability": "beta"
 }
