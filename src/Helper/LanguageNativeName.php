@@ -6,7 +6,7 @@ use LaravelBot\BotFather\Constant\LanguageCode;
 
 class LanguageNativeName
 {
-    public static function Name(string $languageCode): ?string
+    public static function Get(string $languageCode): ?string
     {
         $languages = [
             LanguageCode::AFRIKAANS => 'Afrikaans',

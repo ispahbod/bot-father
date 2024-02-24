@@ -7,7 +7,7 @@ class Localization
     private array $locates = [];
     private array $translations = [];
     private array $fields = [];
-    public string $active_locate;
+    private string $active_locate = 'global';
 
     public function Locate($locate, $array): void
     {
@@ -18,10 +18,18 @@ class Localization
         }
     }
 
+    public function Global($array): void
+    {
+        foreach ($array as $field => $value) {
+            $this->fields[] = $field;
+            $this->translations['global'][$field] = $value;
+        }
+    }
+
     public function Lang($key, $locate = null): string
     {
         $locate = empty($locate) ? $this->active_locate : $locate;
-        return $this->translations[$locate][$key] ?? '';
+        return $this->translations[$locate][$key] ?? $this->translations['global'][$key] ?? '';
     }
 
     public function ActiveLocate($locate): Localization
