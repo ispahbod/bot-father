@@ -10,7 +10,7 @@ class Callback
 
     public function GetId(): ?int
     {
-        return $this->data['message_id'] ?? null;
+        return $this->data['id'] ?? null;
     }
 
     public function GetInlineMessageId(): ?string

@@ -13,6 +13,16 @@ class Message
         return $this->data['message_id'] ?? null;
     }
 
+    public function GetCallbackData(): string|null
+    {
+        return $this->data['data'] ?? null;
+    }
+
+    public function GetCallbackMessageId(): string|null
+    {
+        return $this->data['message']['message_id'] ?? null;
+    }
+
     public function GetMessageThreadId(): ?int
     {
         return $this->data['message_thread_id'] ?? null;

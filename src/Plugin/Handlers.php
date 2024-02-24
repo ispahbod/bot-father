@@ -13,8 +13,8 @@ class Handlers
         }
     }
 
-    public function Run($name)
+    public function Run($name, ...$args)
     {
-        return call_user_func($this->handlers[$name]);
+        return call_user_func($this->handlers[$name], ...$args);
     }
 }

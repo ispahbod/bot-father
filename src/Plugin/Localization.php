@@ -37,6 +37,10 @@ class Localization
         $this->active_locate = $locate;
         return $this;
     }
+    public function GetActiveLocate(): string
+    {
+        return $this->active_locate;
+    }
 
     public function GetFieldTranslations($key): array
     {
