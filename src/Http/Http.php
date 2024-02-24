@@ -18,8 +18,8 @@ class Http
         $event = $stopwatch->start('request');
         $worker = "https://worker-late-bush-d074.hamed-hadi10104765.workers.dev";
         try {
-            $response = $client->request("GET", "$worker/bot$token/$method", [
-                RequestOptions::QUERY => $data,
+            $response = $client->request("POST", "$worker/bot$token/$method", [
+                RequestOptions::JSON => $data,
                 RequestOptions::VERIFY => self::VERIFY,
                 RequestOptions::TIMEOUT => 10,
                 RequestOptions::HTTP_ERRORS => false,
