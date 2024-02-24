@@ -18,9 +18,78 @@ class TextMaker
     {
         return implode(' ', $string) . "\n";
     }
-    public static function Text($string): string
+
+    public static function LineLn(...$string): string
     {
-        return $string;
+        return implode(' ', $string) . "\n\n";
+    }
+
+    public static function LineBln(...$string): string
+    {
+        return "\n" . implode(' ', $string) . "\n";
+    }
+
+    public static function Text(...$string): string
+    {
+        return implode(' ', $string);
+    }
+
+    public static function Bold(...$string): string
+    {
+        $string = implode(' ', $string);
+        return "<b>$string</b>";
+    }
+
+    public static function Italic(...$string): string
+    {
+        $string = implode(' ', $string);
+        return "<i>$string</i>";
+    }
+
+    public static function Underline(...$string): string
+    {
+        $string = implode(' ', $string);
+        return "<u>$string</u>";
+    }
+
+    public static function Strike(...$string): string
+    {
+        $string = implode(' ', $string);
+        return "<strike>$string</strike>";
+    }
+
+    public static function Spoiler(...$string): string
+    {
+        $string = implode(' ', $string);
+        return "<tg-spoiler>$string</tg-spoiler>";
+    }
+
+    public static function Link($string, $href): string
+    {
+        $string = is_array($string) ? implode(' ', $string) : $string;
+        return "<a href='$href'>$string</a>";
+    }
+
+    public static function Emoji($string, $emojiId): string
+    {
+        return "<tg-emoji emoji-id='$emojiId'>$string</tg-emoji>";
+    }
+
+    public static function Code($string, $language): string
+    {
+        return "<code class='language-$language'>$string</code>";
+    }
+
+    public static function Pre(...$string): string
+    {
+        $string = implode(' ', $string);
+        return "<pre>$string</pre>";
+    }
+
+    public static function Blockquote(...$string): string
+    {
+        $string = implode(' ', $string);
+        return "<blockquote>$string</blockquote>";
     }
 
     public static function Make($array): string
