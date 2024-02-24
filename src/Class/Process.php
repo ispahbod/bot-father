@@ -95,7 +95,7 @@ class Process
         return $this->data['forward_from_message_id'] ?? false;
     }
 
-    public function GetType(): string|false
+    public function GetWebhookType(): string|false
     {
         return $this->type;
     }

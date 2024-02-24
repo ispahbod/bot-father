@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Constant;
 
-class InlineMethod
+final class InlineMethod
 {
     public const INLINE_QUERY = 'InlineQuery';
     public const ANSWER_INLINE_QUERY = 'answerInlineQuery';

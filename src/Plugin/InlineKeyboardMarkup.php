@@ -3,7 +3,7 @@
 namespace LaravelBot\BotFather\Plugin;
 
 use LaravelBot\BotFather\Constant\InlineKeyboardMarkupConfig;
-use LaravelBot\BotFather\Helper\ArrayManipulator;
+use LaravelBot\BotFather\Helper\ArrayDirManipulator;
 
 class InlineKeyboardMarkup
 {
@@ -12,7 +12,7 @@ class InlineKeyboardMarkup
         $array = isset($array[0][0]) ? $array : [$array];
         $dir = InlineKeyboardMarkupConfig::DIRECTION;
         if (isset($config[$dir])) {
-            ArrayManipulator::ManipulateArray($array,$config,$dir);
+            ArrayDirManipulator::ManipulateArray($array,$config,$dir);
         }
         return json_encode(['inline_keyboard' => $array]);
     }

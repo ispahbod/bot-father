@@ -4,7 +4,7 @@ namespace LaravelBot\BotFather\Helper;
 
 use LaravelBot\BotFather\Plugin\Direction;
 
-class ArrayManipulator
+class ArrayDirManipulator
 {
     public static function ManipulateArray(&$array, $config, $dir): void
     {

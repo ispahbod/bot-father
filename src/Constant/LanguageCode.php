@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Constant;
 
-class LanguageCode
+final class LanguageCode
 {
     public const AFRIKAANS = 'af';
     public const AMHARIC = 'am';

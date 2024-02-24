@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Constant;
 
-class ReplyKeyboardMarkupConfig
+final class ReplyKeyboardMarkupConfig
 {
     public const IS_PERSISTENT = 'is_persistent';
     public const RESIZE_KEYBOARD = 'resize_keyboard';

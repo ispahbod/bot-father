@@ -3,7 +3,7 @@
 namespace LaravelBot\BotFather\Plugin;
 
 use LaravelBot\BotFather\Constant\ReplyKeyboardMarkupConfig;
-use LaravelBot\BotFather\Helper\ArrayManipulator;
+use LaravelBot\BotFather\Helper\ArrayDirManipulator;
 
 class ReplyKeyboardMarkup
 {
@@ -15,7 +15,7 @@ class ReplyKeyboardMarkup
         $array = isset($array[0][0]) ? $array : [$array];
         $dir = ReplyKeyboardMarkupConfig::DIRECTION;
         if (isset($config[$dir])) {
-            ArrayManipulator::ManipulateArray($array, $config, $dir);
+            ArrayDirManipulator::ManipulateArray($array, $config, $dir);
         }
         return json_encode(array_merge(['keyboard' => $array], $config));
     }

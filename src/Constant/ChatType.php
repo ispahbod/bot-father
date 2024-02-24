@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Constant;
 
-class ChatType
+final class ChatType
 {
     public const PRIVATE = 'private';
     public const GROUP = 'group';

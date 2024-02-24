@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Constant;
 
-class InlineKeyboardMarkupConfig
+final class InlineKeyboardMarkupConfig
 {
     public const DIRECTION = 'direction';
 }

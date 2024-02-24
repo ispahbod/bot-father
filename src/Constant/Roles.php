@@ -2,7 +2,7 @@
 
 namespace LaravelBot\BotFather\Constant;
 
-class Roles
+final class Roles
 {
     public const USER = 1;
     public const SPECIAL_USER = 2;
