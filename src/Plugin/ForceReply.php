@@ -4,8 +4,8 @@ namespace LaravelBot\BotFather\Plugin;
 
 class ForceReply
 {
-    public static function Create(array $config): array
+    public static function Create(array $config): string
     {
-        return array_merge(['force_reply' => true], $config);
+        return json_encode(array_merge(['force_reply' => true], $config));
     }
 }

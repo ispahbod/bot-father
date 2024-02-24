@@ -4,13 +4,9 @@ namespace LaravelBot\BotFather\Plugin;
 
 class InlineKeyboardMarkup
 {
-    public static function Create($array): array
+    public static function Create($array): string
     {
-        if (isset($array[0][0])) {
-            return ['inline_keyboard' => $array];
-        } else {
-            return ['inline_keyboard' => [$array]];
-        }
+        return json_encode(isset($array[0][0]) ? ['inline_keyboard' => $array] : ['inline_keyboard' => [$array]]);
     }
 
     public static function Row($array, $exp = true): array
@@ -23,8 +19,8 @@ class InlineKeyboardMarkup
         return $exp ? $array : [];
     }
 
-    public static function Empty(): array
+    public static function Empty(): string
     {
-        return ['inline_keyboard' => []];
+        return json_encode(['inline_keyboard' => []]);
     }
 }

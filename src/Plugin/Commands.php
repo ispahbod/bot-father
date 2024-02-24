@@ -5,10 +5,23 @@ namespace LaravelBot\BotFather\Plugin;
 class Commands
 {
     private array $commands = [];
+
     public function SetCommand($command, $value = null): Commands
     {
         $this->commands[$command] = empty($value) ? $command : $value;
         return $this;
+    }
+
+    public function Command($command, $parameters = []): string
+    {
+        if (empty($parameters)) {
+            return "$command";
+        }
+        $text = "";
+        foreach ($parameters as $key => $parameter) {
+            $text .= '{'."$key:$parameter".'}';
+        }
+        return "$command:$text";
     }
 
     public function SetCommands($commands): Commands
