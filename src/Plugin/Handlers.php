@@ -4,14 +4,7 @@ namespace LaravelBot\BotFather\Plugin;
 
 class Handlers
 {
-<<<<<<< HEAD
-    public function Handler($name,$callback)
-    {
-
-    }
-}
-=======
-    private $handlers = [];
+    private array $handlers = [];
 
     public function Handler($name, $callback)
     {
@@ -25,4 +18,3 @@ class Handlers
         return call_user_func($this->handlers[$name]);
     }
 }
->>>>>>> origin/main
