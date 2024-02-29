@@ -28,7 +28,9 @@ class Http
             $status_code = $response->getStatusCode();
             $content = $response->getBody()->getContents();
             $data = json_decode($content, true);
-        } catch (GuzzleException $error) {}
+        } catch (GuzzleException) {
+
+        }
         $event->stop();
         $time = number_format(($stopwatch->getEvent('request')->getDuration() / 1000), 3);
         return new HttpResponse([

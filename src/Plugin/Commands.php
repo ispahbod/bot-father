@@ -32,7 +32,7 @@ class Commands
         return $this;
     }
 
-    public function GetCommand($text): string|array|null
+    public function GetCommand($text): array
     {
         $parameter = explode(":", $text);
         if (count($parameter) > 1) {
