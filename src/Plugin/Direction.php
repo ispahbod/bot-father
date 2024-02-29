@@ -12,7 +12,6 @@ class Direction
     public const SHUFFLE = 'shuffle';
     public const SHUFFLE_ROW = 'shuffle_row';
     public const SHUFFLE_COLUMN = 'shuffle_column';
-
     public function DIR(): string
     {
         return $this->active_direction;

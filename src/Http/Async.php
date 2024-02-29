@@ -61,7 +61,7 @@ class Async
                 }
             }
             return $responses;
-        } catch (GuzzleException $error) {
+        } catch (GuzzleException) {
             return [];
         }
     }
