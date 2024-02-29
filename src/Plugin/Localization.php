@@ -26,10 +26,15 @@ class Localization
         }
     }
 
-    public function Lang($key, $locate = null): string
+    public function Lang($key, $locate = null, $parameters = []): string
     {
         $locate = empty($locate) ? $this->active_locate : $locate;
-        return $this->translations[$locate][$key] ?? $this->translations['global'][$key] ?? '';
+        $message = $this->translations[$locate][$key] ?? $this->translations['global'][$key] ?? '';
+        $i = 0;
+        $message = preg_replace_callback('/::\w+/', function ($matches) use ($parameters, &$i) {
+            return $parameters[$i++] ?? '-';
+        }, $message);
+        return $message;
     }
 
     public function ActiveLocate($locate): Localization
@@ -37,6 +42,7 @@ class Localization
         $this->active_locate = $locate;
         return $this;
     }
+
     public function GetActiveLocate(): string
     {
         return $this->active_locate;

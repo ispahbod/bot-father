@@ -116,6 +116,12 @@ class TextMaker
         return implode('', $array);
     }
 
+    public static function SortByLength($array): string
+    {
+        shuffle($array);
+        return self::Make($array);
+    }
+
     public static function If(bool $exp, string $if, $else = null)
     {
         return $exp ? $if : $else;
