@@ -12,7 +12,7 @@ class Commands
         return $this;
     }
 
-    public function Command($command, $parameters = []): string
+    public function CreateCommand($command, $parameters = []): string
     {
         if (empty($parameters)) {
             return "$command";

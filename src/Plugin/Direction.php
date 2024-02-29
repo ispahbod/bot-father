@@ -21,9 +21,9 @@ class Direction
     {
         return LanguageDirection::Get($languageCode);
     }
-    public function ActiveDirection(string $direction): self
+    public function ActiveDirection(string $languageCode): self
     {
-        $this->active_direction = $direction;
+        $this->active_direction = self::Lang($languageCode);
         return $this;
     }
 }
