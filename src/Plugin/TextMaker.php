@@ -116,6 +116,27 @@ class TextMaker
         return implode('', $array);
     }
 
+    public static function SortByLength($array): string
+    {
+        usort($array, function ($a, $b) {
+            $textA = strip_tags($a);
+            $textB = strip_tags($b);
+            return strlen($textA) <=> strlen($textB);
+        });
+        return self::Make($array);
+    }
+
+    public static function Shuffle($array): string
+    {
+        shuffle($array);
+        return self::Make($array);
+    }
+
+    public static function CapitalizeFirstLetter($text): string
+    {
+        return strip_tags(ucfirst($text));
+    }
+
     public static function If(bool $exp, string $if, $else = null)
     {
         return $exp ? $if : $else;

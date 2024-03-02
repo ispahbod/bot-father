@@ -41,7 +41,7 @@ class HttpResponse
         return isset($this->response['content']['error']);
     }
 
-    public function GetContent(): array
+    public function GetContent(): array|bool
     {
         return $this->response['content']['result'] ?? [];
     }
