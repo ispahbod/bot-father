@@ -20,12 +20,25 @@ class ReplyKeyboardMarkup
         return json_encode(array_merge(['keyboard' => $array], $config));
     }
 
+    public static function CreateGrid($grids, $config = []): string
+    {
+        if (!isset($config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD])) {
+            $config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD] = true;
+        }
+        $dir = ReplyKeyboardMarkupConfig::DIRECTION;
+        if (isset($config[$dir])) {
+            ArrayDirManipulator::ManipulateArray($grids, $config, $dir);
+        }
+        $mergedArray = call_user_func_array('array_merge', $grids);
+        return json_encode(array_merge(['keyboard' => $mergedArray], $config));
+    }
+
     public static function Row($array, $exp = true): array
     {
         return $exp ? $array : [];
     }
 
-    public static function Grid($array, int|array $orders): array
+    public static function Grid($array, int|array $orders = 1): array
     {
         $array = array_filter($array);
         if (is_int($orders)) {
