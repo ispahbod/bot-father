@@ -203,14 +203,14 @@ class Chat
 
     public function GetChatsMember(array $data): ChatsMember
     {
-        $async = new Async();
+        $async = new Async($this->token);
         foreach ($data['chat_ids'] as $chat_id) {
-            $async->Request($this->token, ApiMethod::GET_CHAT_MEMBER, [
+            $async->Method(ApiMethod::GET_CHAT_MEMBER, [
                 GetChatMemberField::CHAT_ID => $chat_id,
                 GetChatMemberField::USER_ID => $data['user_id'],
             ]);
         }
-        return new ChatsMember($async->Send());
+        return new ChatsMember($async->Send()->GetAll());
     }
 
     public function GetChat(array $data): \LaravelBot\BotFather\Type\Chat

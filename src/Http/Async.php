@@ -6,28 +6,31 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Promise\Utils;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\Exception\GuzzleException;
+use LaravelBot\BotFather\Constant\Config;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 class Async
 {
     private Client $client;
     private array $promises;
-    const VERIFY = false;
+    private string $token;
 
-    public function __construct()
+    public function __construct(string $token)
     {
         $this->client = new Client();
+        $this->token = $token;
     }
 
-    public function Request(string $token, string $method, array $data = []): Async
+    public function Method(string $method, array $data): self
     {
-        $worker = "https://worker-late-bush-d074.hamed-hadi10104765.workers.dev";
+        $worker = Config::WORKER;
+        $token = $this->token;
         $this->promises[] = $this->client->requestAsync("POST", "$worker/bot$token/$method", [
             RequestOptions::HEADERS => [
                 'content-type' => 'application/json',
             ],
             RequestOptions::JSON => $data,
-            RequestOptions::VERIFY => self::VERIFY,
+            RequestOptions::VERIFY => false,
             RequestOptions::TIMEOUT => 10,
             RequestOptions::HTTP_ERRORS => false,
             RequestOptions::ALLOW_REDIRECTS => false,
@@ -36,7 +39,7 @@ class Async
         return $this;
     }
 
-    public function Send(): array
+    public function Send(): AsyncResponse
     {
         try {
             $stopwatch = new Stopwatch();
@@ -51,18 +54,20 @@ class Async
                     $status_code = $response->getStatusCode();
                     $content = $response->getBody()->getContents();
                     $data = json_decode($content, true);
-                    $responses[] = new HttpResponse([
-                        'time' => $time,
+                    $responses[] = [
                         'code' => $status_code ?? 500,
                         'content' => $data ?? [],
-                    ]);
+                    ];
                 } else {
                     $responses[] = null;
                 }
             }
-            return $responses;
+            return new AsyncResponse([
+                'time' => $time,
+                'responses' => $responses,
+            ]);
         } catch (GuzzleException) {
-            return [];
+
         }
     }
 }

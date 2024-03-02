@@ -5,6 +5,7 @@ namespace LaravelBot\BotFather\Http;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
+use LaravelBot\BotFather\Constant\Config;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 class Http
@@ -16,7 +17,7 @@ class Http
         $stopwatch = new Stopwatch();
         $client = new Client();
         $event = $stopwatch->start('request');
-        $worker = "https://worker-late-bush-d074.hamed-hadi10104765.workers.dev";
+        $worker = Config::WORKER;
         try {
             $response = $client->request("POST", "$worker/bot$token/$method", [
                 RequestOptions::JSON => $data,
