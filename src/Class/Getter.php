@@ -51,31 +51,31 @@ class Getter
         return new ForumTopics($response[0], error: $response[1]);
     }
 
-    public function GetMyCommands(array $data): BotCommands
+    public function GetMyCommands(array $data = []): BotCommands
     {
         $response = $this->HttpResponseApiMethod(ApiMethod::GET_MY_COMMANDS, $data);
         return new BotCommands($response[0], error: $response[1]);
     }
 
-    public function GetMyName(array $data):BotName
+    public function GetMyName(array $data): BotName
     {
         $response = $this->HttpResponseApiMethod(ApiMethod::GET_MY_NAME, $data);
         return new BotName($response[0], error: $response[1]);
     }
 
-    public function GetMyDescription(array $data):BotDescription
+    public function GetMyDescription(array $data): BotDescription
     {
         $response = $this->HttpResponseApiMethod(ApiMethod::GET_MY_DESCRIPTION, $data);
         return new BotDescription($response[0], error: $response[1]);
     }
 
-    public function GetMyShortDescription(array $data):BotShortDescription
+    public function GetMyShortDescription(array $data): BotShortDescription
     {
         $response = $this->HttpResponseApiMethod(ApiMethod::GET_MY_DESCRIPTION, $data);
         return new BotShortDescription($response[0], error: $response[1]);
     }
 
-    public function GetMyDefaultAdministratorRights(array $data):ChatAdministratorRights
+    public function GetMyDefaultAdministratorRights(array $data): ChatAdministratorRights
     {
         $response = $this->HttpResponseApiMethod(ApiMethod::GET_MY_DEFAULT_ADMINISTRATOR_RIGHTS, $data);
         return new ChatAdministratorRights($response[0], error: $response[1]);
