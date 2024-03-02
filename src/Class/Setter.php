@@ -34,4 +34,14 @@ class Setter
         $response = $this->HttpResponseApiMethod(ApiMethod::SET_MY_DEFAULT_ADMINISTRATOR_RIGHTS, $data);
         return empty($response[1]);
     }
+    public function SetMyCommands(array $data): bool
+    {
+        $response = $this->HttpResponseApiMethod(ApiMethod::SET_MY_COMMANDS, $data);
+        return empty($response[1]);
+    }
+    public function SetMessageReaction(array $data): bool
+    {
+        $response = $this->HttpResponseApiMethod(ApiMethod::SET_MESSAGE_REACTION, $data);
+        return empty($response[1]);
+    }
 }

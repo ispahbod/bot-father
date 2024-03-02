@@ -64,6 +64,7 @@ final class ApiMethod
     public const REVOKE_CHAT_INVITE_LINK = 'revokeChatInviteLink';
     public const SET_WEBHOOK = 'setWebhook';
     public const SEND_ANIMATION = 'sendAnimation';
+    public const SET_MESSAGE_REACTION = 'setMessageReaction';
     public const SEND_AUDIO = 'sendAudio';
     public const SEND_CHAT_ACTION = 'sendChatAction';
     public const SEND_CONTACT = 'sendContact';
