@@ -9,21 +9,23 @@ class Localization
     private array $fields = [];
     private string $active_locate = 'global';
 
-    public function Locate($locate, $array): void
+    public function Locate($locate, $array): self
     {
         $this->locates[] = $locate;
         foreach ($array as $field => $value) {
             $this->fields[] = $field;
             $this->translations[$locate][$field] = $value;
         }
+        return $this;
     }
 
-    public function Global($array): void
+    public function Global($array): self
     {
         foreach ($array as $field => $value) {
             $this->fields[] = $field;
             $this->translations['global'][$field] = $value;
         }
+        return $this;
     }
 
     public function Lang($key, $locate = null, $parameters = []): string

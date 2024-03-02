@@ -25,6 +25,22 @@ class ReplyKeyboardMarkup
         return $exp ? $array : [];
     }
 
+    public static function Grid($array, int|array $orders): array
+    {
+        $array = array_filter($array);
+        if (is_int($orders)) {
+            $result = self::Row(array_chunk($array, $orders));
+        } else {
+            $result = [];
+            $index = 0;
+            foreach ($orders as $order) {
+                $result[] = self::Row(array_slice($array, $index, $order));
+                $index += $order;
+            }
+        }
+        return $result;
+    }
+
     public static function Keyboard($array, $exp = true): array
     {
         return $exp ? $array : [];

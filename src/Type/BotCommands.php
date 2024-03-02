@@ -8,5 +8,4 @@ class BotCommands
 {
     use DataConstructor;
 
-
 }
