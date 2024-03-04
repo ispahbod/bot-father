@@ -9,8 +9,10 @@ class ArrayDirManipulator
     public static function ManipulateArray(&$array, $config, $dir): void
     {
         if ($config[$dir] === Direction::RTL) {
-            foreach ($array as $key => $obj) {
-                $array[$key] = array_reverse($obj);
+            foreach ($array as $index => $obj) {
+                foreach ($obj as $key => $items) {
+                    $array[$index][$key] = array_reverse($items);
+                }
             }
         } elseif ($config[$dir] === Direction::SHUFFLE) {
             shuffle($array);

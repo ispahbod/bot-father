@@ -38,9 +38,31 @@ class ReplyKeyboardMarkup
         return $exp ? $array : [];
     }
 
-    public static function Grid($array, int|array $orders = 1): array
+    public static function Grid($array, int|array $orders = 1, $exp = true): array
     {
+        if (!$exp) {
+            return [];
+        }
         $array = array_filter($array);
+        $orderCounter = 1;
+        usort($array, function ($a, $b) {
+            return isset($a['order']) && isset($b['order']) ? $a['order'] - $b['order'] : 0;
+        });
+        foreach ($array as &$item) {
+            if (!isset($item['order'])) {
+                $item['order'] = $orderCounter++;
+            }
+        }
+        usort($array, function ($a, $b) {
+            return $a['order'] - $b['order'];
+        });
+        foreach ($array as &$item) {
+            if (isset($item['array'])) {
+                $item = $item['array'];
+            }
+            unset($item['order']);
+        }
+
         if (is_int($orders)) {
             $result = self::Row(array_chunk($array, $orders));
         } else {
@@ -57,5 +79,10 @@ class ReplyKeyboardMarkup
     public static function Keyboard($array, $exp = true): array
     {
         return $exp ? $array : [];
+    }
+
+    public static function Order($array, $order = false): array
+    {
+        return $order === false ? $array : ['array' => $array, 'order' => $order];
     }
 }
