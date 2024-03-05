@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e298b22a1c1a2929f4a88ca4449f8e7f",
+    "content-hash": "0e90381d4e12840eacd5ae1004ab0a8f",
     "packages": [
         {
             "name": "amphp/amp",
@@ -3087,6 +3087,58 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2024-02-16T10:04:27+00:00"
+        },
+        {
+            "name": "ispahbod/url-manager",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ispahbod/url-manager.git",
+                "reference": "cbf802086cdc25aae949a8e4d4b6cfd181b46e48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ispahbod/url-manager/zipball/cbf802086cdc25aae949a8e4d4b6cfd181b46e48",
+                "reference": "cbf802086cdc25aae949a8e4d4b6cfd181b46e48",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=6",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ispahbod\\UrlManager\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hamed Hadi",
+                    "email": "hamed.hadi1010@gmail.com",
+                    "homepage": "https://github.com/ispahbod",
+                    "role": "Developer"
+                }
+            ],
+            "description": "url-manager Framework",
+            "homepage": "https://github.com/ispahbod/url-manager",
+            "keywords": [
+                "framework",
+                "laravel",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/ispahbod/url-manager/issues",
+                "source": "https://github.com/ispahbod/url-manager/tree/0.1.0"
+            },
+            "time": "2024-03-05T22:55:07+00:00"
         },
         {
             "name": "kelunik/certificate",

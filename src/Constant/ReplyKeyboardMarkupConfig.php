@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelBot\BotFather\Constant;
+namespace Ispahbod\BotFather\Constant;
 
 final class ReplyKeyboardMarkupConfig
 {

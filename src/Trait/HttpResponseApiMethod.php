@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Trait;
+namespace Ispahbod\BotFather\Trait;
 
-use LaravelBot\BotFather\Http\Http;
+use Ispahbod\BotFather\Http\Http;
 
 trait HttpResponseApiMethod
 {

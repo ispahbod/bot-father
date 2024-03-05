@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelBot\BotFather\Http;
+namespace Ispahbod\BotFather\Http;
 
 class AsyncResponse
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelBot\BotFather\Field;
+namespace Ispahbod\BotFather\Field;
 
 final class SetWebhookField
 {

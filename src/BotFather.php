@@ -1,21 +1,21 @@
 <?php
 
-namespace LaravelBot\BotFather;
+namespace Ispahbod\BotFather;
 
-use LaravelBot\BotFather\Class\Chat;
-use LaravelBot\BotFather\Class\Game;
-use LaravelBot\BotFather\Class\Getter;
-use LaravelBot\BotFather\Class\Inline;
-use LaravelBot\BotFather\Class\Passport;
-use LaravelBot\BotFather\Class\Payment;
-use LaravelBot\BotFather\Class\Process;
-use LaravelBot\BotFather\Class\Sender;
-use LaravelBot\BotFather\Class\Setter;
-use LaravelBot\BotFather\Class\Modifier;
-use LaravelBot\BotFather\Class\Webhook;
-use LaravelBot\BotFather\Constant\WebhookType;
-use LaravelBot\BotFather\Interface\BotFatherInterface;
-use LaravelBot\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Class\Chat;
+use Ispahbod\BotFather\Class\Game;
+use Ispahbod\BotFather\Class\Getter;
+use Ispahbod\BotFather\Class\Inline;
+use Ispahbod\BotFather\Class\Passport;
+use Ispahbod\BotFather\Class\Payment;
+use Ispahbod\BotFather\Class\Process;
+use Ispahbod\BotFather\Class\Sender;
+use Ispahbod\BotFather\Class\Setter;
+use Ispahbod\BotFather\Class\Modifier;
+use Ispahbod\BotFather\Class\Webhook;
+use Ispahbod\BotFather\Constant\WebhookType;
+use Ispahbod\BotFather\Interface\BotFatherInterface;
+use Ispahbod\BotFather\Trait\TokenConstructor;
 
 final class BotFather implements BotFatherInterface
 {

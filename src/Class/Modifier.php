@@ -1,12 +1,12 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Constant\ApiMethod;
-use LaravelBot\BotFather\Trait\HttpResponseApiMethod;
-use LaravelBot\BotFather\Trait\TokenConstructor;
-use LaravelBot\BotFather\Type\Message;
-use LaravelBot\BotFather\Type\Poll;
+use Ispahbod\BotFather\Constant\ApiMethod;
+use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
+use Ispahbod\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Type\Message;
+use Ispahbod\BotFather\Type\Poll;
 
 class Modifier
 {

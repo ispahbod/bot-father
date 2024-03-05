@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Trait\HttpResponseApiMethod;
-use LaravelBot\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
+use Ispahbod\BotFather\Trait\TokenConstructor;
 
 class Game
 {

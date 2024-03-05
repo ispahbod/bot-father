@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelBot\BotFather\Type;
+namespace Ispahbod\BotFather\Type;
 
-use LaravelBot\BotFather\Constant\ChatMemberStatus;
-use LaravelBot\BotFather\Trait\DataConstructor;
+use Ispahbod\BotFather\Constant\ChatMemberStatus;
+use Ispahbod\BotFather\Trait\DataConstructor;
 
 class ChatMember
 {

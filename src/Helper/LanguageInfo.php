@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Helper;
+namespace Ispahbod\BotFather\Helper;
 
-use LaravelBot\BotFather\Constant\LanguageCode;
+use Ispahbod\BotFather\Constant\LanguageCode;
 
 class LanguageInfo
 {

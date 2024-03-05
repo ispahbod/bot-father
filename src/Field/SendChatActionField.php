@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Field;
+namespace Ispahbod\BotFather\Field;
 
-use LaravelBot\BotFather\Constant\ChatActionType;
+use Ispahbod\BotFather\Constant\ChatActionType;
 
 class SendChatActionField
 {

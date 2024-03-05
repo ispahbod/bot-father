@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Plugin;
+namespace Ispahbod\BotFather\Plugin;
 
-use LaravelBot\BotFather\Helper\LanguageDirection;
+use Ispahbod\BotFather\Helper\LanguageDirection;
 
 class Direction
 {

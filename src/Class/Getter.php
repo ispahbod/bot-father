@@ -1,21 +1,21 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Constant\ApiMethod;
-use LaravelBot\BotFather\Http\Http;
-use LaravelBot\BotFather\Trait\HttpResponseApiMethod;
-use LaravelBot\BotFather\Trait\TokenConstructor;
-use LaravelBot\BotFather\Type\BotCommands;
-use LaravelBot\BotFather\Type\BotDescription;
-use LaravelBot\BotFather\Type\BotName;
-use LaravelBot\BotFather\Type\BotShortDescription;
-use LaravelBot\BotFather\Type\ChatAdministratorRights;
-use LaravelBot\BotFather\Type\File;
-use LaravelBot\BotFather\Type\ForumTopics;
-use LaravelBot\BotFather\Type\Updates;
-use LaravelBot\BotFather\Type\User;
-use LaravelBot\BotFather\Type\UserProfilePhotos;
+use Ispahbod\BotFather\Constant\ApiMethod;
+use Ispahbod\BotFather\Http\Http;
+use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
+use Ispahbod\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Type\BotCommands;
+use Ispahbod\BotFather\Type\BotDescription;
+use Ispahbod\BotFather\Type\BotName;
+use Ispahbod\BotFather\Type\BotShortDescription;
+use Ispahbod\BotFather\Type\ChatAdministratorRights;
+use Ispahbod\BotFather\Type\File;
+use Ispahbod\BotFather\Type\ForumTopics;
+use Ispahbod\BotFather\Type\Updates;
+use Ispahbod\BotFather\Type\User;
+use Ispahbod\BotFather\Type\UserProfilePhotos;
 
 class Getter
 {

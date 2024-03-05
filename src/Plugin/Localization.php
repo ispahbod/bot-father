@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelBot\BotFather\Plugin;
+namespace Ispahbod\BotFather\Plugin;
 
 class Localization
 {

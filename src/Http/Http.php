@@ -1,11 +1,11 @@
 <?php
 
-namespace LaravelBot\BotFather\Http;
+namespace Ispahbod\BotFather\Http;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
-use LaravelBot\BotFather\Constant\Config;
+use Ispahbod\BotFather\Constant\Config;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 class Http

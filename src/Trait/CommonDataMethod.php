@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelBot\BotFather\Trait;
+namespace Ispahbod\BotFather\Trait;
 
 trait CommonDataMethod
 {

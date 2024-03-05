@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Plugin;
+namespace Ispahbod\BotFather\Plugin;
 
-use LaravelBot\BotFather\Type\WebAppInfo;
+use Ispahbod\BotFather\Type\WebAppInfo;
 
 class BotMenuButton
 {

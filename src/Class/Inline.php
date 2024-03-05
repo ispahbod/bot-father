@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Trait\TokenConstructor;
 
 class Inline
 {

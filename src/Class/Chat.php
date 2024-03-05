@@ -1,19 +1,19 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Constant\ApiMethod;
-use LaravelBot\BotFather\Field\GetChatMemberField;
-use LaravelBot\BotFather\Http\Async;
-use LaravelBot\BotFather\Trait\HttpResponseApiMethod;
-use LaravelBot\BotFather\Trait\TokenConstructor;
-use LaravelBot\BotFather\Type\ChatInviteLink;
-use LaravelBot\BotFather\Type\ChatMember;
-use LaravelBot\BotFather\Type\ChatsMember;
-use LaravelBot\BotFather\Type\ForumTopic;
-use LaravelBot\BotFather\Type\MenuButton;
-use LaravelBot\BotFather\Type\Sticker;
-use LaravelBot\BotFather\Type\UserChatBoosts;
+use Ispahbod\BotFather\Constant\ApiMethod;
+use Ispahbod\BotFather\Field\GetChatMemberField;
+use Ispahbod\BotFather\Http\Async;
+use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
+use Ispahbod\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Type\ChatInviteLink;
+use Ispahbod\BotFather\Type\ChatMember;
+use Ispahbod\BotFather\Type\ChatsMember;
+use Ispahbod\BotFather\Type\ForumTopic;
+use Ispahbod\BotFather\Type\MenuButton;
+use Ispahbod\BotFather\Type\Sticker;
+use Ispahbod\BotFather\Type\UserChatBoosts;
 
 class Chat
 {
@@ -213,10 +213,10 @@ class Chat
         return new ChatsMember($async->Send()->GetAll());
     }
 
-    public function GetChat(array $data): \LaravelBot\BotFather\Type\Chat
+    public function GetChat(array $data): \Ispahbod\BotFather\Type\Chat
     {
         $response = $this->HttpResponseApiMethod(ApiMethod::GET_CHAT, $data);
-        return new \LaravelBot\BotFather\Type\Chat($response[0], error: $response[1]);
+        return new \Ispahbod\BotFather\Type\Chat($response[0], error: $response[1]);
     }
 
     public function GetChatMenuButton(array $data): MenuButton

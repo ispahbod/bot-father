@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelBot\BotFather\Plugin;
+namespace Ispahbod\BotFather\Plugin;
 
-use LaravelBot\BotFather\Constant\InlineKeyboardMarkupConfig;
-use LaravelBot\BotFather\Helper\ArrayDirManipulator;
+use Ispahbod\BotFather\Constant\InlineKeyboardMarkupConfig;
+use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class InlineKeyboardMarkup
 {

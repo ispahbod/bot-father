@@ -1,15 +1,15 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Constant\ContentType;
-use LaravelBot\BotFather\Type\Callback;
-use LaravelBot\BotFather\Type\Chat;
-use LaravelBot\BotFather\Type\Message;
-use LaravelBot\BotFather\Type\newChat;
-use LaravelBot\BotFather\Type\oldChat;
-use LaravelBot\BotFather\Type\PhotoSize;
-use LaravelBot\BotFather\Type\User;
+use Ispahbod\BotFather\Constant\ContentType;
+use Ispahbod\BotFather\Type\Callback;
+use Ispahbod\BotFather\Type\Chat;
+use Ispahbod\BotFather\Type\Message;
+use Ispahbod\BotFather\Type\newChat;
+use Ispahbod\BotFather\Type\oldChat;
+use Ispahbod\BotFather\Type\PhotoSize;
+use Ispahbod\BotFather\Type\User;
 
 class Process
 {

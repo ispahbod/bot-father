@@ -1,12 +1,12 @@
 <?php
 
-namespace LaravelBot\BotFather\Type;
+namespace Ispahbod\BotFather\Type;
 
-use LaravelBot\BotFather\Constant\ApiMethod;
-use LaravelBot\BotFather\Constant\WebhookType;
-use LaravelBot\BotFather\Field\GetUpdatesField;
-use LaravelBot\BotFather\Http\Http;
-use LaravelBot\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Constant\ApiMethod;
+use Ispahbod\BotFather\Constant\WebhookType;
+use Ispahbod\BotFather\Field\GetUpdatesField;
+use Ispahbod\BotFather\Http\Http;
+use Ispahbod\BotFather\Trait\TokenConstructor;
 
 class Updates
 {

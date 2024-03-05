@@ -1,13 +1,13 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Constant\ApiMethod;
-use LaravelBot\BotFather\Constant\ChatActionType;
-use LaravelBot\BotFather\Constant\ParseMode;
-use LaravelBot\BotFather\Field\SendChatActionField;
-use LaravelBot\BotFather\Trait\DataTokenConstructor;
-use LaravelBot\BotFather\Trait\HttpResponseApiMethod;
+use Ispahbod\BotFather\Constant\ApiMethod;
+use Ispahbod\BotFather\Constant\ChatActionType;
+use Ispahbod\BotFather\Constant\ParseMode;
+use Ispahbod\BotFather\Field\SendChatActionField;
+use Ispahbod\BotFather\Trait\DataTokenConstructor;
+use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
 
 class ChatAction
 {

@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Field;
+namespace Ispahbod\BotFather\Field;
 
-use LaravelBot\BotFather\Type\MessageEntity;
+use Ispahbod\BotFather\Type\MessageEntity;
 
 final class SendMessageField
 {

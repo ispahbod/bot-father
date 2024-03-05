@@ -1,11 +1,11 @@
 <?php
 
-namespace LaravelBot\BotFather\Class;
+namespace Ispahbod\BotFather\Class;
 
-use LaravelBot\BotFather\Constant\ApiMethod;
-use LaravelBot\BotFather\Http\Http;
-use LaravelBot\BotFather\Trait\TokenConstructor;
-use LaravelBot\BotFather\Type\WebhookInfo;
+use Ispahbod\BotFather\Constant\ApiMethod;
+use Ispahbod\BotFather\Http\Http;
+use Ispahbod\BotFather\Trait\TokenConstructor;
+use Ispahbod\BotFather\Type\WebhookInfo;
 
 class Webhook
 {

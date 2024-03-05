@@ -1,8 +1,8 @@
 <?php
 
-namespace LaravelBot\BotFather\Type;
+namespace Ispahbod\BotFather\Type;
 
-use LaravelBot\BotFather\Trait\DataConstructor;
+use Ispahbod\BotFather\Trait\DataConstructor;
 
 class Video
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelBot\BotFather\Plugin;
+namespace Ispahbod\BotFather\Plugin;
 
-use LaravelBot\BotFather\Constant\ReplyKeyboardMarkupConfig;
-use LaravelBot\BotFather\Helper\ArrayDirManipulator;
+use Ispahbod\BotFather\Constant\ReplyKeyboardMarkupConfig;
+use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class ReplyKeyboardMarkup
 {
@@ -38,17 +38,48 @@ class ReplyKeyboardMarkup
         return $exp ? $array : [];
     }
 
-    public static function Grid($array, int|array $orders = 1): array
+    public static function Grid($array, int|array $orders = 1, $exp = true): array
     {
+        if (!$exp) {
+            return [];
+        }
         $array = array_filter($array);
+        $orderCounter = 1;
+        usort($array, function ($a, $b) {
+            return isset($a['order']) && isset($b['order']) ? $a['order'] - $b['order'] : 0;
+        });
+        foreach ($array as &$item) {
+            if (!isset($item['order'])) {
+                $item['order'] = $orderCounter++;
+            }
+        }
+        usort($array, function ($a, $b) {
+            return $a['order'] - $b['order'];
+        });
+        foreach ($array as &$item) {
+            if (isset($item['array'])) {
+                $item = $item['array'];
+            }
+            unset($item['order']);
+        }
         if (is_int($orders)) {
             $result = self::Row(array_chunk($array, $orders));
         } else {
+            $orders_len = count($orders);
+            $order_index = 0;
+            $order = $orders[0];
+            $chunk = [];
             $result = [];
-            $index = 0;
-            foreach ($orders as $order) {
-                $result[] = self::Row(array_slice($array, $index, $order));
-                $index += $order;
+            foreach ($array as $item) {
+                $chunk[] = $item;
+                if (count($chunk) === $order) {
+                    $result[] = self::Row($chunk);
+                    $chunk = [];
+                    if (isset($orders[$order_index + 1])) {
+                        $order_index += 1;
+                        $order = $orders[$order_index];
+                    }
+                }
             }
         }
         return $result;
@@ -57,5 +88,10 @@ class ReplyKeyboardMarkup
     public static function Keyboard($array, $exp = true): array
     {
         return $exp ? $array : [];
+    }
+
+    public static function Order($array, $order = false): array
+    {
+        return $order === false ? $array : ['array' => $array, 'order' => $order];
     }
 }

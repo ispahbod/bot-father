@@ -1,6 +1,6 @@
 <?php
 
-namespace LaravelBot\BotFather\Type;
+namespace Ispahbod\BotFather\Type;
 
 class NewChat
 {
