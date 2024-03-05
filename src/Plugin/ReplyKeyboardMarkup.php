@@ -1,9 +1,9 @@
 <?php
 
-namespace LaravelBot\BotFather\Plugin;
+namespace Ispahbod\BotFather\Plugin;
 
-use LaravelBot\BotFather\Constant\ReplyKeyboardMarkupConfig;
-use LaravelBot\BotFather\Helper\ArrayDirManipulator;
+use Ispahbod\BotFather\Constant\ReplyKeyboardMarkupConfig;
+use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class ReplyKeyboardMarkup
 {
