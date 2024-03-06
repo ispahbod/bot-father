@@ -38,21 +38,68 @@ class ReplyKeyboardMarkup
         return $exp ? $array : [];
     }
 
-    public static function Grid($array, int|array $orders = 1): array
+    public static function Order(array $array, int $order): array
     {
-        $array = array_filter($array);
-        if (is_int($orders)) {
-            $result = self::Row(array_chunk($array, $orders));
-        } else {
-            $result = [];
-            $index = 0;
-            foreach ($orders as $order) {
-                $result[] = self::Row(array_slice($array, $index, $order));
-                $index += $order;
+        return ['array' => $array, 'order' => $order];
+    }
+    public static function custom_array_chunk(array $array, array $chunk_lengths): array {
+        $result = [];
+        $total_items = count($array);
+        $total_orders = array_sum($chunk_lengths);
+        $offset = 0;
+        foreach ($chunk_lengths as $length) {
+            $chunk = array_slice($array, $offset, $length);
+            if (!empty($chunk)) {
+                $result[] = $chunk;
+                $offset += $length;
             }
         }
+        $remaining_items_count = $total_items - $offset;
+        $remaining_chunks_count = ceil($remaining_items_count / $chunk_lengths[count($chunk_lengths) - 1]);
+        $remaining_items_offset = $offset;
+        for ($i = 0; $i < $remaining_chunks_count; $i++) {
+            $remaining_chunk_length = min($chunk_lengths[count($chunk_lengths) - 1], $remaining_items_count);
+            $remaining_chunk = array_slice($array, $remaining_items_offset, $remaining_chunk_length);
+            if (!empty($remaining_chunk)) {
+                $result[] = $remaining_chunk;
+                $remaining_items_offset += $remaining_chunk_length;
+                $remaining_items_count -= $remaining_chunk_length;
+            }
+        }
+
         return $result;
     }
+    public static function Grid(array $array, int|array $orders = 1, $exp = true): array
+    {
+        if (!$exp) {
+            return [];
+        }
+        if (is_int($orders)) {
+            $orders = [$orders];
+        }
+        $array_len = count($array);
+        $orderCounter = 1;
+        foreach ($array as &$item) {
+            if (!isset($item['order'])) {
+                $item['order'] = $orderCounter++;
+            } elseif ($item['order'] < 0) {
+                $item['order'] = $array_len + $item['order'] + 1;
+            }
+        }
+        usort($array, function ($a, $b) {
+            return $a['order'] - $b['order'];
+        });
+        foreach ($array as &$item) {
+            if (isset($item['array'])) {
+                $item = $item['array'];
+            } else {
+                unset($item['order']);
+            }
+        }
+        $array = array_filter($array);
+        return self::custom_array_chunk($array, $orders);
+    }
+
 
     public static function Keyboard($array, $exp = true): array
     {
