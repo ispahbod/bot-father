@@ -8,6 +8,51 @@ class Message
 {
     use DataConstructor;
 
+    public function GetContentType(): string|false
+    {
+        if (isset($this->data['text'])) {
+            return 'text';
+        } elseif (isset($this->data['giveaway'])) {
+            return 'giveaway';
+        } elseif (isset($this->data['animation'])) {
+            return 'animation';
+        } elseif (isset($this->data['audio'])) {
+            return 'audio';
+        } elseif (isset($this->data['document'])) {
+            return 'document';
+        } elseif (isset($this->data['photo'])) {
+            return 'photo';
+        } elseif (isset($this->data['sticker'])) {
+            return 'sticker';
+        } elseif (isset($this->data['story'])) {
+            return 'story';
+        } elseif (isset($this->data['video'])) {
+            return 'video';
+        } elseif (isset($this->data['video_note'])) {
+            return 'video_note';
+        } elseif (isset($this->data['voice'])) {
+            return 'voice';
+        } elseif (isset($this->data['contact'])) {
+            return 'contact';
+        } elseif (isset($this->data['dice'])) {
+            return 'dice';
+        } elseif (isset($this->data['game'])) {
+            return 'game';
+        } elseif (isset($this->data['poll'])) {
+            return 'poll';
+        } elseif (isset($this->data['venue'])) {
+            return 'venue';
+        } elseif (isset($this->data['location'])) {
+            return 'location';
+        } elseif (isset($this->data['invoice'])) {
+            return 'invoice';
+        } elseif (isset($this->data['web_app_data'])) {
+            return 'web_app_data';
+        } else {
+            return false;
+        }
+    }
+
     public function GetMessageId(): ?int
     {
         return $this->data['message_id'] ?? null;

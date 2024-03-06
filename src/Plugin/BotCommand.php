@@ -15,7 +15,7 @@ final class BotCommand
     {
         return [
             BotCommandField::COMMAND => $command,
-            BotCommandField::DESCRIPTION => $command,
+            BotCommandField::DESCRIPTION => $description,
         ];
     }
 }
