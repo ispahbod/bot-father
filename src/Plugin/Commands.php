@@ -36,7 +36,7 @@ class Commands
     {
         $parameter = explode(":", $text);
         if (count($parameter) > 1) {
-            $command = $this->findKeyByValue($parameter[0], $this->commands);
+            $command = $parameter[0];
             preg_match_all('/(\w+):(\w+)/', $text, $matches);
             $result = array_combine($matches[1], $matches[2]);
             return [$command, $result];

@@ -73,7 +73,9 @@ class Localization
 
     public function GetLocates(): array
     {
-        return $this->locates;
+        return array_filter($this->locates, function ($value){
+            return $value !== "global";
+        });
     }
 
     public function GetFields(): array
