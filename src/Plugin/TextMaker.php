@@ -4,6 +4,25 @@ namespace Ispahbod\BotFather\Plugin;
 
 class TextMaker
 {
+    public static function PersianNumbers($string): string
+    {
+        $persianNumbers = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+        $englishNumbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        return str_replace($persianNumbers, $englishNumbers, $string);
+    }
+
+    public static function EnglishNumbers($string): string
+    {
+        $englishNumbers = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        $persianNumbers = array('۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹');
+        return str_replace($englishNumbers, $persianNumbers, $string);
+    }
+
+    public static function Random($array): string
+    {
+        return $array[array_rand($array)];
+    }
+
     public static function NewLine(): string
     {
         return "\n";
@@ -53,6 +72,12 @@ class TextMaker
         return implode(' ', $string);
     }
 
+    public static function Each(array $array, $callble): string
+    {
+        $array = array_map($callble, $array);
+        return implode(' ', $array);
+    }
+
     public static function Bold(...$string): string
     {
         $string = implode(' ', $string);
@@ -83,9 +108,10 @@ class TextMaker
         return "<tg-spoiler>$string</tg-spoiler>";
     }
 
-    public static function Link($string, $href): string
+    public static function Link(string $string, string $href): string
     {
         $string = is_array($string) ? implode(' ', $string) : $string;
+        $href = urldecode($href);
         return "<a href='$href'>$string</a>";
     }
 
