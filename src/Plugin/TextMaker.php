@@ -18,6 +18,21 @@ class TextMaker
         return str_replace($englishNumbers, $persianNumbers, $string);
     }
 
+    public static function Truncate($string, $maxChars, $ellipsis = '...'): string
+    {
+        if ($maxChars < 1) {
+            return '';
+        }
+        $textLength = mb_strlen($string, 'utf-8');
+        if ($textLength <= $maxChars) {
+            return $string;
+        }
+        $truncatedText = mb_substr($string, 0, $maxChars, 'utf-8');
+        $truncatedText = rtrim($truncatedText);
+        $truncatedText .= $ellipsis;
+        return $truncatedText;
+    }
+
     public static function Random($array): string
     {
         return $array[array_rand($array)];
@@ -72,9 +87,12 @@ class TextMaker
         return implode(' ', $string);
     }
 
-    public static function Each(array $array, $callble): string
+    public static function Each(array $array, $callble, ?int $count = null): string
     {
         $array = array_map($callble, $array);
+        if ($count !== null) {
+            $array = array_slice($array, 0, $count);
+        }
         return implode(' ', $array);
     }
 
