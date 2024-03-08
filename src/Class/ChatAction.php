@@ -16,9 +16,9 @@ class ChatAction
 
     private function sendAction(string $action, bool $exp): bool
     {
-        if ($exp) {
+        if ($exp === true && $this->data['exp'] === true) {
             $response = $this->HttpResponseApiMethod(ApiMethod::SEND_CHAT_ACTION, [
-                ...$this->data,
+                SendChatActionField::CHAT_ID => $this->data['chat_id'],
                 SendChatActionField::ACTION => $action
             ]);
             return empty($response[1]);

@@ -8,14 +8,14 @@ final class BotCommand
 {
     public static function Commands($array): string
     {
-        return json_encode($array);
+        return json_encode(array_filter($array));
     }
 
-    public static function Command(string $command, string $description = ''): array
+    public static function Command(string $command, string $description = '', $exp = true): array
     {
-        return [
+        return $exp ? [
             BotCommandField::COMMAND => $command,
             BotCommandField::DESCRIPTION => $description,
-        ];
+        ] : [];
     }
 }

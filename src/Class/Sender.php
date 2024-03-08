@@ -122,9 +122,9 @@ class Sender
         return empty($response[1]);
     }
 
-    public function SendAction(array $data): ChatAction
+    public function SendAction(array $data, $exp = true): ChatAction
     {
-        return new ChatAction($this->token, $data);
+        return new ChatAction($this->token, [...$data, 'exp' => $exp]);
     }
 
     public function AnswerCallbackQuery(array $data): bool
