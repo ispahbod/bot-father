@@ -42,7 +42,9 @@ class ReplyKeyboardMarkup
     {
         return ['array' => $array, 'order' => $order];
     }
-    public static function custom_array_chunk(array $array, array $chunk_lengths): array {
+
+    public static function custom_array_chunk(array $array, array $chunk_lengths): array
+    {
         $result = [];
         $total_items = count($array);
         $total_orders = array_sum($chunk_lengths);
@@ -69,6 +71,7 @@ class ReplyKeyboardMarkup
 
         return $result;
     }
+
     public static function Grid(array $array, int|array $orders = 1, $exp = true): array
     {
         if (!$exp) {
@@ -100,9 +103,25 @@ class ReplyKeyboardMarkup
         return self::custom_array_chunk($array, $orders);
     }
 
-
     public static function Keyboard($array, $exp = true): array
     {
         return $exp ? $array : [];
+    }
+
+    public static function DoubleKeyboard($array1, $array2, bool $exp = true): array
+    {
+        return $exp ? self::Row([
+            self::Keyboard($array1),
+            self::Keyboard($array2),
+        ]) : [];
+    }
+
+    public static function TripleKeyboard($array1, $array2, $array3, bool $exp = true): array
+    {
+        return $exp ? self::Row([
+            self::Keyboard($array1),
+            self::Keyboard($array2),
+            self::Keyboard($array3),
+        ]) : [];
     }
 }
