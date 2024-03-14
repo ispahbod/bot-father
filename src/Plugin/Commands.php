@@ -34,15 +34,21 @@ class Commands
 
     public function GetCommand($text): array
     {
-        $parameter = explode(":", $text);
-        if (count($parameter) > 1) {
-            $command = $parameter[0];
-            preg_match_all('/(\w+):(\w+)/', $text, $matches);
-            $result = array_combine($matches[1], $matches[2]);
-            return [$command, $result];
+        $matches = [];
+        preg_match_all('/{([^}]+)}/', $text, $matches);
+        $parameters = $matches[1];
+
+        $result = [];
+        foreach ($parameters as $parameter) {
+            $parts = explode(':', $parameter);
+            $key = $parts[0];
+            $value = $parts[1];
+            $result[$key] = $value;
         }
-        return [$this->findKeyByValue($text, $this->commands), false];
+
+        return $result;
     }
+
 
     private function findKeyByValue($searchValue, $array): string|null
     {
