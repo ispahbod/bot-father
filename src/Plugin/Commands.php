@@ -2,6 +2,8 @@
 
 namespace Ispahbod\BotFather\Plugin;
 
+use Ispahbod\UrlManager\UrlManager;
+
 class Commands
 {
     private array $commands = [];
@@ -31,25 +33,28 @@ class Commands
         }
         return $this;
     }
-
     public function GetCommand($text): array
     {
-        $matches = [];
-        preg_match_all('/{([^}]+)}/', $text, $matches);
-        $parameters = $matches[1];
-
-        $result = [];
-        foreach ($parameters as $parameter) {
-            $parts = explode(':', $parameter);
-            $key = $parts[0];
-            $value = $parts[1];
-            $result[$key] = $value;
+        if (UrlManager::isValidUrl($text)){
+            return [$text, false];
         }
-
-        return $result;
+        $parameter = explode(":", $text);
+        if (count($parameter) > 1) {
+            $matches = [];
+            $command=$parameter[0];
+            preg_match_all('/{([^}]+)}/', $text, $matches);
+            $parameters = $matches[1];
+            $result = [];
+            foreach ($parameters as $parameter) {
+                $parts = explode(':', $parameter);
+                $key = $parts[0];
+                $value = $parts[1];
+                $result[$key] = $value;
+            }
+            return [$command,$result];
+        }
+        return [$this->findKeyByValue($text, $this->commands), false];
     }
-
-
     private function findKeyByValue($searchValue, $array): string|null
     {
         foreach ($array as $key => $value) {
