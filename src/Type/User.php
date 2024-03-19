@@ -10,12 +10,12 @@ class User
 
     public function GetId(): string
     {
-        return $this->data['id'] ?? false;
+        return $this->data['id'] ?? '';
     }
 
     public function GetIsBot(): bool
     {
-        return $this->data['is_bot'] ?? false;
+        return $this->data['is_bot'] ?? '';
     }
 
     public function GetFirstName(): string
