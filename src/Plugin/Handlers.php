@@ -6,14 +6,14 @@ class Handlers
 {
     private array $handlers = [];
 
-    public function Handler(string $name, callable $callback): void
+    public function SetHandler(string $name, callable $callback, bool $exp = true): void
     {
-        if (is_callable($callback)) {
+        if (is_callable($callback) && $exp) {
             $this->handlers[$name] = $callback;
         }
     }
 
-    public function Handlers(array $handlers): void
+    public function SetHandlers(array $handlers): void
     {
         foreach ($handlers as $name => $callback) {
             if (is_callable($callback)) {
