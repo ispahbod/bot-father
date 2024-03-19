@@ -13,11 +13,13 @@ class Handlers
         }
     }
 
-    public function SetHandlers(array $handlers): void
+    public function SetHandlers(array $handlers, bool $exp = true): void
     {
-        foreach ($handlers as $name => $callback) {
-            if (is_callable($callback)) {
-                $this->handlers[$name] = $callback;
+        if ($exp){
+            foreach ($handlers as $name => $callback) {
+                if (is_callable($callback)) {
+                    $this->handlers[$name] = $callback;
+                }
             }
         }
     }
