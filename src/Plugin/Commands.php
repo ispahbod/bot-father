@@ -36,7 +36,7 @@ class Commands
     public function GetCommand($text): array
     {
         if (UrlManager::isValidUrl($text)){
-            return [$text, false];
+            return [$text, null];
         }
         $parameter = explode(":", $text);
         if (count($parameter) > 1) {
@@ -53,7 +53,7 @@ class Commands
             }
             return [$command,$result];
         }
-        return [$this->findKeyByValue($text, $this->commands), false];
+        return [$this->findKeyByValue($text, $this->commands), null];
     }
     private function findKeyByValue($searchValue, $array): string|null
     {

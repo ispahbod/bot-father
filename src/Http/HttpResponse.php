@@ -43,21 +43,21 @@ class HttpResponse
 
     public function GetContent(): array|bool
     {
-        return $this->response['content']['result'] ?? [];
+        return $this->response['content']['result'] ?? false;
     }
 
-    public function GetFirstContent(): array
+    public function GetFirstContent(): array|false
     {
-        return reset($this->response['content']['result']) ?? [];
+        return !empty($this->response['content']['result']) ? reset($this->response['content']['result']) : false;
     }
 
-    public function GetLastContent(): array
+    public function GetLastContent(): array|false
     {
-        return end($this->response['content']['result']) ?? [];
+        return !empty($this->response['content']['result']) ? end($this->response['content']['result']) : false;
     }
 
     public function GetJson(): string|false
     {
-        return json_encode($this->response['content']['result']);
+        return !empty($this->response['content']['result']) ? json_encode($this->response['content']['result']) : false;
     }
 }

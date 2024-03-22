@@ -5,7 +5,7 @@ namespace Ispahbod\BotFather\Plugin;
 class Modules
 {
     private Handlers $handlers;
-    private Commands $commands;
+    public Commands $commands;
 
     public function __construct()
     {
@@ -20,13 +20,14 @@ class Modules
         return $this;
     }
 
+    public function GetCommand($text): array
+    {
+        return $this->commands->GetCommand($text);
+    }
+
+
     public function Run(string $input, $arg = []): bool
     {
-        if (empty($arg)) {
-            list($command, $parameters) = $this->commands->GetCommand($input);
-            return $this->handlers->Run($command, $parameters);
-        } else {
-            return $this->handlers->Run($input, $arg);
-        }
+        return $this->handlers->Run($input, $arg);
     }
 }

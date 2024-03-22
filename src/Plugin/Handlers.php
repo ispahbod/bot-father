@@ -24,7 +24,7 @@ class Handlers
         }
     }
 
-    public function Run(?string $name, ...$args): bool
+    public function Run(string $name, ...$args): bool
     {
         if (isset($this->handlers[$name])) {
             call_user_func($this->handlers[$name], ...$args);
