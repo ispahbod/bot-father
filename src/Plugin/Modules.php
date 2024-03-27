@@ -26,8 +26,8 @@ class Modules
     }
 
 
-    public function Run(string $input, $arg = []): bool
+    public function Run(string $input, ...$arg): bool
     {
-        return $this->handlers->Run($input, $arg);
+        return $this->handlers->Run($input, ...$arg);
     }
 }
