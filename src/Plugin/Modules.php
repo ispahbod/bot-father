@@ -26,7 +26,7 @@ class Modules
     }
 
 
-    public function Run(string $input, ...$arg): bool
+    public function Run($input='', ...$arg): bool
     {
         return $this->handlers->Run($input, ...$arg);
     }
