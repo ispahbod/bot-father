@@ -2,27 +2,16 @@
 
 namespace Ispahbod\BotFather;
 
-use Ispahbod\BotFather\Method\Chat;
-use Ispahbod\BotFather\Method\Game;
-use Ispahbod\BotFather\Method\Getter;
-use Ispahbod\BotFather\Method\Inline;
 use Ispahbod\BotFather\Method\Methods;
-use Ispahbod\BotFather\Method\Passport;
-use Ispahbod\BotFather\Method\Payment;
 use Ispahbod\BotFather\Method\Process;
-use Ispahbod\BotFather\Method\Sender;
-use Ispahbod\BotFather\Method\Setter;
-use Ispahbod\BotFather\Method\Modifier;
-use Ispahbod\BotFather\Method\Webhook;
 use Ispahbod\BotFather\Constant\WebhookType;
-use Ispahbod\BotFather\Interface\BotFatherInterface;
 use Ispahbod\BotFather\Trait\TokenConstructor;
 
 final class BotFather
 {
     use TokenConstructor;
 
-    public static function Methods(string $token): Passport
+    public static function Methods(string $token): Methods
     {
         return new Methods($token);
     }

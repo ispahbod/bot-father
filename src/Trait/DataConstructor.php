@@ -6,7 +6,7 @@ trait DataConstructor
 {
     private mixed $data;
 
-    public function __construct($data, $error = [])
+    public function __construct($data)
     {
         $this->data = $data;
     }
@@ -27,7 +27,7 @@ trait DataConstructor
 
     public function encodeDataToJson(): string|false
     {
-        return json_encode($this->data);
+        return json_encode($this->data, JSON_THROW_ON_ERROR);
     }
 
     public function fetchErrorCode(): ?int
@@ -38,6 +38,10 @@ trait DataConstructor
     public function fetchErrorMessage(): ?string
     {
         return $this->data['description'] ?? null;
+    }
+    public function getResult(): ?array
+    {
+        return $this->data ?? null;
     }
 }
 
