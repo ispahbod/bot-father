@@ -12,430 +12,480 @@ class Message
     {
         if (isset($this->data['text'])) {
             return 'text';
-        } elseif (isset($this->data['giveaway'])) {
-            return 'giveaway';
-        } elseif (isset($this->data['animation'])) {
-            return 'animation';
-        } elseif (isset($this->data['audio'])) {
-            return 'audio';
-        } elseif (isset($this->data['document'])) {
-            return 'document';
-        } elseif (isset($this->data['photo'])) {
-            return 'photo';
-        } elseif (isset($this->data['sticker'])) {
-            return 'sticker';
-        } elseif (isset($this->data['story'])) {
-            return 'story';
-        } elseif (isset($this->data['video'])) {
-            return 'video';
-        } elseif (isset($this->data['video_note'])) {
-            return 'video_note';
-        } elseif (isset($this->data['voice'])) {
-            return 'voice';
-        } elseif (isset($this->data['contact'])) {
-            return 'contact';
-        } elseif (isset($this->data['dice'])) {
-            return 'dice';
-        } elseif (isset($this->data['game'])) {
-            return 'game';
-        } elseif (isset($this->data['poll'])) {
-            return 'poll';
-        } elseif (isset($this->data['venue'])) {
-            return 'venue';
-        } elseif (isset($this->data['location'])) {
-            return 'location';
-        } elseif (isset($this->data['invoice'])) {
-            return 'invoice';
-        } elseif (isset($this->data['web_app_data'])) {
-            return 'web_app_data';
-        } else {
-            return false;
         }
-    }
 
-    public function GetMessageId(): ?int
+        if (isset($this->data['giveaway'])) {
+            return 'giveaway';
+        }
+
+        if (isset($this->data['animation'])) {
+            return 'animation';
+        }
+
+        if (isset($this->data['audio'])) {
+            return 'audio';
+        }
+
+        if (isset($this->data['document'])) {
+            return 'document';
+        }
+
+        if (isset($this->data['photo'])) {
+            return 'photo';
+        }
+
+        if (isset($this->data['sticker'])) {
+            return 'sticker';
+        }
+
+        if (isset($this->data['story'])) {
+            return 'story';
+        }
+
+        if (isset($this->data['video'])) {
+            return 'video';
+        }
+
+        if (isset($this->data['video_note'])) {
+            return 'video_note';
+        }
+
+        if (isset($this->data['voice'])) {
+            return 'voice';
+        }
+
+        if (isset($this->data['contact'])) {
+            return 'contact';
+        }
+
+        if (isset($this->data['dice'])) {
+            return 'dice';
+        }
+
+        if (isset($this->data['game'])) {
+            return 'game';
+        }
+
+        if (isset($this->data['poll'])) {
+            return 'poll';
+        }
+
+        if (isset($this->data['venue'])) {
+            return 'venue';
+        }
+
+        if (isset($this->data['location'])) {
+            return 'location';
+        }
+
+        if (isset($this->data['invoice'])) {
+            return 'invoice';
+        }
+
+        if (isset($this->data['web_app_data'])) {
+            return 'web_app_data';
+        }
+
+        return false;
+    }
+    public function getMessageId(): ?int
     {
         return $this->data['message_id'] ?? null;
     }
 
-    public function GetCallbackData(): string|null
-    {
-        return $this->data['data'] ?? null;
-    }
-
-    public function GetCallbackMessageId(): string|null
-    {
-        return $this->data['message']['message_id'] ?? null;
-    }
-
-    public function GetMessageThreadId(): ?int
+    public function getMessageThreadId(): ?int
     {
         return $this->data['message_thread_id'] ?? null;
     }
 
-    public function GetFrom(): User
+    public function getFrom(): ?User
     {
-        return new User($this->data['from'] ?? []);
+        return isset($this->data['from']) ? new User($this->data['from']) : null;
     }
 
-    public function GetSenderChat(): Chat
+    public function getSenderChat(): ?Chat
     {
-        return new Chat($this->data['sender_chat'] ?? []);
+        return isset($this->data['sender_chat']) ? new Chat($this->data['sender_chat']) : null;
     }
 
-    public function GetDate()
+    public function getSenderBoostCount(): ?int
     {
-        return Carbon::createFromTimeString($this->data['date'] ?? 0);
+        return $this->data['sender_boost_count'] ?? null;
     }
 
-    public function GetChat(): Chat
+    public function getSenderBusinessBot(): ?User
     {
-        return new Chat($this->data['chat'] ?? []);
+        return isset($this->data['sender_business_bot']) ? new User($this->data['sender_business_bot']) : null;
     }
 
-    public function GetForwardOrigin(): MessageOrigin
+    public function getDate(): ?int
     {
-        return new MessageOrigin($this->data['forward_origin'] ?? []);
+        return $this->data['date'] ?? null;
     }
 
-    public function GetIsTopicMessage(): ?bool
+    public function getBusinessConnectionId(): ?string
+    {
+        return $this->data['business_connection_id'] ?? null;
+    }
+
+    public function getChat(): ?Chat
+    {
+        return isset($this->data['chat']) ? new Chat($this->data['chat']) : null;
+    }
+
+    public function getIsTopicMessage(): ?bool
     {
         return $this->data['is_topic_message'] ?? null;
     }
 
-    public function GetIsAutomaticForward(): ?bool
+    public function getIsAutomaticForward(): ?bool
     {
         return $this->data['is_automatic_forward'] ?? null;
     }
 
-    public function GetReplyToMessage(): Message
+    public function getReplyToMessage(): ?Message
     {
-        return new Message($this->data['reply_to_message'] ?? []);
+        return isset($this->data['reply_to_message']) ? new Message($this->data['reply_to_message']) : null;
     }
 
-    public function GetExternalReply(): ExternalReplyInfo
+    public function getExternalReply(): ?ExternalReplyInfo
     {
-        return new ExternalReplyInfo($this->data['external_reply'] ?? []);
+        return isset($this->data['external_reply']) ? new ExternalReplyInfo($this->data['external_reply']) : null;
     }
 
-    public function GetQuote(): TextQuote
+    public function getQuote(): ?TextQuote
     {
-        return new TextQuote($this->data['quote'] ?? []);
+        return isset($this->data['quote']) ? new TextQuote($this->data['quote']) : null;
     }
 
-    public function GetViaBot(): User
+    public function getReplyToStory(): ?Story
     {
-        return new User($this->data['via_bot'] ?? []);
+        return isset($this->data['reply_to_story']) ? new Story($this->data['reply_to_story']) : null;
     }
 
-    public function GetEditDate(): ?int
+    public function getViaBot(): ?User
+    {
+        return isset($this->data['via_bot']) ? new User($this->data['via_bot']) : null;
+    }
+
+    public function getEditDate(): ?int
     {
         return $this->data['edit_date'] ?? null;
     }
 
-    public function GetHasProtectedContent(): ?bool
+    public function getHasProtectedContent(): ?bool
     {
         return $this->data['has_protected_content'] ?? null;
     }
 
-    public function GetMediaGroupId(): ?string
+    public function getIsFromOffline(): ?bool
+    {
+        return $this->data['is_from_offline'] ?? null;
+    }
+
+    public function getMediaGroupId(): ?string
     {
         return $this->data['media_group_id'] ?? null;
     }
 
-    public function GetAuthorSignature(): ?string
+    public function getAuthorSignature(): ?string
     {
         return $this->data['author_signature'] ?? null;
     }
 
-    public function GetText(): ?string
+    public function getText(): ?string
     {
         return $this->data['text'] ?? null;
     }
 
-    public function GetEntities(): ?array
+    public function getEntities(): ?array
     {
         return $this->data['entities'] ?? null;
     }
 
-    public function GetLinkPreviewOptions(): LinkPreviewOptions
+    public function getLinkPreviewOptions(): ?LinkPreviewOptions
     {
-        return new LinkPreviewOptions($this->data['link_preview_options'] ?? []);
+        return isset($this->data['link_preview_options']) ? new LinkPreviewOptions($this->data['link_preview_options']) : null;
     }
 
-    public function GetAnimation(): Animation
+    public function getAnimation(): ?Animation
     {
-        return new Animation($this->data['animation'] ?? []);
+        return isset($this->data['animation']) ? new Animation($this->data['animation']) : null;
     }
 
-    public function GetAudio(): Audio
+    public function getAudio(): ?Audio
     {
-        return new Audio($this->data['audio'] ?? []);
+        return isset($this->data['audio']) ? new Audio($this->data['audio']) : null;
     }
 
-    public function GetDocument(): Document
+    public function getDocument(): ?Document
     {
-        return new Document($this->data['document'] ?? []);
+        return isset($this->data['document']) ? new Document($this->data['document']) : null;
     }
 
-    public function GetPhoto(): PhotoSize
+    public function getPhoto(): ?array
     {
-        return new PhotoSize($this->data['photo'] ?? []);
+        return $this->data['photo'] ?? null;
     }
 
-    public function GetSticker(): Sticker
+    public function getSticker(): ?Sticker
     {
-        return new Sticker($this->data['sticker'] ?? []);
+        return isset($this->data['sticker']) ? new Sticker($this->data['sticker']) : null;
     }
 
-    public function GetStory(): Story
+    public function getStory(): ?Story
     {
-        return new Story($this->data['story'] ?? []);
+        return isset($this->data['story']) ? new Story($this->data['story']) : null;
     }
 
-    public function GetVideo(): Video
+    public function getVideo(): ?Video
     {
-        return new Video($this->data['video'] ?? []);
+        return isset($this->data['video']) ? new Video($this->data['video']) : null;
     }
 
-    public function GetVideoNote(): VideoNote
+    public function getVideoNote(): ?VideoNote
     {
-        return new VideoNote($this->data['video_note'] ?? []);
+        return isset($this->data['video_note']) ? new VideoNote($this->data['video_note']) : null;
     }
 
-    public function GetVoice(): Voice
+    public function getVoice(): ?Voice
     {
-        return new Voice($this->data['voice'] ?? []);
+        return isset($this->data['voice']) ? new Voice($this->data['voice']) : null;
     }
 
-    public function GetCaption(): ?string
+    public function getCaption(): ?string
     {
         return $this->data['caption'] ?? null;
     }
 
-    public function GetCaptionEntities(): MessageEntity
+    public function getCaptionEntities(): ?array
     {
-        return new MessageEntity($this->data['caption_entities'] ?? []);
+        return $this->data['caption_entities'] ?? null;
     }
 
-    public function GetHasMediaSpoiler(): ?bool
+    public function getHasMediaSpoiler(): ?bool
     {
         return $this->data['has_media_spoiler'] ?? null;
     }
 
-    public function GetContact(): Contact
+    public function getContact(): ?Contact
     {
-        return new Contact($this->data['contact'] ?? []);
+        return isset($this->data['contact']) ? new Contact($this->data['contact']) : null;
     }
 
-    public function GetDice(): Dice
+    public function getDice(): ?Dice
     {
-        return new Dice($this->data['dice'] ?? []);
+        return isset($this->data['dice']) ? new Dice($this->data['dice']) : null;
     }
 
-    public function GetGame(): Game
+    public function getGame(): ?Game
     {
-        return new Game($this->data['game'] ?? null);
+        return isset($this->data['game']) ? new Game($this->data['game']) : null;
     }
 
-    public function GetPoll(): Poll
+    public function getPoll(): ?Poll
     {
-        return new Poll($this->data['poll'] ?? []);
+        return isset($this->data['poll']) ? new Poll($this->data['poll']) : null;
     }
 
-    public function GetVenue(): Venue
+    public function getVenue(): ?Venue
     {
-        return new Venue($this->data['venue'] ?? []);
+        return isset($this->data['venue']) ? new Venue($this->data['venue']) : null;
     }
 
-    public function GetLocation(): Location
+    public function getLocation(): ?Location
     {
-        return new Location($this->data['location'] ?? []);
+        return isset($this->data['location']) ? new Location($this->data['location']) : null;
     }
 
-    public function GetNewChatMembers(): User
+    public function getNewChatMembers(): ?array
     {
-        return new User($this->data['new_chat_members'] ?? []);
+        return $this->data['new_chat_members'] ?? null;
     }
 
-    public function GetLeftChatMember(): User
+    public function getLeftChatMember(): ?User
     {
-        return new User($this->data['left_chat_member'] ?? []);
-
+        return isset($this->data['left_chat_member']) ? new User($this->data['left_chat_member']) : null;
     }
 
-    public function GetNewChatTitle(): ?string
+    public function getNewChatTitle(): ?string
     {
         return $this->data['new_chat_title'] ?? null;
     }
 
-    public function GetNewChatPhoto(): PhotoSize
+    public function getNewChatPhoto(): ?array
     {
-        return new PhotoSize($this->data['new_chat_photo'] ?? []);
+        return $this->data['new_chat_photo'] ?? null;
     }
 
-    public function GetDeleteChatPhoto(): ?bool
+    public function getDeleteChatPhoto(): ?bool
     {
         return $this->data['delete_chat_photo'] ?? null;
     }
 
-    public function GetGroupChatCreated(): ?bool
+    public function getGroupChatCreated(): ?bool
     {
         return $this->data['group_chat_created'] ?? null;
     }
 
-    public function GetSupergroupChatCreated(): ?bool
+    public function getSupergroupChatCreated(): ?bool
     {
         return $this->data['supergroup_chat_created'] ?? null;
     }
 
-    public function GetChannelChatCreated(): ?bool
+    public function getChannelChatCreated(): ?bool
     {
         return $this->data['channel_chat_created'] ?? null;
     }
 
-    public function GetMessageAutoDeleteTimerChanged(): MessageAutoDeleteTimerChanged
+    public function getMessageAutoDeleteTimerChanged(): ?MessageAutoDeleteTimerChanged
     {
-        return new MessageAutoDeleteTimerChanged($this->data['message_auto_delete_timer_changed'] ?? []);
+        return isset($this->data['message_auto_delete_timer_changed']) ? new MessageAutoDeleteTimerChanged($this->data['message_auto_delete_timer_changed']) : null;
     }
 
-    public function GetMigrateToChatId(): ?int
+    public function getMigrateToChatId(): ?int
     {
         return $this->data['migrate_to_chat_id'] ?? null;
     }
 
-    public function GetMigrateFromChatId(): ?int
+    public function getMigrateFromChatId(): ?int
     {
         return $this->data['migrate_from_chat_id'] ?? null;
     }
 
-    public function GetPinnedMessage(): MaybeInaccessibleMessage
+    public function getPinnedMessage(): ?MaybeInaccessibleMessage
     {
-        return new MaybeInaccessibleMessage($this->data['pinned_message'] ?? []);
+        return isset($this->data['pinned_message']) ? new MaybeInaccessibleMessage($this->data['pinned_message']) : null;
     }
 
-    public function GetInvoice(): Invoice
+    public function getInvoice(): ?Invoice
     {
-        return new Invoice($this->data['invoice'] ?? []);
+        return isset($this->data['invoice']) ? new Invoice($this->data['invoice']) : null;
     }
 
-
-    public function GetSuccessfulPayment(): SuccessfulPayment
+    public function getSuccessfulPayment(): ?SuccessfulPayment
     {
-        return new SuccessfulPayment($this->data['successful_payment'] ?? []);
+        return isset($this->data['successful_payment']) ? new SuccessfulPayment($this->data['successful_payment']) : null;
     }
 
-    public function GetUsersShared(): UsersShared
+    public function getUsersShared(): ?UsersShared
     {
-        return new UsersShared($this->data['users_shared'] ?? []);
-
+        return isset($this->data['users_shared']) ? new UsersShared($this->data['users_shared']) : null;
     }
 
-    public function GetChatShared(): ChatShared
+    public function getChatShared(): ?ChatShared
     {
-        return new ChatShared($this->data['chat_shared'] ?? []);
+        return isset($this->data['chat_shared']) ? new ChatShared($this->data['chat_shared']) : null;
     }
 
-    public function GetConnectedWebsite(): ?string
+    public function getConnectedWebsite(): ?string
     {
         return $this->data['connected_website'] ?? null;
     }
 
-    public function GetWriteAccessAllowed(): WriteAccessAllowed
+    public function getWriteAccessAllowed(): ?WriteAccessAllowed
     {
-        return new WriteAccessAllowed($this->data['write_access_allowed'] ?? []);
+        return isset($this->data['write_access_allowed']) ? new WriteAccessAllowed($this->data['write_access_allowed']) : null;
     }
 
-    public function GetPassportData(): PassportData
+    public function getPassportData(): ?PassportData
     {
-        return new PassportData($this->data['passport_data'] ?? []);
+        return isset($this->data['passport_data']) ? new PassportData($this->data['passport_data']) : null;
     }
 
-
-    public function GetProximityAlertTriggered(): ProximityAlertTriggered
+    public function getProximityAlertTriggered(): ?ProximityAlertTriggered
     {
-        return new ProximityAlertTriggered($this->data['proximity_alert_triggered'] ?? []);
+        return isset($this->data['proximity_alert_triggered']) ? new ProximityAlertTriggered($this->data['proximity_alert_triggered']) : null;
     }
 
-    public function GetForumTopicCreated(): ForumTopicCreated
+    public function getBoostAdded(): ?ChatBoostAdded
     {
-        return new ForumTopicCreated($this->data['forum_topic_created'] ?? []);
+        return isset($this->data['boost_added']) ? new ChatBoostAdded($this->data['boost_added']) : null;
     }
 
-    public function GetForumTopicEdited(): ForumTopicEdited
+    public function getChatBackgroundSet(): ?ChatBackground
     {
-        return new ForumTopicEdited($this->data['forum_topic_edited'] ?? []);
+        return isset($this->data['chat_background_set']) ? new ChatBackground($this->data['chat_background_set']) : null;
     }
 
-    public function GetForumTopicClosed(): ForumTopicClosed
+    public function getForumTopicCreated(): ?ForumTopicCreated
     {
-        return new ForumTopicClosed($this->data['forum_topic_closed'] ?? []);
+        return isset($this->data['forum_topic_created']) ? new ForumTopicCreated($this->data['forum_topic_created']) : null;
     }
 
-
-    public function GetForumTopicReopened(): ForumTopicReopened
+    public function getForumTopicEdited(): ?ForumTopicEdited
     {
-        return new ForumTopicReopened($this->data['forum_topic_reopened'] ?? []);
+        return isset($this->data['forum_topic_edited']) ? new ForumTopicEdited($this->data['forum_topic_edited']) : null;
     }
 
-    public function GetGeneralForumTopicHidden(): GeneralForumTopicHidden
+    public function getForumTopicClosed(): ?ForumTopicClosed
     {
-        return new GeneralForumTopicHidden($this->data['general_forum_topic_hidden'] ?? []);
+        return isset($this->data['forum_topic_closed']) ? new ForumTopicClosed($this->data['forum_topic_closed']) : null;
     }
 
-    public function GetGeneralForumTopicUnhidden(): GeneralForumTopicUnhidden
+    public function getForumTopicReopened(): ?ForumTopicReopened
     {
-        return new GeneralForumTopicUnhidden($this->data['general_forum_topic_unhidden'] ?? []);
+        return isset($this->data['forum_topic_reopened']) ? new ForumTopicReopened($this->data['forum_topic_reopened']) : null;
     }
 
-    public function GetGiveawayCreated(): GiveawayCreated
+    public function getGeneralForumTopicHidden(): ?GeneralForumTopicHidden
     {
-        return new GiveawayCreated($this->data['giveaway_created'] ?? []);
+        return isset($this->data['general_forum_topic_hidden']) ? new GeneralForumTopicHidden($this->data['general_forum_topic_hidden']) : null;
     }
 
-    public function GetGiveaway(): Giveaway
+    public function getGeneralForumTopicUnhidden(): ?GeneralForumTopicUnhidden
     {
-        return new Giveaway($this->data['giveaway'] ?? []);
+        return isset($this->data['general_forum_topic_unhidden']) ? new GeneralForumTopicUnhidden($this->data['general_forum_topic_unhidden']) : null;
     }
 
-    public function GetGiveawayWinners(): GiveawayWinners
+    public function getGiveawayCreated(): ?GiveawayCreated
     {
-        return new GiveawayWinners($this->data['giveaway_winners'] ?? []);
+        return isset($this->data['giveaway_created']) ? new GiveawayCreated($this->data['giveaway_created']) : null;
     }
 
-    public function GetGiveawayCompleted(): GiveawayCompleted
+    public function getGiveaway(): ?Giveaway
     {
-        return new GiveawayCompleted($this->data['giveaway_completed'] ?? []);
+        return isset($this->data['giveaway']) ? new Giveaway($this->data['giveaway']) : null;
     }
 
-    public function GetVideoChatScheduled(): VideoChatScheduled
+    public function getGiveawayWinners(): ?GiveawayWinners
     {
-        return new VideoChatScheduled($this->data['video_chat_scheduled'] ?? []);
+        return isset($this->data['giveaway_winners']) ? new GiveawayWinners($this->data['giveaway_winners']) : null;
     }
 
-    public function GetVideoChatStarted(): VideoChatStarted
+    public function getGiveawayCompleted(): ?GiveawayCompleted
     {
-        return new VideoChatStarted($this->data['video_chat_started'] ?? []);
+        return isset($this->data['giveaway_completed']) ? new GiveawayCompleted($this->data['giveaway_completed']) : null;
     }
 
-    public function GetVideoChatEnded(): VideoChatEnded
+    public function getVideoChatScheduled(): ?VideoChatScheduled
     {
-        return new VideoChatEnded($this->data['video_chat_ended'] ?? []);
+        return isset($this->data['video_chat_scheduled']) ? new VideoChatScheduled($this->data['video_chat_scheduled']) : null;
     }
 
-    public function GetVideoChatParticipantsInvited(): VideoChatParticipantsInvited
+    public function getVideoChatStarted(): ?VideoChatStarted
     {
-        return new VideoChatParticipantsInvited($this->data['video_chat_participants_invited'] ?? []);
+        return isset($this->data['video_chat_started']) ? new VideoChatStarted($this->data['video_chat_started']) : null;
     }
 
-    public function GetWebAppData(): WebAppData
+    public function getVideoChatEnded(): ?VideoChatEnded
     {
-        return new WebAppData($this->data['web_app_data'] ?? []);
+        return isset($this->data['video_chat_ended']) ? new VideoChatEnded($this->data['video_chat_ended']) : null;
     }
 
-    public function GetReplyMarkup(): InlineKeyboardMarkup
+    public function getVideoChatParticipantsInvited(): ?VideoChatParticipantsInvited
     {
-        return new InlineKeyboardMarkup($this->data['reply_markup'] ?? []);
+        return isset($this->data['video_chat_participants_invited']) ? new VideoChatParticipantsInvited($this->data['video_chat_participants_invited']) : null;
+    }
+
+    public function getWebAppData(): ?WebAppData
+    {
+        return isset($this->data['web_app_data']) ? new WebAppData($this->data['web_app_data']) : null;
+    }
+
+    public function getReplyMarkup(): ?InlineKeyboardMarkup
+    {
+        return isset($this->data['reply_markup']) ? new InlineKeyboardMarkup($this->data['reply_markup']) : null;
     }
 
 }

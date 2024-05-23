@@ -8,7 +8,12 @@ class WebAppInfo
 {
     use DataConstructor;
 
-    public function GetUrl(): string
+    /**
+     * Retrieves the HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps.
+     *
+     * @return string The URL of the Web App.
+     */
+    public function getUrl(): string
     {
         return $this->data['url'] ?? '';
     }

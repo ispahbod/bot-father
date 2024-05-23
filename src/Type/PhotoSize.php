@@ -7,29 +7,54 @@ use Ispahbod\BotFather\Trait\DataConstructor;
 class PhotoSize
 {
     use DataConstructor;
-
-    public function GetFileId(): string
+    /**
+     * Retrieves the identifier for this file, which can be used to download or reuse the file.
+     *
+     * @return string The file identifier.
+     */
+    public function getFileId(): string
     {
-        return $this->data['file_id'] ?? '';
+        return $this->data['file_id'];
     }
 
-    public function GetFileUniqueId(): string
+    /**
+     * Retrieves the unique identifier for this file, which is supposed to be the same over time and for different bots.
+     * This identifier cannot be used to download or reuse the file.
+     *
+     * @return string The unique file identifier.
+     */
+    public function getFileUniqueId(): string
     {
-        return $this->data['file_unique_id'] ?? '';
+        return $this->data['file_unique_id'];
     }
 
-    public function GetWidth(): int
+    /**
+     * Retrieves the width of the photo.
+     *
+     * @return int The photo width.
+     */
+    public function getWidth(): int
     {
-        return $this->data['width'] ?? 0;
+        return $this->data['width'];
     }
 
-    public function GetHeight(): int
+    /**
+     * Retrieves the height of the photo.
+     *
+     * @return int The photo height.
+     */
+    public function getHeight(): int
     {
-        return $this->data['height'] ?? 0;
+        return $this->data['height'];
     }
 
-    public function GetFileSize(): int
+    /**
+     * Retrieves the file size in bytes, if available.
+     *
+     * @return int|null The file size in bytes, or null if not available.
+     */
+    public function getFileSize(): ?int
     {
-        return $this->data['file_size'] ?? 0;
+        return $this->data['file_size'] ?? null;
     }
 }
