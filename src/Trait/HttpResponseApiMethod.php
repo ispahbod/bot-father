@@ -6,7 +6,7 @@ use Ispahbod\BotFather\Http\Http;
 
 trait HttpResponseApiMethod
 {
-    private function HttpResponseApiMethod($method, $data = []): array
+    private function httpResponseApiMethod($method, $data = []): array
     {
         $http = Http::request($this->token, $method, $data);
         return array_merge($http->getContent(),[

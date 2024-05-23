@@ -4,5 +4,9 @@ namespace Ispahbod\BotFather\Field;
 
 final class unpinAllGeneralForumTopicMessagesField
 {
-    public const CHAT_ID='chat_id';
+    /**
+     * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).
+     * @var int|string
+     */
+    public const CHAT_ID = 'chat_id';
 }

@@ -2,8 +2,17 @@
 
 namespace Ispahbod\BotFather\Field;
 
-class EditGeneralForumTopicField
+final class EditGeneralForumTopicField
 {
-    public const CHAT_ID='chat_id';
-    public const NAME='name';
+    /**
+     * Unique identifier for the target chat or username of the target supergroup (in the format @supergroupusername).
+     * @var int|string
+     */
+    public const CHAT_ID = 'chat_id';
+
+    /**
+     * New topic name, must be 1-128 characters.
+     * @var string
+     */
+    public const NAME = 'name';
 }

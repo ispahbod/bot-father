@@ -3,7 +3,7 @@
 namespace Ispahbod\BotFather\Constant;
 
 
-final class ApiMethod
+final class ApiMethods
 {
     public const ANSWER_CALLBACK_QUERY = 'answerCallbackQuery';
     public const APPROVE_CHAT_JOIN_REQUEST = 'approveChatJoinRequest';
@@ -20,7 +20,6 @@ final class ApiMethod
     public const DELETE_CHAT_PHOTO = 'deleteChatPhoto';
     public const DELETE_CHAT_STICKER_SET = 'deleteChatStickerSet';
     public const DELETE_FORUM_TOPIC = 'deleteForumTopic';
-    public const DELETE_GENERAL_FORUM_TOPIC = 'deleteGeneralForumTopic';
     public const DELETE_MESSAGE = 'deleteMessage';
     public const DELETE_MESSAGES = 'deleteMessages';
     public const DELETE_MY_COMMANDS = 'deleteMyCommands';
@@ -52,6 +51,7 @@ final class ApiMethod
     public const GET_MY_NAME = 'getMyName';
     public const GET_MY_SHORT_DESCRIPTION = 'getMyShortDescription';
     public const GET_USER_CHAT_BOOSTS = 'getUserChatBoosts';
+    public const GET_BUSINESS_CONNECTION = 'getBusinessConnection';
     public const GET_USER_PROFILE_PHOTOS = 'getUserProfilePhotos';
     public const HIDE_GENERAL_FORUM_TOPIC = 'hideGeneralForumTopic';
     public const LEAVE_CHAT = 'leaveChat';
@@ -72,6 +72,9 @@ final class ApiMethod
     public const SEND_DOCUMENT = 'sendDocument';
     public const SEND_LOCATION = 'sendLocation';
     public const SEND_MEDIA_GROUP = 'sendMediaGroup';
+    public const SEND_GAME = 'sendGame';
+    public const SET_GAME_SCORE = 'setGameScore';
+    public const GET_GAME_HIGH_SCORES = 'getGameHighScores';
     public const SEND_MESSAGE = 'sendMessage';
     public const SEND_PHOTO = 'sendPhoto';
     public const SEND_POLL = 'sendPoll';
@@ -96,9 +99,9 @@ final class ApiMethod
     public const UNBAN_CHAT_MEMBER = 'unbanChatMember';
     public const UNBAN_CHAT_SENDER_CHAT = 'unbanChatSenderChat';
     public const UNHIDE_GENERAL_FORUM_TOPIC = 'unhideGeneralForumTopic';
+    public const UNPIN_ALL_GENERAL_FORUM_TOPIC_MESSAGES = 'unpinAllGeneralForumTopicMessages';
     public const UNPIN_ALL_CHAT_MESSAGES = 'unpinAllChatMessages';
     public const UNPIN_ALL_FORUM_TOPIC_MESSAGES = 'unpinAllForumTopicMessages';
-    public const UNPIN_ALL_GENERAL_FORUM_TOPIC_MESSAGES = 'unpinAllGeneralForumTopicMessages';
     public const UNPIN_CHAT_MESSAGE = 'unpinChatMessage';
     public const WEBHOOK_INFO = 'WebhookInfo';
 }

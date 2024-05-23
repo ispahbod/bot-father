@@ -5,47 +5,39 @@ namespace Ispahbod\BotFather\Trait;
 trait DataConstructor
 {
     private mixed $data;
-    private array $error;
 
     public function __construct($data, $error = [])
     {
         $this->data = $data;
-        $this->error = $error;
     }
-    public function GetData(): array
+
+    public function containsError(): bool
+    {
+        return !empty($this->data['error_code']);
+    }
+    public function containsNoError(): bool
+    {
+        return !$this->containsError();
+    }
+
+    public function retrieveData(): array
     {
         return $this->data;
     }
-    public function GetJson(): string|false
+
+    public function encodeDataToJson(): string|false
     {
         return json_encode($this->data);
     }
 
-    public function IsEmpty(): bool
+    public function fetchErrorCode(): ?int
     {
-        return empty($this->data);
+        return $this->data['error_code'] ?? null;
     }
 
-    public function IsNotEmpty(): bool
+    public function fetchErrorMessage(): ?string
     {
-        return !$this->IsEmpty();
-    }
-
-    public function HasError(): bool
-    {
-        return !$this->NotError();
-    }
-    public function NotError(): bool
-    {
-        return empty($this->error);
-    }
-    public function GetErrorCode(): int|null
-    {
-        return $this->error[0] ?? null;
-    }
-    public function GetErrorMessage(): string|null
-    {
-        return $this->error[1] ?? null;
+        return $this->data['description'] ?? null;
     }
 }
 

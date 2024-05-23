@@ -5,79 +5,89 @@ namespace Ispahbod\BotFather\Method;
 use Ispahbod\BotFather\Constant\ContentType;
 use Ispahbod\BotFather\Type\Callback;
 use Ispahbod\BotFather\Type\Chat;
+use Ispahbod\BotFather\Type\ChatMember;
+use Ispahbod\BotFather\Type\ChatShared;
 use Ispahbod\BotFather\Type\Message;
+use Ispahbod\BotFather\Type\MessageAutoDeleteTimerChanged;
+use Ispahbod\BotFather\Type\MessageEntity;
 use Ispahbod\BotFather\Type\newChat;
 use Ispahbod\BotFather\Type\oldChat;
 use Ispahbod\BotFather\Type\PhotoSize;
 use Ispahbod\BotFather\Type\User;
+use Ispahbod\BotFather\Type\UsersShared;
 
 class Process
 {
-    protected array $data;
-    protected string $type;
+    protected ?array $data;
+    protected ?string $type;
 
-    public function __construct(array $data, string $type)
+    public function __construct(?array $data, ?string $type)
     {
         $this->data = $data;
         $this->type = $type;
     }
-    public function IsNotEmpty(): bool
+
+    public function isNotEmpty(): bool
     {
         return !$this->IsEmpty();
     }
-    public function IsEmpty(): bool
+
+    public function isEmpty(): bool
     {
         return empty($this->data);
     }
 
-    public function GetCallbackId(): int|false
+    public function getCallbackId(): int|false
     {
         return $this->data['id'] ?? false;
     }
 
-    public function GetMessage(): Message|false
+    public function getMessage(): ?Message
     {
-        return $this->IsEmpty() ? false : new Message($this->data);
+        return $this->IsNotEmpty() ? new Message($this->data) : null;
     }
 
-    public function GetCallback(): Callback
+    public function getCallback(): ?Callback
     {
-        return new Callback($this->data ?? []);
+        return $this->IsNotEmpty() ? new Callback($this->data) : null;
     }
 
-    public function GetFrom(): User
+    public function getFrom(): ?User
     {
-        return new User($this->data['from'] ?? []);
+        return $this->IsNotEmpty() ? new User($this->data['from']) : null;
     }
 
-    public function GetChat(): Chat
+    public function getChat(): ?Chat
     {
-        return new Chat($this->data['chat'] ?? []);
+        return $this->IsNotEmpty() ? new Chat($this->data['chat']) : null;
+
     }
 
-    public function GetForwardChat(): Chat
+    public function getForwardChat(): ?Chat
     {
-        return new Chat($this->data['forward_from_chat'] ?? []);
+        return $this->IsNotEmpty() ? new Chat($this->data['forward_from_chat']) : null;
     }
 
-    public function GetPhoto(): PhotoSize
+    public function getPhoto(): ?PhotoSize
     {
-        return new PhotoSize($this->data['photo'] ?? []);
+        return $this->IsNotEmpty() ? new PhotoSize($this->data['photo']) : null;
     }
 
-    public function GetCaption(): string
+    public function getCaption(): ?string
     {
-        return $this->data['caption'] ?? "";
+        return $this->data['caption'] ?? null;
     }
 
-    public function GetCaptionEntities(): array
+    public function getCaptionEntities(): array
     {
-        return $this->data['caption_entities'] ?? [];
+        return array_map(static function ($entity) {
+            return new MessageEntity($entity);
+        }, $this->data['caption_entities']);
     }
 
-    public function GetDate(): int|false
+    public function getDate(): ?int
     {
-        return $this->data['date'] ?? false;
+        return $this->data['date'] ?? null;
     }
 
     public function IsForwarded(): bool
@@ -85,22 +95,22 @@ class Process
         return isset($this->data['forward_date']);
     }
 
-    public function GetForwardedType(): string
+    public function getForwardedType(): string
     {
         return isset($this->data['forward_from']) ? 'user' : 'channel';
     }
 
-    public function GetForwardedMessageId(): int
+    public function getForwardedMessageId(): int
     {
         return $this->data['forward_from_message_id'] ?? false;
     }
 
-    public function GetWebhookType(): string|false
+    public function getWebhookType(): ?string
     {
-        return $this->type;
+        return $this->type ?? null;
     }
 
-    public function GetContentType(): string|false
+    public function getContentType(): ?string
     {
         $types = [
             ContentType::TEXT,
@@ -139,100 +149,104 @@ class Process
                 return $type;
             }
         }
-        return false;
+        return null;
     }
 
-    public function GetOldChatMembers(): oldChat
+    public function getOldChatMembers(): ChatMember
     {
-        return new oldChat($this->data['old_chat_member'] ?? []);
+        return new ChatMember($this->data['old_chat_member'] ?? []);
     }
 
-    public function GetUserShared()
+    public function getUserShared(): ?UsersShared
     {
-        return $this->data['user_shared'] ?? null;
+        return new UsersShared($this->data['user_shared']) ?? null;
     }
 
-    public function GetChatShared()
+    public function getChatShared(): ?ChatShared
     {
-        return $this->data['chat_shared'] ?? null;
+        return new ChatShared($this->data['chat_shared']) ?? null;
     }
 
-    public function GetInviteLink()
+    public function getInviteLink()
     {
         return $this->data['invite_link'] ?? null;
     }
 
-    public function GetNewChatMember()
+    public function getNewChatMember(): ?ChatMember
     {
-        return $this->data['new_chat_member'] ?? null;
+        return new ChatMember($this->data['new_chat_member']) ?? null;
     }
 
-    public function GetOldChatMember()
+    public function getOldChatMember(): ?ChatMember
     {
-        return $this->data['old_chat_member'] ?? null;
+        return new ChatMember($this->data['old_chat_member']) ?? null;
     }
 
-    public function GetNewChatMembers(): newChat
+    public function getNewChatMembers(): array
     {
-        return new newChat($this->data['new_chat_members'] ?? []);
+        return array_map(static function ($user) {
+            return new User($user);
+        }, $this->data['new_chat_members']);
     }
 
-    public function GetLeftChatMember()
+    public function getLeftChatMember(): ?User
     {
-        return $this->data['left_chat_member'] ?? [];
+        return new User($this->data['left_chat_member']) ?? null;
     }
 
-    public function GetLeftChatParticipant()
+    public function getLeftChatParticipant()
     {
         return new $this->data['left_chat_participant'] ?? [];
     }
 
-    public function GetNewChatTitle()
+    public function getNewChatTitle()
     {
         return $this->data['new_chat_title'] ?? null;
     }
 
-    public function GetNewChatPhoto(): PhotoSize
+    public function getNewChatPhoto(): array
     {
-        return new PhotoSize($this->data['new_chat_photo']);
+        return array_map(static function ($photo) {
+            return new PhotoSize($photo);
+        }, $this->data['new_chat_photo']);
     }
 
-    public function GetDeleteChatPhoto(): bool
+    public function getDeleteChatPhoto(): bool
     {
         return $this->data['delete_chat_photo'] ?? false;
     }
 
-    public function GetGroupChatCreated(): bool
+    public function getGroupChatCreated(): bool
     {
         return $this->data['group_chat_created'] ?? false;
     }
 
-    public function GetSupergroupChatCreated(): bool
+    public function getSupergroupChatCreated(): bool
     {
         return $this->data['supergroup_chat_created'] ?? false;
     }
 
-    public function GetChannelChatCreated(): bool
+    public function getChannelChatCreated(): bool
     {
         return $this->data['channel_chat_created'] ?? false;
     }
 
-    public function GetMessageAutoDeleteTimerChanged(): string|false
+    public function getMessageAutoDeleteTimerChanged(): ?MessageAutoDeleteTimerChanged
     {
-        return $this->data['message_auto_delete_timer_changed'] ?? false;
+        return new MessageAutoDeleteTimerChanged($this->data['message_auto_delete_timer_changed']) ?? null;
     }
 
-    public function GetMigrateToChatId(): int|false
+    public function getMigrateToChatId(): ?int
     {
-        return $this->data['migrate_to_chat_id'] ?? false;
+        return $this->data['migrate_to_chat_id'] ?? null;
     }
 
-    public function GetMigrateFromChatId(): int|false
+    public function getMigrateFromChatId(): ?int
     {
-        return $this->data['migrate_from_chat_id'] ?? false;
+        return $this->data['migrate_from_chat_id'] ?? null;
     }
 
-    public function GetPinnedMessage(): Message
+    public function getPinnedMessage(): Message
     {
         return new Message($this->data['pinned_message'] ?? []);
     }

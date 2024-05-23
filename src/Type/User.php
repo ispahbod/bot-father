@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Type;
+namespace Ispahbod\BotFather\Type; 
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
