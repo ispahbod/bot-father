@@ -282,9 +282,9 @@ class Methods
         return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_PERMISSIONS, $data)['error_code']);
     }
 
-    public function exportChatInviteLink($data = [])
+    public function exportChatInviteLink($data = []): ?string
     {
-        return $this->httpResponseApiMethod(ApiMethods::EXPORT_CHAT_INVITE_LINK, $data);
+        return $this->httpResponseApiMethod(ApiMethods::EXPORT_CHAT_INVITE_LINK, $data)['content'] ?? null;
     }
 
     public function createChatInviteLink($data = []): ChatInviteLink
@@ -362,9 +362,9 @@ class Methods
         return empty($this->httpResponseApiMethod(ApiMethods::GET_CHAT_ADMINISTRATORS, $data)['error_code']);
     }
 
-    public function getChatMemberCount($data = [])
+    public function getChatMemberCount($data = []): ?int
     {
-        return $this->httpResponseApiMethod(ApiMethods::GET_CHAT_MEMBER_COUNT, $data);
+        return $this->httpResponseApiMethod(ApiMethods::GET_CHAT_MEMBER_COUNT, $data)['content'] ?? null;
     }
 
     public function getChatMember($data = []): ChatMember
@@ -382,9 +382,9 @@ class Methods
         return empty($this->httpResponseApiMethod(ApiMethods::DELETE_CHAT_STICKER_SET, $data)['error_code']);
     }
 
-    public function getForumTopicIconStickers()
+    public function getForumTopicIconStickers(): ?string
     {
-        return $this->httpResponseApiMethod(ApiMethods::GET_FORUM_TOPIC_ICON_STICKERS);
+        return $this->httpResponseApiMethod(ApiMethods::GET_FORUM_TOPIC_ICON_STICKERS)['content'] ?? null;
     }
 
     public function createForumTopic(): ForumTopic

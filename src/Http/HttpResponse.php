@@ -41,17 +41,17 @@ class HttpResponse
         return isset($this->response['content']['error']);
     }
 
-    public function getContent(): array|bool
+    public function getContent(): array|string|bool
     {
         return $this->response['content']['result'] ?? false;
     }
 
-    public function getFirstContent(): array|false
+    public function getFirstContent(): array|string|bool
     {
         return !empty($this->response['content']['result']) ? reset($this->response['content']['result']) : false;
     }
 
-    public function getLastContent(): array|false
+    public function getLastContent(): array|string|bool
     {
         return !empty($this->response['content']['result']) ? end($this->response['content']['result']) : false;
     }

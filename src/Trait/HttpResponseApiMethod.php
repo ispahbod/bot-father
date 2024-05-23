@@ -9,9 +9,10 @@ trait HttpResponseApiMethod
     private function httpResponseApiMethod($method, $data = []): array
     {
         $http = Http::request($this->token, $method, $data);
-        return array_merge($http->getContent(),[
-            'error_code'=>$http->getErrorCode(),
-            'description'=>$http->getErrorMessage(),
+        $content = $http->getContent();
+        return array_merge(is_string($content) ? ['content' => $content] : $content, [
+            'error_code' => $http->getErrorCode(),
+            'description' => $http->getErrorMessage(),
         ]);
     }
 }
