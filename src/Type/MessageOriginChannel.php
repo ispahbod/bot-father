@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class MessageOriginChannel
+final class MessageOriginChannel
 {
     use DataConstructor;
 

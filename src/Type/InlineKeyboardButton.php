@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class InlineKeyboardButton
+final class InlineKeyboardButton
 {
     use DataConstructor;
 

@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class ChatMemberBanned
+final class ChatMemberBanned
 {
     use DataConstructor;
 

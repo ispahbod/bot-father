@@ -11,22 +11,22 @@ class HttpResponse
         $this->response = $response;
     }
 
-    public function GetErrorCode(): int|false
+    public function getErrorCode(): ?int
     {
-        return $this->response['content']['error_code'] ?? false;
+        return $this->response['content']['error_code'] ?? null;
     }
 
-    public function GetErrorMessage(): string|false
+    public function getErrorMessage(): ?string
     {
-        return $this->response['content']['description'] ?? false;
+        return $this->response['content']['description'] ?? null;
     }
 
-    public function GetStatusCode(): float
+    public function getStatusCode(): float
     {
         return $this->response['code'];
     }
 
-    public function GetTime(): float
+    public function getTime(): float
     {
         return $this->response['time'] ?? 0;
     }
@@ -41,22 +41,22 @@ class HttpResponse
         return isset($this->response['content']['error']);
     }
 
-    public function GetContent(): array|bool
+    public function getContent(): array|bool
     {
         return $this->response['content']['result'] ?? false;
     }
 
-    public function GetFirstContent(): array|false
+    public function getFirstContent(): array|false
     {
         return !empty($this->response['content']['result']) ? reset($this->response['content']['result']) : false;
     }
 
-    public function GetLastContent(): array|false
+    public function getLastContent(): array|false
     {
         return !empty($this->response['content']['result']) ? end($this->response['content']['result']) : false;
     }
 
-    public function GetJson(): string|false
+    public function getJson(): string|false
     {
         return !empty($this->response['content']['result']) ? json_encode($this->response['content']['result']) : false;
     }

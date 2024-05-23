@@ -7,6 +7,7 @@ use Ispahbod\BotFather\Trait\DataConstructor;
 final class Animation
 {
     use DataConstructor;
+
     /**
      * Retrieves the identifier for this file, which can be used to download or reuse the file.
      *

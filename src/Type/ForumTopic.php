@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class ForumTopic
+final class ForumTopic
 {
     use DataConstructor;
 

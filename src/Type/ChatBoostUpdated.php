@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class ChatBoostUpdated
+final class ChatBoostUpdated
 {
     use DataConstructor;
 

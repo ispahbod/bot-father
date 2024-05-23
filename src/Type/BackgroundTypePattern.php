@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class BackgroundTypePattern
+final class BackgroundTypePattern
 {
     use DataConstructor;
 

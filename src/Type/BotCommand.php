@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class BotCommand
+final class BotCommand
 {
     use DataConstructor;
     /**

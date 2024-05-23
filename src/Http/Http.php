@@ -16,7 +16,7 @@ class Http
     /**
      * @throws JsonException
      */
-    public static function Request(string $token, string $method, array $data = []): HttpResponse
+    public static function request(string $token, string $method, array $data = []): HttpResponse
     {
         $stopwatch = new Stopwatch();
         $client = new Client();

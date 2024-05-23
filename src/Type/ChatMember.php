@@ -5,7 +5,7 @@ namespace Ispahbod\BotFather\Type;
 use Ispahbod\BotFather\Constant\ChatMemberStatus;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class ChatMember
+final class ChatMember
 {
     use DataConstructor;
 

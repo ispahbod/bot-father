@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class Giveaway
+final class Giveaway
 {
     use DataConstructor;
     /**

@@ -4,7 +4,7 @@ namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
-class MenuButtonDefault
+final class MenuButtonDefault
 {
     use DataConstructor;
 
