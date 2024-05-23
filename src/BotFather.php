@@ -2,73 +2,29 @@
 
 namespace Ispahbod\BotFather;
 
-use Ispahbod\BotFather\Class\Chat;
-use Ispahbod\BotFather\Class\Game;
-use Ispahbod\BotFather\Class\Getter;
-use Ispahbod\BotFather\Class\Inline;
-use Ispahbod\BotFather\Class\Passport;
-use Ispahbod\BotFather\Class\Payment;
-use Ispahbod\BotFather\Class\Process;
-use Ispahbod\BotFather\Class\Sender;
-use Ispahbod\BotFather\Class\Setter;
-use Ispahbod\BotFather\Class\Modifier;
-use Ispahbod\BotFather\Class\Webhook;
+use Ispahbod\BotFather\Method\Chat;
+use Ispahbod\BotFather\Method\Game;
+use Ispahbod\BotFather\Method\Getter;
+use Ispahbod\BotFather\Method\Inline;
+use Ispahbod\BotFather\Method\Methods;
+use Ispahbod\BotFather\Method\Passport;
+use Ispahbod\BotFather\Method\Payment;
+use Ispahbod\BotFather\Method\Process;
+use Ispahbod\BotFather\Method\Sender;
+use Ispahbod\BotFather\Method\Setter;
+use Ispahbod\BotFather\Method\Modifier;
+use Ispahbod\BotFather\Method\Webhook;
 use Ispahbod\BotFather\Constant\WebhookType;
 use Ispahbod\BotFather\Interface\BotFatherInterface;
 use Ispahbod\BotFather\Trait\TokenConstructor;
 
-final class BotFather implements BotFatherInterface
+final class BotFather
 {
     use TokenConstructor;
 
-    public static function Inline(string $token): Inline
+    public static function Methods(string $token): Passport
     {
-        return new Inline($token);
-    }
-
-    public static function Chat(string $token): Chat
-    {
-        return new Chat($token);
-    }
-
-    public static function Setter(string $token): Setter
-    {
-        return new Setter($token);
-    }
-
-    public static function Sender(string $token): Sender
-    {
-        return new Sender($token);
-    }
-
-    public static function Getter(string $token): Getter
-    {
-        return new Getter($token);
-    }
-
-    public static function Modifier(string $token): Modifier
-    {
-        return new Modifier($token);
-    }
-
-    public static function Webhook(string $token): Webhook
-    {
-        return new Webhook($token);
-    }
-
-    public static function Payment(string $token): Payment
-    {
-        return new Payment($token);
-    }
-
-    public static function Game(string $token): Game
-    {
-        return new Game($token);
-    }
-
-    public static function Passport(string $token): Passport
-    {
-        return new Passport($token);
+        return new Methods($token);
     }
 
     public static function Process(string $json): Process

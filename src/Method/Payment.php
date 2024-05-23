@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Class;
+namespace Ispahbod\BotFather\Method;
 
 use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
 use Ispahbod\BotFather\Trait\TokenConstructor;

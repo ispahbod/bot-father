@@ -2,17 +2,17 @@
 
 namespace Ispahbod\BotFather\Interface;
 
-use Ispahbod\BotFather\Class\Chat;
-use Ispahbod\BotFather\Class\Game;
-use Ispahbod\BotFather\Class\Getter;
-use Ispahbod\BotFather\Class\Inline;
-use Ispahbod\BotFather\Class\Passport;
-use Ispahbod\BotFather\Class\Payment;
-use Ispahbod\BotFather\Class\Process;
-use Ispahbod\BotFather\Class\Sender;
-use Ispahbod\BotFather\Class\Setter;
-use Ispahbod\BotFather\Class\Modifier;
-use Ispahbod\BotFather\Class\Webhook;
+use Ispahbod\BotFather\Method\Chat;
+use Ispahbod\BotFather\Method\Game;
+use Ispahbod\BotFather\Method\Getter;
+use Ispahbod\BotFather\Method\Inline;
+use Ispahbod\BotFather\Method\Passport;
+use Ispahbod\BotFather\Method\Payment;
+use Ispahbod\BotFather\Method\Process;
+use Ispahbod\BotFather\Method\Sender;
+use Ispahbod\BotFather\Method\Setter;
+use Ispahbod\BotFather\Method\Modifier;
+use Ispahbod\BotFather\Method\Webhook;
 
 interface BotFatherInterface
 {

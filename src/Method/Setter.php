@@ -1,6 +1,6 @@
 <?php
 
-namespace Ispahbod\BotFather\Class;
+namespace Ispahbod\BotFather\Method;
 
 use Ispahbod\BotFather\Constant\ApiMethod;
 use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
