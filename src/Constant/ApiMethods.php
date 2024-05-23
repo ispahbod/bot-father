@@ -103,5 +103,4 @@ final class ApiMethods
     public const UNPIN_ALL_CHAT_MESSAGES = 'unpinAllChatMessages';
     public const UNPIN_ALL_FORUM_TOPIC_MESSAGES = 'unpinAllForumTopicMessages';
     public const UNPIN_CHAT_MESSAGE = 'unpinChatMessage';
-    public const WEBHOOK_INFO = 'WebhookInfo';
 }

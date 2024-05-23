@@ -55,7 +55,7 @@ class Methods
 
     public function getWebhookInfo(): WebhookInfo
     {
-        return new WebhookInfo($this->httpResponseApiMethod(ApiMethods::DELETE_WEBHOOK));
+        return new WebhookInfo($this->httpResponseApiMethod(ApiMethods::GET_WEBHOOK_INFO));
     }
 
     public function getMe(): User
@@ -369,7 +369,7 @@ class Methods
 
     public function getChatMember($data = []): ChatMember
     {
-        return new ChatMember($this->httpResponseApiMethod(ApiMethods::GET_CHAT_MEMBER_COUNT, $data));
+        return new ChatMember($this->httpResponseApiMethod(ApiMethods::GET_CHAT_MEMBER, $data));
     }
 
     public function setChatStickerSet($data = []): bool
@@ -384,7 +384,7 @@ class Methods
 
     public function getForumTopicIconStickers()
     {
-        return $this->httpResponseApiMethod(ApiMethods::DELETE_CHAT_STICKER_SET);
+        return $this->httpResponseApiMethod(ApiMethods::GET_FORUM_TOPIC_ICON_STICKERS);
     }
 
     public function createForumTopic(): ForumTopic
@@ -399,7 +399,7 @@ class Methods
 
     public function closeForumTopic($data = []): bool
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::CREATE_FORUM_TOPIC, $data)['error_code']);
+        return empty($this->httpResponseApiMethod(ApiMethods::CLOSE_FORUM_TOPIC, $data)['error_code']);
     }
 
     public function reopenForumTopic($data = []): bool
@@ -521,6 +521,11 @@ class Methods
             'web_app' => new MenuButtonWebApp($data = []),
             'default' => new MenuButtonDefault($data = []),
         };
+    }
+
+    public function setMyDefaultAdministratorRights($data = []): bool
+    {
+        return empty($this->httpResponseApiMethod(ApiMethods::SET_MY_DEFAULT_ADMINISTRATOR_RIGHTS, $data)['error_code']);
     }
 
     public function getMyDefaultAdministratorRights($data = []): ChatAdministratorRights

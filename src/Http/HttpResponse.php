@@ -58,6 +58,6 @@ class HttpResponse
 
     public function getJson(): string|false
     {
-        return !empty($this->response['content']['result']) ? json_encode($this->response['content']['result']) : false;
+        return !empty($this->response['content']['result']) ? json_encode($this->response['content']['result'], JSON_THROW_ON_ERROR) : false;
     }
 }
