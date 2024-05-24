@@ -25,7 +25,7 @@ final class Update
      */
     public function getMessage(): ?Message
     {
-        return new Message($this->data['message']) ?? null;
+        return isset($this->data['message']) ? new Message($this->data['message']) : null;
     }
 
     /**
@@ -35,7 +35,7 @@ final class Update
      */
     public function getEditedMessage(): ?Message
     {
-        return new Message($this->data['edited_message']) ?? null;
+        return isset($this->data['edited_message']) ? new Message($this->data['edited_message']) : null;
     }
 
     /**
@@ -45,7 +45,8 @@ final class Update
      */
     public function getChannelPost(): ?Message
     {
-        return new Message($this->data['channel_post']) ?? null;
+        return isset($this->data['channel_post']) ? new Message($this->data['channel_post']) : null;
+
     }
 
     /**
@@ -55,7 +56,7 @@ final class Update
      */
     public function getEditedChannelPost(): ?Message
     {
-        return new Message($this->data['edited_channel_post']) ?? null;
+        return isset($this->data['edited_channel_post']) ? new Message($this->data['edited_channel_post']) : null;
     }
 
     /**
@@ -65,7 +66,8 @@ final class Update
      */
     public function getBusinessConnection(): ?BusinessConnection
     {
-        return new BusinessConnection($this->data['business_connection']) ?? null;
+        return isset($this->data['business_connection']) ? new BusinessConnection($this->data['business_connection']) : null;
+
     }
 
     /**
@@ -75,7 +77,8 @@ final class Update
      */
     public function getBusinessMessage(): ?Message
     {
-        return new Message($this->data['business_message']) ?? null;
+        return isset($this->data['business_message']) ? new Message($this->data['business_message']) : null;
+
     }
 
     /**
@@ -85,7 +88,7 @@ final class Update
      */
     public function getEditedBusinessMessage(): ?Message
     {
-        return new Message($this->data['edited_business_message']) ?? null;
+        return isset($this->data['edited_business_message']) ? new Message($this->data['edited_business_message']) : null;
     }
 
     /**
@@ -95,7 +98,7 @@ final class Update
      */
     public function getDeletedBusinessMessages(): ?BusinessMessagesDeleted
     {
-        return new BusinessMessagesDeleted($this->data['deleted_business_messages']) ?? null;
+        return isset($this->data['deleted_business_messages']) ? new BusinessMessagesDeleted($this->data['deleted_business_messages']) : null;
     }
 
     /**
@@ -105,7 +108,7 @@ final class Update
      */
     public function getMessageReaction(): ?MessageReactionUpdated
     {
-        return new MessageReactionUpdated($this->data['message_reaction']) ?? null;
+        return isset($this->data['message_reaction']) ? new MessageReactionUpdated($this->data['message_reaction']) : null;
     }
 
     /**
@@ -115,7 +118,8 @@ final class Update
      */
     public function getMessageReactionCount(): ?MessageReactionCountUpdated
     {
-        return new MessageReactionCountUpdated($this->data['message_reaction_count']) ?? null;
+        return isset($this->data['message_reaction_count']) ? new MessageReactionCountUpdated($this->data['message_reaction_count']) : null;
+
     }
 
     /**
@@ -125,7 +129,8 @@ final class Update
      */
     public function getInlineQuery(): ?InlineQuery
     {
-        return $this->data['inline_query'] ?? null;
+        return isset($this->data['inline_query']) ? new InlineQuery($this->data['inline_query']) : null;
+
     }
 
     /**
@@ -135,7 +140,8 @@ final class Update
      */
     public function getChosenInlineResult(): ?ChosenInlineResult
     {
-        return new ChosenInlineResult($this->data['chosen_inline_result']) ?? null;
+        return isset($this->data['chosen_inline_result']) ? new ChosenInlineResult($this->data['chosen_inline_result']) : null;
+
     }
 
     /**
@@ -145,7 +151,7 @@ final class Update
      */
     public function getCallbackQuery(): ?CallbackQuery
     {
-        return new CallbackQuery($this->data['callback_query']) ?? null;
+        return isset($this->data['callback_query']) ? new CallbackQuery($this->data['callback_query']) : null;
     }
 
     /**
@@ -155,7 +161,8 @@ final class Update
      */
     public function getShippingQuery(): ?ShippingQuery
     {
-        return $this->data['shipping_query'] ?? null;
+        return isset($this->data['shipping_query']) ? new ShippingQuery($this->data['shipping_query']) : null;
+
     }
 
     /**
@@ -165,7 +172,8 @@ final class Update
      */
     public function getPreCheckoutQuery(): ?PreCheckoutQuery
     {
-        return $this->data['pre_checkout_query'] ?? null;
+        return isset($this->data['pre_checkout_query']) ? new PreCheckoutQuery($this->data['pre_checkout_query']) : null;
+
     }
 
     /**
@@ -175,7 +183,8 @@ final class Update
      */
     public function getPoll(): ?Poll
     {
-        return new Poll($this->data['poll']) ?? null;
+        return isset($this->data['poll']) ? new Poll($this->data['poll']) : null;
+
     }
 
     /**
@@ -185,7 +194,7 @@ final class Update
      */
     public function getPollAnswer(): ?PollAnswer
     {
-        return new PollAnswer($this->data['poll_answer']) ?? null;
+        return isset($this->data['poll_answer']) ? new PollAnswer($this->data['poll_answer']) : null;
     }
 
     /**
@@ -195,7 +204,8 @@ final class Update
      */
     public function getMyChatMember(): ?ChatMemberUpdated
     {
-        return new ChatMemberUpdated($this->data['my_chat_member']) ?? null;
+        return isset($this->data['my_chat_member']) ? new ChatMemberUpdated($this->data['my_chat_member']) : null;
+
     }
 
     /**
@@ -205,7 +215,7 @@ final class Update
      */
     public function getChatMember(): ?ChatMemberUpdated
     {
-        return new ChatMemberUpdated($this->data['chat_member']) ?? null;
+        return isset($this->data['chat_member']) ? new ChatMemberUpdated($this->data['chat_member']) : null;
     }
 
     /**
@@ -215,7 +225,7 @@ final class Update
      */
     public function getChatJoinRequest(): ?ChatJoinRequest
     {
-        return new ChatJoinRequest($this->data['chat_join_request']) ?? null;
+        return isset($this->data['chat_join_request']) ? new ChatJoinRequest($this->data['chat_join_request']) : null;
     }
 
     /**
@@ -225,7 +235,8 @@ final class Update
      */
     public function getChatBoost(): ?ChatBoostUpdated
     {
-        return new ChatBoostUpdated($this->data['chat_boost']) ?? null;
+        return isset($this->data['chat_boost']) ? new ChatBoostUpdated($this->data['chat_boost']) : null;
+
     }
 
     /**
@@ -235,6 +246,7 @@ final class Update
      */
     public function getRemovedChatBoost(): ?ChatBoostRemoved
     {
-        return new ChatBoostRemoved($this->data['removed_chat_boost']) ?? null;
+        return isset($this->data['removed_chat_boost']) ? new ChatBoostRemoved($this->data['removed_chat_boost']) : null;
+
     }
 }
