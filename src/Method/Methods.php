@@ -21,7 +21,7 @@ use Ispahbod\BotFather\Type\MenuButtonWebApp;
 use Ispahbod\BotFather\Type\Message;
 use Ispahbod\BotFather\Type\MessageId;
 use Ispahbod\BotFather\Type\Poll;
-use Ispahbod\BotFather\Type\Update;
+use Ispahbod\BotFather\Type\Updates;
 use Ispahbod\BotFather\Type\User;
 use Ispahbod\BotFather\Type\UserChatBoosts;
 use Ispahbod\BotFather\Type\UserProfilePhotos;
@@ -38,9 +38,9 @@ class Methods
         $this->token = $token;
     }
 
-    public function getUpdates(): Update
+    public function getUpdates(): Updates
     {
-        return new Update($this->httpResponseApiMethod(ApiMethods::GET_UPDATES));
+        return new Updates($this->httpResponseApiMethod(ApiMethods::GET_UPDATES));
     }
 
     public function setWebhook(): bool
