@@ -11,6 +11,7 @@ use Ispahbod\BotFather\Type\BotName;
 use Ispahbod\BotFather\Type\BotShortDescription;
 use Ispahbod\BotFather\Type\BusinessConnection;
 use Ispahbod\BotFather\Type\ChatAdministratorRights;
+use Ispahbod\BotFather\Type\ChatFullInfo;
 use Ispahbod\BotFather\Type\ChatInviteLink;
 use Ispahbod\BotFather\Type\ChatMember;
 use Ispahbod\BotFather\Type\File;
@@ -352,9 +353,9 @@ class Methods
         return empty($this->httpResponseApiMethod(ApiMethods::LEAVE_CHAT, $data)['error_code']);
     }
 
-    public function getChat($data = []): bool
+    public function getChat($data = []): ChatFullInfo
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::GET_CHAT, $data)['error_code']);
+        return new ChatFullInfo($this->httpResponseApiMethod(ApiMethods::GET_CHAT, $data));
     }
 
     public function getChatAdministrators($data = []): bool
