@@ -10,7 +10,7 @@ class PhotoSize
     /**
      * Retrieves the identifier for this file, which can be used to download or reuse the file.
      *
-     * @return string The file identifier.
+     * @return string The file identifier. 
      */
     public function getFileId(): string
     {

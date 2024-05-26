@@ -36,4 +36,22 @@ class UserProfilePhotos
         }
         return $photos;
     }
+    public function getFirst(): ?array
+    {
+        return isset($this->data['photos'][0]) ? array_map(static function ($photo){
+            return new PhotoSizes($photo);
+        },$this->data['photos'][0]) : null;
+    }
+    public function getLast(): ?array
+    {
+        return isset($this->data['photos'][0]) ? array_map(static function ($photo){
+            return new PhotoSizes($photo);
+        },end($this->data['photos'])) : null;
+    }
+    public function getPhotoIndex($index): ?array
+    {
+        return isset($this->data['photos'][$index]) ? array_map(static function ($photo){
+            return new PhotoSizes($photo);
+        },$this->data['photos'][$index]) : null;
+    }
 }
