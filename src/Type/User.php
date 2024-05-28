@@ -1,18 +1,18 @@
 <?php
 
-namespace Ispahbod\BotFather\Type; 
+namespace Ispahbod\BotFather\Type;
 
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 class User
 {
     use DataConstructor;
- 
+
     /**
      * Retrieves the unique identifier for this user or bot.
      * This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it.
      * However, it has at most 52 significant bits, so a 64-bit integer or double-precision float type are safe for storing this identifier.
-     * 
+     *
      * @return int|null The unique identifier if available, otherwise null.
      */
     public function getId(): ?int
@@ -22,7 +22,7 @@ class User
 
     /**
      * Checks if this user is a bot.
-     * 
+     *
      * @return bool|null True if this user is a bot, otherwise null if the information is not available.
      */
     public function getIsBot(): ?bool
@@ -32,7 +32,7 @@ class User
 
     /**
      * Retrieves the first name of the user or bot.
-     * 
+     *
      * @return string|null The first name if available, otherwise null.
      */
     public function getFirstName(): ?string
@@ -42,7 +42,7 @@ class User
 
     /**
      * Retrieves the last name of the user or bot if available.
-     * 
+     *
      * @return string|null The last name if available, otherwise null.
      */
     public function getLastName(): ?string
@@ -52,7 +52,7 @@ class User
 
     /**
      * Retrieves the username of the user or bot if available.
-     * 
+     *
      * @return string|null The username if available, otherwise null.
      */
     public function getUsername(): ?string
@@ -62,7 +62,7 @@ class User
 
     /**
      * Retrieves the IETF language tag of the user's language if available.
-     * 
+     *
      * @return string|null The language code if available, otherwise null.
      */
     public function getLanguageCode(): ?string
@@ -72,17 +72,17 @@ class User
 
     /**
      * Checks if this user is a Telegram Premium user.
-     * 
+     *
      * @return bool|null True if this user is a Telegram Premium user, otherwise null if the information is not available.
      */
-    public function getIsPremium(): ?bool
+    public function getIsPremium(): bool
     {
-        return $this->data['is_premium'] ?? null;
+        return $this->data['is_premium'] ?? false;
     }
 
     /**
      * Checks if this user has added the bot to the attachment menu.
-     * 
+     *
      * @return bool|null True if added to the attachment menu, otherwise null if the information is not available.
      */
     public function getAddedToAttachmentMenu(): ?bool
@@ -93,7 +93,7 @@ class User
     /**
      * Checks if the bot can be invited to groups.
      * This information is returned only in getMe.
-     * 
+     *
      * @return bool|null True if the bot can be invited to groups, otherwise null.
      */
     public function getCanJoinGroups(): ?bool
@@ -104,7 +104,7 @@ class User
     /**
      * Checks if privacy mode is disabled for the bot.
      * This information is returned only in getMe.
-     * 
+     *
      * @return bool|null True if privacy mode is disabled, otherwise null.
      */
     public function getCanReadAllGroupMessages(): ?bool
@@ -115,7 +115,7 @@ class User
     /**
      * Checks if the bot supports inline queries.
      * This information is returned only in getMe.
-     * 
+     *
      * @return bool|null True if the bot supports inline queries, otherwise null.
      */
     public function getSupportsInlineQueries(): ?bool
@@ -126,7 +126,7 @@ class User
     /**
      * Checks if the bot can be connected to a Telegram Business account to receive its messages.
      * This information is returned only in getMe.
-     * 
+     *
      * @return bool|null True if the bot can connect to business, otherwise null.
      */
     public function getCanConnectToBusiness(): ?bool
