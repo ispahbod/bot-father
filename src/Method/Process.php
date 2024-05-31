@@ -44,33 +44,33 @@ class Process
 
     public function getMessage(): ?Message
     {
-        return $this->IsNotEmpty() ? new Message($this->data) : null;
+        return isset($this->data['message']) ? new Message($this->data['message']) : null;
     }
 
-    public function getCallback(): ?Callback
+    public function getData(): ?string
     {
-        return $this->IsNotEmpty() ? new Callback($this->data) : null;
+        return $this->data['data'] ?? null;
     }
 
     public function getFrom(): ?User
     {
-        return $this->IsNotEmpty() ? new User($this->data['from']) : null;
+        return isset($this->data['from'])  ? new User($this->data['from']) : null;
     }
 
     public function getChat(): ?Chat
     {
-        return $this->IsNotEmpty() ? new Chat($this->data['chat']) : null;
+        return isset($this->data['chat']) ? new Chat($this->data['chat']) : null;
 
     }
 
     public function getForwardChat(): ?Chat
     {
-        return $this->IsNotEmpty() ? new Chat($this->data['forward_from_chat']) : null;
+        return isset($this->data['forward_from_chat']) ? new Chat($this->data['forward_from_chat']) : null;
     }
 
     public function getPhoto(): ?PhotoSize
     {
-        return $this->IsNotEmpty() ? new PhotoSize($this->data['photo']) : null;
+        return isset($this->data['photo']) ? new PhotoSize($this->data['photo']) : null;
     }
 
     public function getCaption(): ?string

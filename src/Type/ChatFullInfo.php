@@ -7,7 +7,7 @@ use Ispahbod\BotFather\Trait\DataConstructor;
 final class ChatFullInfo
 {
     use DataConstructor;
-    
+
     /**
      * Retrieves the unique identifier for this chat.
      * This number may have more than 32 significant bits and some programming languages may have difficulty/silent defects in interpreting it.
@@ -245,9 +245,9 @@ final class ChatFullInfo
      *
      * @return bool|null True if the privacy settings allow, otherwise null.
      */
-    public function getHasPrivateForwards(): ?bool
+    public function getHasPrivateForwards(): bool
     {
-        return $this->data['has_private_forwards'] ?? null;
+        return $this->data['has_private_forwards'] ?? false;
     }
 
     /**
