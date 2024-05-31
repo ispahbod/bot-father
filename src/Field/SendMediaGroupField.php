@@ -45,4 +45,9 @@ final class SendMediaGroupField
      * @var ReplyParameters|null
      */
     public const REPLY_PARAMETERS = 'reply_parameters';
+
+    /**
+     * Unique identifier of the message effect to be added to the message; for private chats only
+     */
+    public const MESSAGE_EFFECT_ID = 'message_effect_id';
 }

@@ -68,4 +68,8 @@ final class InputMediaPhoto
     {
         return $this->data['has_spoiler'] ?? false;
     }
+    public function getEffectId(): ?string
+    {
+        return $this->data['effect_id'] ?? null;
+    }
 }

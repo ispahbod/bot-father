@@ -87,4 +87,9 @@ final class SendLocationField
      * @var InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
      */
     public const REPLY_MARKUP = 'reply_markup';
+
+    /**
+     * Unique identifier of the message effect to be added to the message; for private chats only
+     */
+    public const MESSAGE_EFFECT_ID = 'message_effect_id';
 }

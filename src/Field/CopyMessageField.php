@@ -76,4 +76,9 @@ final class CopyMessageField
      * @var InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
      */
     public const REPLY_MARKUP = 'reply_markup';
+
+    /**
+     * Pass True, if the caption must be shown above the message media
+     */
+    public const SHOW_CAPTION_ABOVE_MEDIA = 'show_caption_above_media';
 }

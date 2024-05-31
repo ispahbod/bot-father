@@ -107,4 +107,8 @@ final class InputMediaAnimation
     {
         return $this->data['has_spoiler'] ?? null;
     }
+    public function getEffectId(): ?string
+    {
+        return $this->data['effect_id'] ?? null;
+    }
 }

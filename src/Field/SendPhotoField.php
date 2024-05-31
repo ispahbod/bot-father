@@ -2,11 +2,11 @@
 
 namespace Ispahbod\BotFather\Field;
 
+use Ispahbod\BotFather\Type\ForceReply;
 use Ispahbod\BotFather\Type\InlineKeyboardMarkup;
+use Ispahbod\BotFather\Type\MessageEntity;
 use Ispahbod\BotFather\Type\ReplyKeyboardMarkup;
 use Ispahbod\BotFather\Type\ReplyKeyboardRemove;
-use Ispahbod\BotFather\Type\ForceReply;
-use Ispahbod\BotFather\Type\MessageEntity;
 use Ispahbod\BotFather\Type\ReplyParameters;
 
 final class SendPhotoField
@@ -86,4 +86,12 @@ final class SendPhotoField
      * @var InlineKeyboardMarkup|ReplyKeyboardMarkup|ReplyKeyboardRemove|ForceReply|null
      */
     public const REPLY_MARKUP = 'reply_markup';
+    /**
+     * Pass True, if the caption must be shown above the message media
+     */
+    public const SHOW_CAPTION_ABOVE_MEDIA = 'show_caption_above_media';
+    /**
+     * Unique identifier of the message effect to be added to the message; for private chats only
+     */
+    public const MESSAGE_EFFECT_ID = 'message_effect_id';
 }

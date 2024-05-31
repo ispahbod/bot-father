@@ -487,5 +487,8 @@ final class Message
     {
         return isset($this->data['reply_markup']) ? new InlineKeyboardMarkup($this->data['reply_markup']) : null;
     }
-
+    public function getEffectId(): ?string
+    {
+        return $this->data['effect_id'] ?? null;
+    }
 }
