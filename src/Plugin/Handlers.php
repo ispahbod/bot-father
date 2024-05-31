@@ -6,14 +6,14 @@ class Handlers
 {
     private array $handlers = [];
 
-    public function SetHandler(string $name, callable $callback, bool $exp = true): void
+    public function setHandler(string $name, callable $callback, bool $exp = true): void
     {
         if (is_callable($callback) && $exp) {
             $this->handlers[$name] = $callback;
         }
     }
 
-    public function SetHandlers(array $handlers, bool $exp = true): void
+    public function setHandlers(array $handlers, bool $exp = true): void
     {
         if ($exp){
             foreach ($handlers as $name => $callback) {
@@ -24,7 +24,7 @@ class Handlers
         }
     }
 
-    public function Run(string $name, ...$args): bool
+    public function run(string $name, ...$args): bool
     {
         if (isset($this->handlers[$name])) {
             call_user_func($this->handlers[$name], ...$args);

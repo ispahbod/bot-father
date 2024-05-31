@@ -7,7 +7,7 @@ use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class ReplyKeyboardMarkup
 {
-    public static function Create($array, $config = []): string
+    public static function create($array, $config = []): string
     {
         if (!isset($config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD])) {
             $config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD] = true;
@@ -20,7 +20,7 @@ class ReplyKeyboardMarkup
         return json_encode(array_merge(['keyboard' => $array], $config));
     }
 
-    public static function CreateGrid($grids, $config = []): string
+    public static function createGrid($grids, $config = []): string
     {
         if (!isset($config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD])) {
             $config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD] = true;
@@ -33,12 +33,12 @@ class ReplyKeyboardMarkup
         return json_encode(array_merge(['keyboard' => $mergedArray], $config));
     }
 
-    public static function Row($array, $exp = true): array
+    public static function row($array, $exp = true): array
     {
         return $exp ? $array : [];
     }
 
-    public static function Order(array $array, int $order): array
+    public static function order(array $array, int $order): array
     {
         return ['array' => $array, 'order' => $order];
     }
@@ -72,7 +72,7 @@ class ReplyKeyboardMarkup
         return $result;
     }
 
-    public static function Grid(array $array, int|array $orders = 1, $exp = true): array
+    public static function grid(array $array, int|array $orders = 1, $exp = true): array
     {
         if (!$exp) {
             return [];
@@ -103,12 +103,12 @@ class ReplyKeyboardMarkup
         return self::custom_array_chunk($array, $orders);
     }
 
-    public static function Keyboard($array, $exp = true): array
+    public static function keyboard($array, $exp = true): array
     {
         return $exp ? $array : [];
     }
 
-    public static function DoubleKeyboard($array1, $array2, bool $exp = true): array
+    public static function doubleKeyboard($array1, $array2, bool $exp = true): array
     {
         return $exp ? self::Row([
             self::Keyboard($array1),
@@ -116,7 +116,7 @@ class ReplyKeyboardMarkup
         ]) : [];
     }
 
-    public static function TripleKeyboard($array1, $array2, $array3, bool $exp = true): array
+    public static function tripleKeyboard($array1, $array2, $array3, bool $exp = true): array
     {
         return $exp ? self::Row([
             self::Keyboard($array1),

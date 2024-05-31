@@ -6,13 +6,13 @@ use Ispahbod\BotFather\Type\WebAppInfo;
 
 class BotMenuButton
 {
-    public static function Commands(): string
+    public static function commands(): string
     {
         return json_encode([
             'type' => 'commands',
         ]);
     }
-    public static function WebApp(string $text, WebAppInfo $web_app): string
+    public static function webApp(string $text, WebAppInfo $web_app): string
     {
         return json_encode([
             'type' => 'web_app',
@@ -21,7 +21,7 @@ class BotMenuButton
         ]);
     }
 
-    public static function Default(): string
+    public static function default(): string
     {
         return json_encode([
             'type' => 'default',

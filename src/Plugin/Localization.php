@@ -9,7 +9,7 @@ class Localization
     private array $fields = [];
     private string $active_locate = 'global';
 
-    public function Get($key, $locate = null, $parameters = []): string
+    public function get($key, $locate = null, $parameters = []): string
     {
         $locate = empty($locate) ? $this->active_locate : $locate;
         $message = $this->translations[$locate][$key] ?? $this->translations['global'][$key] ?? '';
@@ -20,7 +20,7 @@ class Localization
         return $message;
     }
 
-    public function SetLocate($locate, $array): self
+    public function setLocate($locate, $array): self
     {
         $this->locates[] = $locate;
         foreach ($array as $field => $value) {
@@ -30,7 +30,7 @@ class Localization
         return $this;
     }
 
-    public function SetLocates($locates): self
+    public function setLocates($locates): self
     {
         foreach ($locates as $locate => $array) {
             $this->locates[] = $locate;
@@ -42,7 +42,7 @@ class Localization
         return $this;
     }
 
-    public function SetGlobalLocate($array): self
+    public function setGlobalLocate($array): self
     {
         foreach ($array as $field => $value) {
             $this->fields[] = $field;
@@ -51,18 +51,18 @@ class Localization
         return $this;
     }
 
-    public function ActiveLocate($locate): Localization
+    public function activeLocate($locate): Localization
     {
         $this->active_locate = $locate;
         return $this;
     }
 
-    public function GetActiveLocate(): string
+    public function getActiveLocate(): string
     {
         return $this->active_locate;
     }
 
-    public function GetFieldTranslations($key): array
+    public function getFieldTranslations($key): array
     {
         $array = [];
         foreach ($this->locates as $locate) {
@@ -71,14 +71,14 @@ class Localization
         return $array;
     }
 
-    public function GetLocates(): array
+    public function getLocates(): array
     {
         return array_filter($this->locates, function ($value){
             return $value !== "global";
         });
     }
 
-    public function GetFields(): array
+    public function getFields(): array
     {
         return $this->fields;
     }

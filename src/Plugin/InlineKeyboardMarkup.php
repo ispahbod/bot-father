@@ -8,7 +8,7 @@ use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class InlineKeyboardMarkup
 {
-    public static function Create(array $array, $config = []): string
+    public static function create(array $array, $config = []): string
     {
         $array = isset($array[0][0]) ? $array : [$array];
         $dir = InlineKeyboardMarkupConfig::DIRECTION;
@@ -18,7 +18,7 @@ class InlineKeyboardMarkup
         return json_encode(['inline_keyboard' => $array]);
     }
 
-    public static function CreateGrid($grids, $config = []): string
+    public static function createGrid($grids, $config = []): string
     {
         $dir = ReplyKeyboardMarkupConfig::DIRECTION;
         if (isset($config[$dir])) {
@@ -28,7 +28,7 @@ class InlineKeyboardMarkup
         return json_encode(array_merge(['inline_keyboard' => $mergedArray], $config));
     }
 
-    public static function Order(array $array, int $order): array
+    public static function order(array $array, int $order): array
     {
         return ['array' => $array, 'order' => $order];
     }
@@ -62,7 +62,7 @@ class InlineKeyboardMarkup
         return $result;
     }
 
-    public static function Grid(array $array, int|array $orders = 1, $exp = true): array
+    public static function grid(array $array, int|array $orders = 1, $exp = true): array
     {
         if (!$exp) {
             return [];
@@ -93,24 +93,24 @@ class InlineKeyboardMarkup
         return self::custom_array_chunk($array, $orders);
     }
 
-    public static function Row(array $array, bool $exp = true): array
+    public static function row(array $array, bool $exp = true): array
     {
         return $exp ? $array : [];
     }
 
-    public static function Keyboard($array, bool $exp = true): array
+    public static function keyboard($array, bool $exp = true): array
     {
         return $exp ? $array : [];
     }
 
-    public static function DoubleKeyboard($array1, $array2, bool $exp = true): array
+    public static function doubleKeyboard($array1, $array2, bool $exp = true): array
     {
         return $exp ? self::Row([
             self::Keyboard($array1),
             self::Keyboard($array2),
         ]) : [];
     }
-    public static function TripleKeyboard($array1, $array2, $array3, bool $exp = true): array
+    public static function tripleKeyboard($array1, $array2, $array3, bool $exp = true): array
     {
         return $exp ? self::Row([
             self::Keyboard($array1),
@@ -119,7 +119,7 @@ class InlineKeyboardMarkup
         ]) : [];
     }
 
-    public static function Empty(): string
+    public static function empty(): string
     {
         return json_encode(['inline_keyboard' => []]);
     }

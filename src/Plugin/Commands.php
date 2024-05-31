@@ -8,13 +8,13 @@ class Commands
 {
     private array $commands = [];
 
-    public function SetCommand($command, $value = null): Commands
+    public function setCommand($command, $value = null): Commands
     {
         $this->commands[$command] = empty($value) ? $command : $value;
         return $this;
     }
 
-    public function CreateCommand($command, $parameters = []): string
+    public function createCommand($command, $parameters = []): string
     {
         if (empty($parameters)) {
             return "$command";
@@ -26,14 +26,14 @@ class Commands
         return "$command:$text";
     }
 
-    public function SetCommands($commands): Commands
+    public function setCommands($commands): Commands
     {
         foreach ($commands as $key => $command) {
             $this->commands[$key] = $command;
         }
         return $this;
     }
-    public function GetCommand($text): array
+    public function getCommand($text): array
     {
         if (UrlManager::isValidUrl($text)){
             return [$text, null];

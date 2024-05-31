@@ -16,11 +16,11 @@ class Direction
     {
         return $this->active_direction;
     }
-    public static function Lang(string $languageCode): string
+    public static function lang(string $languageCode): string
     {
         return LanguageDirection::Get($languageCode);
     }
-    public function ActiveDirection(string $languageCode): self
+    public function activeDirection(string $languageCode): self
     {
         $this->active_direction = self::Lang($languageCode);
         return $this;

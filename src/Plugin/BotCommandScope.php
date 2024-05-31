@@ -4,35 +4,35 @@ namespace Ispahbod\BotFather\Plugin;
 
 final class BotCommandScope
 {
-    public static function Default(): array
+    public static function default(): array
     {
         return [
             'type' => 'default'
         ];
     }
 
-    public static function AllPrivateChats(): array
+    public static function allPrivateChats(): array
     {
         return [
             'type' => 'all_private_chats'
         ];
     }
 
-    public static function AllGroupChats(): array
+    public static function allGroupChats(): array
     {
         return [
             'type' => 'all_group_chats'
         ];
     }
 
-    public static function AllChatAdministrators(): array
+    public static function allChatAdministrators(): array
     {
         return [
             'type' => 'all_chat_administrators'
         ];
     }
 
-    public static function Chat(string $chat_id): array
+    public static function chat(string $chat_id): array
     {
         return [
             'type' => 'chat',
@@ -40,7 +40,7 @@ final class BotCommandScope
         ];
     }
 
-    public static function ChatAdministrators(string $chat_id): array
+    public static function chatAdministrators(string $chat_id): array
     {
         return [
             'type' => 'chat_administrators',
@@ -48,7 +48,7 @@ final class BotCommandScope
         ];
     }
 
-    public static function ChatMember(string $chat_id, string $user_id): array
+    public static function chatMember(string $chat_id, string $user_id): array
     {
         return [
             'type' => 'chat_member',
