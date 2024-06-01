@@ -3,7 +3,7 @@
 namespace Ispahbod\BotFather;
 
 use Ispahbod\BotFather\Method\Methods;
-use Ispahbod\BotFather\Constant\WebhookType;
+use Ispahbod\BotFather\Constant\WebhookContentType;
 use Ispahbod\BotFather\Trait\TokenConstructor;
 use Ispahbod\BotFather\Type\BusinessConnection;
 use Ispahbod\BotFather\Type\BusinessMessagesDeleted;
@@ -33,91 +33,91 @@ final class BotFather
 
     public static function process(array $request): mixed
     {
-        if (isset($request[WebhookType::MESSAGE])) {
+        if (isset($request[WebhookContentType::MESSAGE])) {
             return new Message($request);
         }
 
-        if (isset($request[WebhookType::EDITED_MESSAGE])) {
+        if (isset($request[WebhookContentType::EDITED_MESSAGE])) {
             return new Message($request);
         }
 
-        if (isset($request[WebhookType::CHANNEL_POST])) {
+        if (isset($request[WebhookContentType::CHANNEL_POST])) {
             return new Message($request);
         }
 
-        if (isset($request[WebhookType::EDITED_CHANNEL_POST])) {
+        if (isset($request[WebhookContentType::EDITED_CHANNEL_POST])) {
             return new Message($request);
         }
 
-        if (isset($request[WebhookType::BUSINESS_CONNECTION])) {
+        if (isset($request[WebhookContentType::BUSINESS_CONNECTION])) {
             return new BusinessConnection($request);
         }
 
-        if (isset($request[WebhookType::BUSINESS_MESSAGE])) {
+        if (isset($request[WebhookContentType::BUSINESS_MESSAGE])) {
             return new Message($request);
         }
 
-        if (isset($request[WebhookType::EDITED_BUSINESS_MESSAGE])) {
+        if (isset($request[WebhookContentType::EDITED_BUSINESS_MESSAGE])) {
             return new Message($request);
         }
 
-        if (isset($request[WebhookType::DELETED_BUSINESS_MESSAGES])) {
+        if (isset($request[WebhookContentType::DELETED_BUSINESS_MESSAGES])) {
             return new BusinessMessagesDeleted($request);
         }
 
-        if (isset($request[WebhookType::MESSAGE_REACTION])) {
+        if (isset($request[WebhookContentType::MESSAGE_REACTION])) {
             return new MessageReactionUpdated($request);
         }
 
-        if (isset($request[WebhookType::MESSAGE_REACTION_COUNT])) {
+        if (isset($request[WebhookContentType::MESSAGE_REACTION_COUNT])) {
             return new MessageReactionCountUpdated($request);
         }
 
-        if (isset($request[WebhookType::INLINE_QUERY])) {
+        if (isset($request[WebhookContentType::INLINE_QUERY])) {
             return new InlineQuery($request);
         }
 
-        if (isset($request[WebhookType::CHOSEN_INLINE_RESULT])) {
+        if (isset($request[WebhookContentType::CHOSEN_INLINE_RESULT])) {
             return new ChosenInlineResult($request);
         }
 
-        if (isset($request[WebhookType::CALLBACK_QUERY])) {
+        if (isset($request[WebhookContentType::CALLBACK_QUERY])) {
             return new CallbackQuery($request);
         }
 
-        if (isset($request[WebhookType::SHIPPING_QUERY])) {
+        if (isset($request[WebhookContentType::SHIPPING_QUERY])) {
             return new ShippingQuery($request);
         }
 
-        if (isset($request[WebhookType::PRE_CHECKOUT_QUERY])) {
+        if (isset($request[WebhookContentType::PRE_CHECKOUT_QUERY])) {
             return new PreCheckoutQuery($request);
         }
 
-        if (isset($request[WebhookType::POLL])) {
+        if (isset($request[WebhookContentType::POLL])) {
             return new Poll($request);
         }
 
-        if (isset($request[WebhookType::POLL_ANSWER])) {
+        if (isset($request[WebhookContentType::POLL_ANSWER])) {
             return new PollAnswer($request);
         }
 
-        if (isset($request[WebhookType::MY_CHAT_MEMBER])) {
+        if (isset($request[WebhookContentType::MY_CHAT_MEMBER])) {
             return new ChatMemberUpdated($request);
         }
 
-        if (isset($request[WebhookType::CHAT_MEMBER])) {
+        if (isset($request[WebhookContentType::CHAT_MEMBER])) {
             return new ChatMemberUpdated($request);
         }
 
-        if (isset($request[WebhookType::CHAT_JOIN_REQUEST])) {
+        if (isset($request[WebhookContentType::CHAT_JOIN_REQUEST])) {
             return new ChatJoinRequest($request);
         }
 
-        if (isset($request[WebhookType::CHAT_BOOST])) {
+        if (isset($request[WebhookContentType::CHAT_BOOST])) {
             return new ChatBoostUpdated($request);
         }
 
-        if (isset($request[WebhookType::REMOVED_CHAT_BOOST])) {
+        if (isset($request[WebhookContentType::REMOVED_CHAT_BOOST])) {
             return new ChatBoostRemoved($request);
         }
         return null;

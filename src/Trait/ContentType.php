@@ -2,35 +2,35 @@
 
 namespace Ispahbod\BotFather\Trait;
 
-use Ispahbod\BotFather\Constant\WebhookType;
+use Ispahbod\BotFather\Constant\WebhookContentType;
 
 trait ContentType
 {
     public function getContentType(): ?string
     {
         $keys = [
-            WebhookType::MESSAGE,
-            WebhookType::EDITED_MESSAGE,
-            WebhookType::CHANNEL_POST,
-            WebhookType::EDITED_CHANNEL_POST,
-            WebhookType::BUSINESS_CONNECTION,
-            WebhookType::BUSINESS_MESSAGE,
-            WebhookType::EDITED_BUSINESS_MESSAGE,
-            WebhookType::DELETED_BUSINESS_MESSAGES,
-            WebhookType::MESSAGE_REACTION,
-            WebhookType::MESSAGE_REACTION_COUNT,
-            WebhookType::INLINE_QUERY,
-            WebhookType::CHOSEN_INLINE_RESULT,
-            WebhookType::CALLBACK_QUERY,
-            WebhookType::SHIPPING_QUERY,
-            WebhookType::PRE_CHECKOUT_QUERY,
-            WebhookType::POLL,
-            WebhookType::POLL_ANSWER,
-            WebhookType::MY_CHAT_MEMBER,
-            WebhookType::CHAT_MEMBER,
-            WebhookType::CHAT_JOIN_REQUEST,
-            WebhookType::CHAT_BOOST,
-            WebhookType::REMOVED_CHAT_BOOST,
+            WebhookContentType::MESSAGE,
+            WebhookContentType::EDITED_MESSAGE,
+            WebhookContentType::CHANNEL_POST,
+            WebhookContentType::EDITED_CHANNEL_POST,
+            WebhookContentType::BUSINESS_CONNECTION,
+            WebhookContentType::BUSINESS_MESSAGE,
+            WebhookContentType::EDITED_BUSINESS_MESSAGE,
+            WebhookContentType::DELETED_BUSINESS_MESSAGES,
+            WebhookContentType::MESSAGE_REACTION,
+            WebhookContentType::MESSAGE_REACTION_COUNT,
+            WebhookContentType::INLINE_QUERY,
+            WebhookContentType::CHOSEN_INLINE_RESULT,
+            WebhookContentType::CALLBACK_QUERY,
+            WebhookContentType::SHIPPING_QUERY,
+            WebhookContentType::PRE_CHECKOUT_QUERY,
+            WebhookContentType::POLL,
+            WebhookContentType::POLL_ANSWER,
+            WebhookContentType::MY_CHAT_MEMBER,
+            WebhookContentType::CHAT_MEMBER,
+            WebhookContentType::CHAT_JOIN_REQUEST,
+            WebhookContentType::CHAT_BOOST,
+            WebhookContentType::REMOVED_CHAT_BOOST,
         ];
         foreach ($keys as $key) {
             if (isset($this->data[$key])) {
