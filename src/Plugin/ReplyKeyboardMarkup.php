@@ -7,7 +7,7 @@ use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class ReplyKeyboardMarkup
 {
-    public static function create($array, $config = []): string
+    public static function create($array, $config = []): array
     {
         if (!isset($config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD])) {
             $config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD] = true;
@@ -17,10 +17,10 @@ class ReplyKeyboardMarkup
         if (isset($config[$dir])) {
             ArrayDirManipulator::ManipulateArray($array, $config, $dir);
         }
-        return json_encode(array_merge(['keyboard' => $array], $config));
+        return array_merge(['keyboard' => $array], $config);
     }
 
-    public static function createGrid($grids, $config = []): string
+    public static function createGrid($grids, $config = []): array
     {
         if (!isset($config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD])) {
             $config[ReplyKeyboardMarkupConfig::RESIZE_KEYBOARD] = true;
@@ -29,8 +29,8 @@ class ReplyKeyboardMarkup
         if (isset($config[$dir])) {
             ArrayDirManipulator::ManipulateArray($grids, $config, $dir);
         }
-        $mergedArray = call_user_func_array('array_merge', $grids);
-        return json_encode(array_merge(['keyboard' => $mergedArray], $config));
+        $mergedArray = array_merge(...$grids);
+        return array_merge(['keyboard' => $mergedArray], $config);
     }
 
     public static function row($array, $exp = true): array

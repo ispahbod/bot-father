@@ -2,11 +2,13 @@
 
 namespace Ispahbod\BotFather\Type;
 
+use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 final class ChatJoinRequest
 {
     use DataConstructor;
+    use ContentType;
 
     /**
      * Retrieves the chat to which the request was sent.

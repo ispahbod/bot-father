@@ -2,11 +2,14 @@
 
 namespace Ispahbod\BotFather\Type;
 
+use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 class PollAnswer
 {
     use DataConstructor;
+    use ContentType;
+
     /**
      * Retrieves the unique poll identifier.
      *

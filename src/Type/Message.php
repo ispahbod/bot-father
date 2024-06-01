@@ -2,92 +2,14 @@
 
 namespace Ispahbod\BotFather\Type;
 
+use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 final class Message
 {
     use DataConstructor;
+    use ContentType;
 
-    public function GetContentType(): string|false
-    {
-        if (isset($this->data['text'])) {
-            return 'text';
-        }
-
-        if (isset($this->data['giveaway'])) {
-            return 'giveaway';
-        }
-
-        if (isset($this->data['animation'])) {
-            return 'animation';
-        }
-
-        if (isset($this->data['audio'])) {
-            return 'audio';
-        }
-
-        if (isset($this->data['document'])) {
-            return 'document';
-        }
-
-        if (isset($this->data['photo'])) {
-            return 'photo';
-        }
-
-        if (isset($this->data['sticker'])) {
-            return 'sticker';
-        }
-
-        if (isset($this->data['story'])) {
-            return 'story';
-        }
-
-        if (isset($this->data['video'])) {
-            return 'video';
-        }
-
-        if (isset($this->data['video_note'])) {
-            return 'video_note';
-        }
-
-        if (isset($this->data['voice'])) {
-            return 'voice';
-        }
-
-        if (isset($this->data['contact'])) {
-            return 'contact';
-        }
-
-        if (isset($this->data['dice'])) {
-            return 'dice';
-        }
-
-        if (isset($this->data['game'])) {
-            return 'game';
-        }
-
-        if (isset($this->data['poll'])) {
-            return 'poll';
-        }
-
-        if (isset($this->data['venue'])) {
-            return 'venue';
-        }
-
-        if (isset($this->data['location'])) {
-            return 'location';
-        }
-
-        if (isset($this->data['invoice'])) {
-            return 'invoice';
-        }
-
-        if (isset($this->data['web_app_data'])) {
-            return 'web_app_data';
-        }
-
-        return false;
-    }
     public function getMessageId(): ?int
     {
         return $this->data['message_id'] ?? null;

@@ -8,24 +8,24 @@ use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class InlineKeyboardMarkup
 {
-    public static function create(array $array, $config = []): string
+    public static function create(array $array, $config = []): array
     {
         $array = isset($array[0][0]) ? $array : [$array];
         $dir = InlineKeyboardMarkupConfig::DIRECTION;
         if (isset($config[$dir])) {
             ArrayDirManipulator::ManipulateArray($array, $config, $dir);
         }
-        return json_encode(['inline_keyboard' => $array]);
+        return ['inline_keyboard' => $array];
     }
 
-    public static function createGrid($grids, $config = []): string
+    public static function createGrid($grids, $config = []): array
     {
         $dir = ReplyKeyboardMarkupConfig::DIRECTION;
         if (isset($config[$dir])) {
             ArrayDirManipulator::ManipulateArray($grids, $config, $dir);
         }
-        $mergedArray = call_user_func_array('array_merge', $grids);
-        return json_encode(array_merge(['inline_keyboard' => $mergedArray], $config));
+        $mergedArray = array_merge(...$grids);
+        return array_merge(['inline_keyboard' => $mergedArray], $config);
     }
 
     public static function order(array $array, int $order): array
@@ -119,8 +119,8 @@ class InlineKeyboardMarkup
         ]) : [];
     }
 
-    public static function empty(): string
+    public static function empty(): array
     {
-        return json_encode(['inline_keyboard' => []]);
+        return ['inline_keyboard' => []];
     }
 }

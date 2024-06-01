@@ -4,8 +4,8 @@ namespace Ispahbod\BotFather\Plugin;
 
 class ReplyKeyboardRemove
 {
-    public static function create(array $config = []): string
+    public static function create(array $config = []): array
     {
-        return json_encode(array_merge(['remove_keyboard' => true], $config));
+        return array_merge(['remove_keyboard' => true], $config);
     }
 }

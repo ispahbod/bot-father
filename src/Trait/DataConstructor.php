@@ -25,11 +25,6 @@ trait DataConstructor
         return $this->data;
     }
 
-    public function encodeDataToJson(): string|false
-    {
-        return json_encode($this->data, JSON_THROW_ON_ERROR);
-    }
-
     public function fetchErrorCode(): ?int
     {
         return $this->data['error_code'] ?? null;
@@ -41,7 +36,7 @@ trait DataConstructor
     }
     public function getResult(): ?array
     {
-        return $this->data ?? null;
+        return $this->data['result'] ?? null;
     }
 }
 

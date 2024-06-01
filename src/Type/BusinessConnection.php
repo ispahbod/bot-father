@@ -2,11 +2,13 @@
 
 namespace Ispahbod\BotFather\Type;
 
+use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 final class BusinessConnection
 {
     use DataConstructor;
+    use ContentType;
 
     /**
      * Retrieves the unique identifier of the business connection.

@@ -2,11 +2,13 @@
 
 namespace Ispahbod\BotFather\Type;
 
+use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 class InlineQuery
 {
     use DataConstructor;
+    use ContentType;
 
     /**
      * Retrieves the unique identifier for this inline query.
