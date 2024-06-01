@@ -26,9 +26,14 @@ final class BotFather
     private ?string $token;
     private ?array $data;
 
-    public function __construct(string $token, ?array $data)
+    public function __construct(string $token)
     {
         $this->token = $token;
+    }
+
+    public function process(?array $data): void
+    {
+        $this->token = $data;
     }
 
     public function methods(): Methods
