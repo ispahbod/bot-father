@@ -2,13 +2,11 @@
 
 namespace Ispahbod\BotFather\Type;
 
-use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 final class Message
 {
     use DataConstructor;
-    use ContentType;
 
     public function getMessageId(): ?int
     {

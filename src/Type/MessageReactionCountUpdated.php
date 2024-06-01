@@ -2,13 +2,11 @@
 
 namespace Ispahbod\BotFather\Type;
 
-use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 final class MessageReactionCountUpdated
 {
     use DataConstructor;
-    use ContentType;
 
     /**
      * Retrieves the chat containing the message.

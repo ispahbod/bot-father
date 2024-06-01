@@ -106,7 +106,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/danog/async-orm" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/danog/telegram-entities" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/promphp/prometheus_client_php" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/thanks" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/amphp/http-server" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/danog/better-prometheus" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/danog/tg-dialog-id" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -4,7 +4,6 @@ namespace Ispahbod\BotFather;
 
 use Ispahbod\BotFather\Method\Methods;
 use Ispahbod\BotFather\Constant\WebhookContentType;
-use Ispahbod\BotFather\Trait\TokenConstructor;
 use Ispahbod\BotFather\Type\BusinessConnection;
 use Ispahbod\BotFather\Type\BusinessMessagesDeleted;
 use Ispahbod\BotFather\Type\CallbackQuery;
@@ -24,102 +23,161 @@ use Ispahbod\BotFather\Type\ShippingQuery;
 
 final class BotFather
 {
-    use TokenConstructor;
+    private ?string $token;
+    private ?array $data;
 
-    public static function methods(string $token): Methods
+    public function __construct(string $token, ?array $data)
     {
-        return new Methods($token);
+        $this->token = $token;
     }
 
-    public static function process(array $request): mixed
+    public function methods(): Methods
     {
-        if (isset($request[WebhookContentType::MESSAGE])) {
-            return new Message($request);
-        }
+        return new Methods($this->token);
+    }
 
-        if (isset($request[WebhookContentType::EDITED_MESSAGE])) {
-            return new Message($request);
+    public function type(): ?string
+    {
+        $keys = [
+            WebhookContentType::MESSAGE,
+            WebhookContentType::EDITED_MESSAGE,
+            WebhookContentType::CHANNEL_POST,
+            WebhookContentType::EDITED_CHANNEL_POST,
+            WebhookContentType::BUSINESS_CONNECTION,
+            WebhookContentType::BUSINESS_MESSAGE,
+            WebhookContentType::EDITED_BUSINESS_MESSAGE,
+            WebhookContentType::DELETED_BUSINESS_MESSAGES,
+            WebhookContentType::MESSAGE_REACTION,
+            WebhookContentType::MESSAGE_REACTION_COUNT,
+            WebhookContentType::INLINE_QUERY,
+            WebhookContentType::CHOSEN_INLINE_RESULT,
+            WebhookContentType::CALLBACK_QUERY,
+            WebhookContentType::SHIPPING_QUERY,
+            WebhookContentType::PRE_CHECKOUT_QUERY,
+            WebhookContentType::POLL,
+            WebhookContentType::POLL_ANSWER,
+            WebhookContentType::MY_CHAT_MEMBER,
+            WebhookContentType::CHAT_MEMBER,
+            WebhookContentType::CHAT_JOIN_REQUEST,
+            WebhookContentType::CHAT_BOOST,
+            WebhookContentType::REMOVED_CHAT_BOOST,
+        ];
+        foreach ($keys as $key) {
+            if (isset($this->data[$key])) {
+                $data_key = $key;
+                break;
+            }
         }
+        return $data_key ?? null;
+    }
 
-        if (isset($request[WebhookContentType::CHANNEL_POST])) {
-            return new Message($request);
-        }
+    public function message(): ?Message
+    {
+        return new Message($this->data[WebhookContentType::MESSAGE]);
+    }
 
-        if (isset($request[WebhookContentType::EDITED_CHANNEL_POST])) {
-            return new Message($request);
-        }
+    public function editedMessage(): ?Message
+    {
+        return new Message($this->data[WebhookContentType::EDITED_MESSAGE]);
+    }
 
-        if (isset($request[WebhookContentType::BUSINESS_CONNECTION])) {
-            return new BusinessConnection($request);
-        }
+    public function channelPost(): ?Message
+    {
+        return new Message($this->data[WebhookContentType::CHANNEL_POST]);
+    }
 
-        if (isset($request[WebhookContentType::BUSINESS_MESSAGE])) {
-            return new Message($request);
-        }
+    public function editedChannelPost(): ?Message
+    {
+        return new Message($this->data[WebhookContentType::EDITED_CHANNEL_POST]);
+    }
 
-        if (isset($request[WebhookContentType::EDITED_BUSINESS_MESSAGE])) {
-            return new Message($request);
-        }
+    public function businessConnection(): ?BusinessConnection
+    {
+        return new BusinessConnection($this->data[WebhookContentType::BUSINESS_CONNECTION]);
+    }
 
-        if (isset($request[WebhookContentType::DELETED_BUSINESS_MESSAGES])) {
-            return new BusinessMessagesDeleted($request);
-        }
+    public function businessMessage(): ?Message
+    {
+        return new Message($this->data[WebhookContentType::BUSINESS_MESSAGE]);
+    }
 
-        if (isset($request[WebhookContentType::MESSAGE_REACTION])) {
-            return new MessageReactionUpdated($request);
-        }
+    public function editedBusinessMessage(): ?Message
+    {
+        return new Message($this->data[WebhookContentType::EDITED_BUSINESS_MESSAGE]);
+    }
 
-        if (isset($request[WebhookContentType::MESSAGE_REACTION_COUNT])) {
-            return new MessageReactionCountUpdated($request);
-        }
+    public function deletedBusinessMessages(): ?BusinessMessagesDeleted
+    {
+        return new BusinessMessagesDeleted($this->data[WebhookContentType::DELETED_BUSINESS_MESSAGES]);
+    }
 
-        if (isset($request[WebhookContentType::INLINE_QUERY])) {
-            return new InlineQuery($request);
-        }
+    public function messageReactionUpdated(): ?MessageReactionUpdated
+    {
+        return new MessageReactionUpdated($this->data[WebhookContentType::MESSAGE_REACTION]);
+    }
 
-        if (isset($request[WebhookContentType::CHOSEN_INLINE_RESULT])) {
-            return new ChosenInlineResult($request);
-        }
+    public function messageReactionCount(): ?MessageReactionCountUpdated
+    {
+        return new MessageReactionCountUpdated($this->data[WebhookContentType::MESSAGE_REACTION_COUNT]);
+    }
 
-        if (isset($request[WebhookContentType::CALLBACK_QUERY])) {
-            return new CallbackQuery($request);
-        }
+    public function inlineQuery(): ?InlineQuery
+    {
+        return new MessageReactionCountUpdated($this->data[WebhookContentType::INLINE_QUERY]);
+    }
 
-        if (isset($request[WebhookContentType::SHIPPING_QUERY])) {
-            return new ShippingQuery($request);
-        }
+    public function chosenInlineResult(): ?ChosenInlineResult
+    {
+        return new ChosenInlineResult($this->data[WebhookContentType::CHOSEN_INLINE_RESULT]);
+    }
 
-        if (isset($request[WebhookContentType::PRE_CHECKOUT_QUERY])) {
-            return new PreCheckoutQuery($request);
-        }
+    public function callbackQuery(): ?CallbackQuery
+    {
+        return new CallbackQuery($this->data[WebhookContentType::CALLBACK_QUERY]);
+    }
 
-        if (isset($request[WebhookContentType::POLL])) {
-            return new Poll($request);
-        }
+    public function shippingQuery(): ?ShippingQuery
+    {
+        return new ShippingQuery($this->data[WebhookContentType::SHIPPING_QUERY]);
+    }
 
-        if (isset($request[WebhookContentType::POLL_ANSWER])) {
-            return new PollAnswer($request);
-        }
+    public function preCheckoutQuery(): ?PreCheckoutQuery
+    {
+        return new PreCheckoutQuery($this->data[WebhookContentType::PRE_CHECKOUT_QUERY]);
+    }
 
-        if (isset($request[WebhookContentType::MY_CHAT_MEMBER])) {
-            return new ChatMemberUpdated($request);
-        }
+    public function poll(): ?Poll
+    {
+        return new Poll($this->data[WebhookContentType::POLL]);
+    }
 
-        if (isset($request[WebhookContentType::CHAT_MEMBER])) {
-            return new ChatMemberUpdated($request);
-        }
+    public function pollAnswer(): ?PollAnswer
+    {
+        return new PollAnswer($this->data[WebhookContentType::POLL_ANSWER]);
+    }
 
-        if (isset($request[WebhookContentType::CHAT_JOIN_REQUEST])) {
-            return new ChatJoinRequest($request);
-        }
+    public function myChatMember(): ?ChatMemberUpdated
+    {
+        return new ChatMemberUpdated($this->data[WebhookContentType::MY_CHAT_MEMBER]);
+    }
 
-        if (isset($request[WebhookContentType::CHAT_BOOST])) {
-            return new ChatBoostUpdated($request);
-        }
+    public function chatMember(): ?ChatMemberUpdated
+    {
+        return new ChatMemberUpdated($this->data[WebhookContentType::CHAT_MEMBER]);
+    }
 
-        if (isset($request[WebhookContentType::REMOVED_CHAT_BOOST])) {
-            return new ChatBoostRemoved($request);
-        }
-        return null;
+    public function chatJoinRequest(): ?ChatJoinRequest
+    {
+        return new ChatJoinRequest($this->data[WebhookContentType::CHAT_JOIN_REQUEST]);
+    }
+
+    public function chatBoost(): ?ChatBoostUpdated
+    {
+        return new ChatBoostUpdated($this->data[WebhookContentType::CHAT_BOOST]);
+    }
+
+    public function removedChatBoost(): ?ChatBoostRemoved
+    {
+        return new ChatBoostRemoved($this->data[WebhookContentType::REMOVED_CHAT_BOOST]);
     }
 }

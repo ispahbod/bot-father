@@ -109,11 +109,13 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/illuminate/support" />
       <path value="$PROJECT_DIR$/vendor/promphp/prometheus_client_php" />
-      <path value="$PROJECT_DIR$/vendor/symfony/thanks" />
       <path value="$PROJECT_DIR$/vendor/amphp/websocket" />
       <path value="$PROJECT_DIR$/vendor/amphp/websocket-client" />
       <path value="$PROJECT_DIR$/vendor/danog/async-orm" />
       <path value="$PROJECT_DIR$/vendor/danog/telegram-entities" />
+      <path value="$PROJECT_DIR$/vendor/danog/better-prometheus" />
+      <path value="$PROJECT_DIR$/vendor/amphp/http-server" />
+      <path value="$PROJECT_DIR$/vendor/danog/tg-dialog-id" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

@@ -2,13 +2,11 @@
 
 namespace Ispahbod\BotFather\Type;
 
-use Ispahbod\BotFather\Trait\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 final class CallbackQuery
 {
     use DataConstructor;
-    use ContentType;
 
     /**
      * Retrieves the unique identifier for this callback query.
