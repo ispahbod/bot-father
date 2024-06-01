@@ -4,14 +4,17 @@ namespace Ispahbod\BotFather\Constant;
 
 final class WebhookType
 {
-    public const UPDATE_ID = "update_id";
     public const MESSAGE = "message";
     public const CHANNEL_POST = "channel_post";
     public const EDITED_CHANNEL_POST = "edited_channel_post";
+    public const BUSINESS_CONNECTION = "business_connection";
     public const EDITED_MESSAGE = "edited_message";
     public const MESSAGE_REACTION = "message_reaction";
     public const MESSAGE_REACTION_COUNT = "message_reaction_count";
     public const INLINE_QUERY = "inline_query";
+    public const EDITED_BUSINESS_MESSAGE = "edited_business_message";
+    public const DELETED_BUSINESS_MESSAGES = "deleted_business_messages";
+    public const BUSINESS_MESSAGE = "business_message";
     public const CHOSEN_INLINE_RESULT = "chosen_inline_result";
     public const CALLBACK_QUERY = "callback_query";
     public const SHIPPING_QUERY = "shipping_query";
