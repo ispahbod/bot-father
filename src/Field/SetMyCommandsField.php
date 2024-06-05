@@ -3,7 +3,6 @@
 namespace Ispahbod\BotFather\Field;
 
 use Ispahbod\BotFather\Type\BotCommand;
-use Ispahbod\BotFather\Type\BotCommandScope;
 
 final class SetMyCommandsField
 {

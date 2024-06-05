@@ -5,6 +5,7 @@ namespace Ispahbod\BotFather\Method;
 use Ispahbod\BotFather\Constant\ApiMethods;
 use Ispahbod\BotFather\Constant\ChatActionType;
 use Ispahbod\BotFather\Trait\HttpResponseApiMethod;
+use Ispahbod\BotFather\Type\ActionResult;
 use Ispahbod\BotFather\Type\BotCommand;
 use Ispahbod\BotFather\Type\BotDescription;
 use Ispahbod\BotFather\Type\BotName;
@@ -44,14 +45,14 @@ class Methods
         return new Updates($this->httpResponseApiMethod(ApiMethods::GET_UPDATES));
     }
 
-    public function setWebhook(): bool
+    public function setWebhook(): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_WEBHOOK)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_WEBHOOK));
     }
 
-    public function deleteWebhook(): bool
+    public function deleteWebhook(): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DELETE_WEBHOOK)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DELETE_WEBHOOK));
     }
 
     public function getWebhookInfo(): WebhookInfo
@@ -64,14 +65,14 @@ class Methods
         return new User($this->httpResponseApiMethod(ApiMethods::GET_ME));
     }
 
-    public function logOut(): bool
+    public function logOut(): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::LOG_OUT)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::LOG_OUT));
     }
 
-    public function close(): bool
+    public function close(): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::CLOSE)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::CLOSE));
     }
 
     public function sendMessage($data = []): Message
@@ -168,69 +169,69 @@ class Methods
         return new Message($this->httpResponseApiMethod(ApiMethods::SEND_DICE, $data));
     }
 
-    public function sendChatAction($data = []): bool
+    public function sendChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, $data));
     }
 
-    public function sendTypingChatAction($data = []): bool
+    public function sendTypingChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::TYPING, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::TYPING, ...$data]));
     }
 
-    public function sendUploadVideoChatAction($data = []): bool
+    public function sendUploadVideoChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_VIDEO, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_VIDEO, ...$data]));
     }
 
-    public function sendRecordVideoChatAction($data = []): bool
+    public function sendRecordVideoChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::RECORD_VIDEO, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::RECORD_VIDEO, ...$data]));
     }
 
-    public function sendRecordVideoNoteChatAction($data = []): bool
+    public function sendRecordVideoNoteChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::RECORD_VIDEO_NOTE, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::RECORD_VIDEO_NOTE, ...$data]));
     }
 
-    public function sendUploadVideoNoteChatAction($data = []): bool
+    public function sendUploadVideoNoteChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_VIDEO_NOTE, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_VIDEO_NOTE, ...$data]));
     }
 
-    public function sendChooseStickerChatAction($data = []): bool
+    public function sendChooseStickerChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::CHOOSE_STICKER, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::CHOOSE_STICKER, ...$data]));
     }
 
-    public function sendUploadDocumentChatAction($data = []): bool
+    public function sendUploadDocumentChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_DOCUMENT, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_DOCUMENT, ...$data]));
     }
 
-    public function sendUploadVoiceChatAction($data = []): bool
+    public function sendUploadVoiceChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_VOICE, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_VOICE, ...$data]));
     }
 
-    public function sendUploadPhotoChatAction($data = []): bool
+    public function sendUploadPhotoChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_PHOTO, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::UPLOAD_PHOTO, ...$data]));
     }
 
-    public function sendFindLocationChatAction($data = []): bool
+    public function sendFindLocationChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::FIND_LOCATION, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::FIND_LOCATION, ...$data]));
     }
 
-    public function sendRecordVoiceChatAction($data = []): bool
+    public function sendRecordVoiceChatAction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::RECORD_VOICE, ...$data])['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SEND_CHAT_ACTION, ['action' => ChatActionType::RECORD_VOICE, ...$data]));
     }
 
-    public function setMessageReaction($data = []): bool
+    public function setMessageReaction($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_MESSAGE_REACTION, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_MESSAGE_REACTION, $data));
     }
 
     public function getUserProfilePhotos($data = []): UserProfilePhotos
@@ -243,44 +244,44 @@ class Methods
         return new File($this->httpResponseApiMethod(ApiMethods::GET_FILE, $data));
     }
 
-    public function banChatMember($data = []): bool
+    public function banChatMember($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::BAN_CHAT_MEMBER, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::BAN_CHAT_MEMBER, $data));
     }
 
-    public function unbanChatMember($data = []): bool
+    public function unbanChatMember($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::UNBAN_CHAT_MEMBER, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::UNBAN_CHAT_MEMBER, $data));
     }
 
-    public function restrictChatMember($data = []): bool
+    public function restrictChatMember($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::RESTRICT_CHAT_MEMBER, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::RESTRICT_CHAT_MEMBER, $data));
     }
 
-    public function promoteChatMember($data = []): bool
+    public function promoteChatMember($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::PROMOTE_CHAT_MEMBER, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::PROMOTE_CHAT_MEMBER, $data));
     }
 
-    public function setChatAdministratorCustomTitle($data = []): bool
+    public function setChatAdministratorCustomTitle($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_ADMINISTRATOR_CUSTOM_TITLE, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_CHAT_ADMINISTRATOR_CUSTOM_TITLE, $data));
     }
 
-    public function banChatSenderChat($data = []): bool
+    public function banChatSenderChat($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::BAN_CHAT_SENDER_CHAT, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::BAN_CHAT_SENDER_CHAT, $data));
     }
 
-    public function unbanChatSenderChat($data = []): bool
+    public function unbanChatSenderChat($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::UNBAN_CHAT_SENDER_CHAT, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::UNBAN_CHAT_SENDER_CHAT, $data));
     }
 
-    public function setChatPermissions($data = []): bool
+    public function setChatPermissions($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_PERMISSIONS, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_CHAT_PERMISSIONS, $data));
     }
 
     public function exportChatInviteLink($data = []): ?string
@@ -303,54 +304,54 @@ class Methods
         return new ChatInviteLink($this->httpResponseApiMethod(ApiMethods::REVOKE_CHAT_INVITE_LINK, $data));
     }
 
-    public function approveChatJoinRequest($data = []): bool
+    public function approveChatJoinRequest($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::APPROVE_CHAT_JOIN_REQUEST, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::APPROVE_CHAT_JOIN_REQUEST, $data));
     }
 
-    public function declineChatJoinRequest($data = []): bool
+    public function declineChatJoinRequest($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DECLINE_CHAT_JOIN_REQUEST, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DECLINE_CHAT_JOIN_REQUEST, $data));
     }
 
-    public function setChatPhoto($data = []): bool
+    public function setChatPhoto($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_PHOTO, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_CHAT_PHOTO, $data));
     }
 
-    public function deleteChatPhoto($data = []): bool
+    public function deleteChatPhoto($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DELETE_CHAT_PHOTO, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DELETE_CHAT_PHOTO, $data));
     }
 
-    public function setChatTitle($data = []): bool
+    public function setChatTitle($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_TITLE, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_CHAT_TITLE, $data));
     }
 
-    public function setChatDescription($data = []): bool
+    public function setChatDescription($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_DESCRIPTION, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_CHAT_DESCRIPTION, $data));
     }
 
-    public function pinChatMessage($data = []): bool
+    public function pinChatMessage($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::PIN_CHAT_MESSAGE, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::PIN_CHAT_MESSAGE, $data));
     }
 
-    public function unpinChatMessage($data = []): bool
+    public function unpinChatMessage($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::UNPIN_CHAT_MESSAGE, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::UNPIN_CHAT_MESSAGE, $data));
     }
 
-    public function unpinAllChatMessages($data = []): bool
+    public function unpinAllChatMessages($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::UNPIN_ALL_CHAT_MESSAGES, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::UNPIN_ALL_CHAT_MESSAGES, $data));
     }
 
-    public function leaveChat($data = []): bool
+    public function leaveChat($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::LEAVE_CHAT, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::LEAVE_CHAT, $data));
     }
 
     public function getChat($data = []): ChatFullInfo
@@ -358,9 +359,9 @@ class Methods
         return new ChatFullInfo($this->httpResponseApiMethod(ApiMethods::GET_CHAT, $data));
     }
 
-    public function getChatAdministrators($data = []): bool
+    public function getChatAdministrators($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::GET_CHAT_ADMINISTRATORS, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::GET_CHAT_ADMINISTRATORS, $data));
     }
 
     public function getChatMemberCount($data = []): ?int
@@ -373,14 +374,14 @@ class Methods
         return new ChatMember($this->httpResponseApiMethod(ApiMethods::GET_CHAT_MEMBER, $data));
     }
 
-    public function setChatStickerSet($data = []): bool
+    public function setChatStickerSet($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_STICKER_SET, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_CHAT_STICKER_SET, $data));
     }
 
-    public function deleteChatStickerSet($data = []): bool
+    public function deleteChatStickerSet($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DELETE_CHAT_STICKER_SET, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DELETE_CHAT_STICKER_SET, $data));
     }
 
     public function getForumTopicIconStickers(): ?string
@@ -393,64 +394,64 @@ class Methods
         return new ForumTopic($this->httpResponseApiMethod(ApiMethods::CREATE_FORUM_TOPIC));
     }
 
-    public function editForumTopic($data = []): bool
+    public function editForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::EDIT_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::EDIT_FORUM_TOPIC, $data));
     }
 
-    public function closeForumTopic($data = []): bool
+    public function closeForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::CLOSE_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::CLOSE_FORUM_TOPIC, $data));
     }
 
-    public function reopenForumTopic($data = []): bool
+    public function reopenForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::REOPEN_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::REOPEN_FORUM_TOPIC, $data));
     }
 
-    public function deleteForumTopic($data = []): bool
+    public function deleteForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DELETE_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DELETE_FORUM_TOPIC, $data));
     }
 
-    public function unpinAllForumTopicMessages($data = []): bool
+    public function unpinAllForumTopicMessages($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::UNPIN_ALL_FORUM_TOPIC_MESSAGES, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::UNPIN_ALL_FORUM_TOPIC_MESSAGES, $data));
     }
 
-    public function editGeneralForumTopic($data = []): bool
+    public function editGeneralForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::EDIT_GENERAL_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::EDIT_GENERAL_FORUM_TOPIC, $data));
     }
 
-    public function closeGeneralForumTopic($data = []): bool
+    public function closeGeneralForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::CLOSE_GENERAL_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::CLOSE_GENERAL_FORUM_TOPIC, $data));
     }
 
-    public function reopenGeneralForumTopic($data = []): bool
+    public function reopenGeneralForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::REOPEN_GENERAL_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::REOPEN_GENERAL_FORUM_TOPIC, $data));
     }
 
-    public function hideGeneralForumTopic($data = []): bool
+    public function hideGeneralForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::HIDE_GENERAL_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::HIDE_GENERAL_FORUM_TOPIC, $data));
     }
 
-    public function unhideGeneralForumTopic($data = []): bool
+    public function unhideGeneralForumTopic($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::UNHIDE_GENERAL_FORUM_TOPIC, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::UNHIDE_GENERAL_FORUM_TOPIC, $data));
     }
 
-    public function unpinAllGeneralForumTopicMessages($data = []): bool
+    public function unpinAllGeneralForumTopicMessages($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::UNPIN_ALL_GENERAL_FORUM_TOPIC_MESSAGES, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::UNPIN_ALL_GENERAL_FORUM_TOPIC_MESSAGES, $data));
     }
 
-    public function answerCallbackQuery($data = []): bool
+    public function answerCallbackQuery($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::ANSWER_CALLBACK_QUERY, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::ANSWER_CALLBACK_QUERY, $data));
     }
 
     public function getUserChatBoosts($data = []): UserChatBoosts
@@ -463,14 +464,14 @@ class Methods
         return new BusinessConnection($this->httpResponseApiMethod(ApiMethods::GET_BUSINESS_CONNECTION, $data));
     }
 
-    public function setMyCommands($data = []): bool
+    public function setMyCommands($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_MY_COMMANDS, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_MY_COMMANDS, $data));
     }
 
-    public function deleteMyCommands($data = []): bool
+    public function deleteMyCommands($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DELETE_MY_COMMANDS, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DELETE_MY_COMMANDS, $data));
     }
 
     public function getMyCommands($data = []): BotCommand
@@ -478,9 +479,9 @@ class Methods
         return new BotCommand($this->httpResponseApiMethod(ApiMethods::GET_MY_COMMANDS, $data));
     }
 
-    public function setMyName($data = []): bool
+    public function setMyName($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_MY_NAME, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_MY_NAME, $data));
     }
 
     public function getMyName($data = []): BotName
@@ -488,9 +489,9 @@ class Methods
         return new BotName($this->httpResponseApiMethod(ApiMethods::GET_MY_NAME, $data));
     }
 
-    public function setMyDescription($data = []): bool
+    public function setMyDescription($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_MY_DESCRIPTION, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_MY_DESCRIPTION, $data));
     }
 
     public function getMyDescription($data = []): BotDescription
@@ -498,9 +499,9 @@ class Methods
         return new BotDescription($this->httpResponseApiMethod(ApiMethods::GET_MY_DESCRIPTION, $data));
     }
 
-    public function setMyShortDescription($data = []): bool
+    public function setMyShortDescription($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_MY_SHORT_DESCRIPTION, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_MY_SHORT_DESCRIPTION, $data));
     }
 
     public function getMyShortDescription($data = []): BotShortDescription
@@ -509,9 +510,9 @@ class Methods
     }
 
 
-    public function setChatMenuButton($data = []): bool
+    public function setChatMenuButton($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_CHAT_MENU_BUTTON, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_CHAT_MENU_BUTTON, $data));
     }
 
     public function getChatMenuButton($data = []): MenuButtonCommands|MenuButtonWebApp|MenuButtonDefault
@@ -524,9 +525,9 @@ class Methods
         };
     }
 
-    public function setMyDefaultAdministratorRights($data = []): bool
+    public function setMyDefaultAdministratorRights($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::SET_MY_DEFAULT_ADMINISTRATOR_RIGHTS, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_MY_DEFAULT_ADMINISTRATOR_RIGHTS, $data));
     }
 
     public function getMyDefaultAdministratorRights($data = []): ChatAdministratorRights
@@ -569,14 +570,14 @@ class Methods
         return new Poll($this->httpResponseApiMethod(ApiMethods::STOP_POLL, $data));
     }
 
-    public function deleteMessage($data = []): bool
+    public function deleteMessage($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DELETE_MESSAGE, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DELETE_MESSAGE, $data));
     }
 
-    public function deleteMessages($data = []): bool
+    public function deleteMessages($data = []): ActionResult
     {
-        return empty($this->httpResponseApiMethod(ApiMethods::DELETE_MESSAGES, $data)['error_code']);
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::DELETE_MESSAGES, $data));
     }
 
     public function sendGame($data = []): Message

@@ -15,19 +15,19 @@ class Modules
 
     public function create(string $name, $value = null, callable $callback, bool $exp = true): self
     {
-        $this->commands->SetCommand($name, $value);
-        $this->handlers->SetHandler($name, $callback, $exp);
+        $this->commands->setCommand($name, $value ?: $name);
+        $this->handlers->setHandler($name, $callback, $exp);
         return $this;
     }
 
     public function getCommand($text): array
     {
-        return $this->commands->GetCommand($text);
+        return $this->commands->getCommand($text);
     }
 
 
-    public function run($input='', ...$arg): bool
+    public function run($input = '', ...$arg): bool
     {
-        return $this->handlers->Run($input, ...$arg);
+        return $this->handlers->run($input, ...$arg);
     }
 }

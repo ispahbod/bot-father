@@ -33,7 +33,7 @@ final class BotFather
 
     public function process(?array $data): void
     {
-        $this->token = $data;
+        $this->data = $data;
     }
 
     public function methods(): Methods

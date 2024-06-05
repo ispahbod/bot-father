@@ -34,9 +34,9 @@ final class CallbackQuery
      *
      * @return MaybeInaccessibleMessage|null The message, or null if not available.
      */
-    public function getMessage(): ?MaybeInaccessibleMessage
+    public function getMessage(): ?Message
     {
-        return isset($this->data['message']) ? new MaybeInaccessibleMessage($this->data['message']) : null;
+        return isset($this->data['message']) ? new Message($this->data['message']) : null;
     }
 
     /**
