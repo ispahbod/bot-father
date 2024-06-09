@@ -22,7 +22,7 @@
     "danog/madelineproto": "^8.0.0-beta190",
     "guzzlehttp/guzzle": "^7.2.0",
     "illuminate/support": ">=6",
-    "ispahbod/url-manager": "^0.1.0",
+    "ispahbod/url-manager": "^1.0",
     "nesbot/carbon": "^2.67",
     "symfony/stopwatch": "^6.4.0"
   },
