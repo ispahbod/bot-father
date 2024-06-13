@@ -15,7 +15,7 @@ class UserProfilePhotos
      */
     public function getTotalCount(): int
     {
-        return $this->data['total_count'];
+        return $this->data['total_count'] ?? 0;
     }
 
     /**
@@ -27,12 +27,14 @@ class UserProfilePhotos
     public function getPhotos(): array
     {
         $photos = [];
-        foreach ($this->data['photos'] as $photoGroup) {
-            $group = [];
-            foreach ($photoGroup as $photo) {
-                $group[] = new PhotoSize($photo);
+        if (isset($this->data['photos'])){
+            foreach ($this->data['photos'] as $photoGroup) {
+                $group = [];
+                foreach ($photoGroup as $photo) {
+                    $group[] = new PhotoSize($photo);
+                }
+                $photos[] = $group;
             }
-            $photos[] = $group;
         }
         return $photos;
     }

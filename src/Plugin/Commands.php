@@ -16,14 +16,15 @@ class Commands
 
     public function createCommand($command, $parameters = []): string
     {
+        $this->setCommand($command);
         if (empty($parameters)) {
-            return "$command";
+            return $command;
         }
-        $text = "";
+        $params = "";
         foreach ($parameters as $key => $parameter) {
-            $text .= '{'."$key:$parameter".'}';
+            $params .= '{'."$key:$parameter".'}';
         }
-        return "$command:$text";
+        return "$command:$params";
     }
 
     public function setCommands($commands): Commands
@@ -47,9 +48,7 @@ class Commands
             $result = [];
             foreach ($parameters as $parameter) {
                 $parts = explode(':', $parameter);
-                $key = $parts[0];
-                $value = $parts[1];
-                $result[$key] = $value;
+                $result[$parts[0]] = $parts[1];
             }
             return [$command,$result];
         }

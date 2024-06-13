@@ -15,12 +15,13 @@ trait DataConstructor
     {
         return !empty($this->data['error_code']);
     }
-    public function isSuccessful (): bool
+
+    public function isSuccessful(): bool
     {
         return !$this->containsError();
     }
 
-    public function retrieveData(): array
+    public function retrieveData(): array|false
     {
         return $this->data;
     }
@@ -34,6 +35,7 @@ trait DataConstructor
     {
         return $this->data['description'] ?? null;
     }
+
     public function getResult(): ?array
     {
         return $this->data['result'] ?? null;
