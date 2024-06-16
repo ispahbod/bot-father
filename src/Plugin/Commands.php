@@ -16,9 +16,8 @@ class Commands
 
     public function createCommand($command, $parameters = []): string
     {
-        $this->setCommand($command);
         if (empty($parameters)) {
-            return $command;
+            return "$command:{}";
         }
         $params = "";
         foreach ($parameters as $key => $parameter) {
