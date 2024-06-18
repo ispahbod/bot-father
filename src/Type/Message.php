@@ -450,8 +450,29 @@ final class Message
     {
         return isset($this->data['reply_markup']) ? new InlineKeyboardMarkup($this->data['reply_markup']) : null;
     }
+
     public function getEffectId(): ?string
     {
         return $this->data['effect_id'] ?? null;
+    }
+
+    public function getForwardOrigin(): ?MessageOrigin
+    {
+        return isset($this->data['forward_origin']) ? new MessageOrigin($this->data['forward_origin']) : null;
+    }
+
+    public function getForwardFrom(): ?User
+    {
+        return isset($this->data['forward_from']) ? new User($this->data['forward_from']) : null;
+    }
+
+    public function getForwardDate(): ?string
+    {
+        return $this->data['forward_date'] ?? null;
+    }
+
+    public function isForwarded(): bool
+    {
+        return isset($this->data['forward_date']);
     }
 }

@@ -7,16 +7,7 @@ use Ispahbod\BotFather\Trait\DataConstructor;
 final class MessageOriginChat
 {
     use DataConstructor;
-    /**
-     * Retrieves the type of the message origin.
-     * This is always "chat".
-     *
-     * @return string The type of the message origin.
-     */
-    public function getType(): string
-    {
-        return $this->data['type'] ?? 'chat';
-    }
+
 
     /**
      * Retrieves the date the message was originally sent, in Unix time format.

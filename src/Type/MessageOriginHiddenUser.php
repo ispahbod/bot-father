@@ -8,16 +8,6 @@ final class MessageOriginHiddenUser
 {
     use DataConstructor;
 
-    /**
-     * Retrieves the type of the message origin.
-     * This is always "hidden_user".
-     *
-     * @return string The type of the message origin.
-     */
-    public function getType(): string
-    {
-        return $this->data['type'] ?? 'hidden_user';
-    }
 
     /**
      * Retrieves the date the message was originally sent, in Unix time format.

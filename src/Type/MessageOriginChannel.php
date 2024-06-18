@@ -9,17 +9,6 @@ final class MessageOriginChannel
     use DataConstructor;
 
     /**
-     * Retrieves the type of the message origin.
-     * This is always "channel".
-     *
-     * @return string The type of the message origin.
-     */
-    public function getType(): string
-    {
-        return $this->data['type'] ?? 'channel';
-    }
-
-    /**
      * Retrieves the date the message was originally sent, in Unix time format.
      *
      * @return int|null The date the message was sent, or null if not available.
