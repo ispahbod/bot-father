@@ -2,11 +2,54 @@
 
 namespace Ispahbod\BotFather\Type;
 
+use Ispahbod\BotFather\Constant\ContentType;
 use Ispahbod\BotFather\Trait\DataConstructor;
 
 final class Message
 {
     use DataConstructor;
+
+    public function getContentType(): ?string
+    {
+        $types = [
+            ContentType::TEXT,
+            ContentType::ANIMATION,
+            ContentType::AUDIO,
+            ContentType::DOCUMENT,
+            ContentType::PHOTO,
+            ContentType::STICKER,
+            ContentType::STORY,
+            ContentType::VIDEO,
+            ContentType::VIDEO_NOTE,
+            ContentType::VOICE,
+            ContentType::CAPTION,
+            ContentType::CONTACT,
+            ContentType::DICE,
+            ContentType::GAME,
+            ContentType::POLL,
+            ContentType::VENUE,
+            ContentType::LOCATION,
+            ContentType::INVOICE,
+            ContentType::LEFT_CHAT_MEMBER,
+            ContentType::NEW_CHAT_MEMBER,
+            ContentType::NEW_CHAT_TITLE,
+            ContentType::NEW_CHAT_PHOTO,
+            ContentType::DELETE_CHAT_PHOTO,
+            ContentType::GROUP_CHAT_CREATED,
+            ContentType::SUPERGROUP_CHAT_CREATED,
+            ContentType::CHANNEL_CHAT_CREATED,
+            ContentType::MESSAGE_AUTO_DELETE_TIMER_CHANGED,
+            ContentType::MIGRATE_TO_CHAT_ID,
+            ContentType::PINNED_MESSAGE,
+            ContentType::MIGRATE_FROM_CHAT_ID,
+        ];
+        foreach ($types as $type) {
+            if (isset($this->data[$type])) {
+                return $type;
+            }
+        }
+        return null;
+    }
 
     public function getMessageId(): ?int
     {
