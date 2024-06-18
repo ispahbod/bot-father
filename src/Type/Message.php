@@ -466,9 +466,19 @@ final class Message
         return isset($this->data['forward_from']) ? new User($this->data['forward_from']) : null;
     }
 
+    public function getForwardChat(): ?Chat
+    {
+        return isset($this->data['forward_from_chat']) ? new Chat($this->data['forward_from_chat']) : null;
+    }
+
     public function getForwardDate(): ?string
     {
         return $this->data['forward_date'] ?? null;
+    }
+
+    public function getForwardFromMessageId(): ?string
+    {
+        return $this->data['forward_from_message_id'] ?? null;
     }
 
     public function isForwarded(): bool
