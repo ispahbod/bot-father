@@ -45,9 +45,9 @@ class Methods
         return new Updates($this->httpResponseApiMethod(ApiMethods::GET_UPDATES));
     }
 
-    public function setWebhook(): ActionResult
+    public function setWebhook($data = []): ActionResult
     {
-        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_WEBHOOK));
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_WEBHOOK,$data));
     }
 
     public function deleteWebhook(): ActionResult

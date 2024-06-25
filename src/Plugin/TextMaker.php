@@ -86,6 +86,10 @@ class TextMaker
     {
         return implode(' ', $string);
     }
+    public static function empty(): string
+    {
+        return '';
+    }
 
     public static function each(array $array, $callble, ?int $count = null): string
     {

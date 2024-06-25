@@ -11,4 +11,4 @@ class ReplyParametersField
     public const QUOTE_POSITION = 'quote_position';
     public const QUOTE_PARSE_MODE = 'quote_parse_mode';
     public const ALLOW_SENDING_WITHOUT_REPLY = 'allow_sending_without_reply';
-}
+} 
