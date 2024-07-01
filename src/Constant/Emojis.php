@@ -160,7 +160,7 @@ final class Emojis
     public const PERSON_FACEPALMING = '🤦‍♀️';
     public const PERSON_POLICE_OFFICER = '👮‍♂️';
     public const PERSON_DETECTIVE = '🕵️‍♂️';
-    public const PERSON_public CONSTRUCTION_WORKER = '👷‍♀️';
+    public const PERSON_CONSTRUCTION_WORKER = '👷‍♀️';
     public const PERSON_GUARD = '💂‍♂️';
     public const PERSON_HEALTH_WORKER = '👨‍⚕️';
     public const PERSON_STUDENT = '👩‍🎓';
