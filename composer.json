@@ -19,7 +19,6 @@
   "homepage": "https://github.com/ispahbod/bot-father",
   "require": {
     "php": "^8.0",
-    "danog/madelineproto": "^8.0.0-beta190",
     "guzzlehttp/guzzle": "^7.2.0",
     "illuminate/support": ">=6",
     "ispahbod/url-manager": "^1.0",
