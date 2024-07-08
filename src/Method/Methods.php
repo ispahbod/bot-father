@@ -40,14 +40,14 @@ class Methods
         $this->token = $token;
     }
 
-    public function getUpdates(): Updates
+    public function getUpdates($data = []): Updates
     {
-        return new Updates($this->httpResponseApiMethod(ApiMethods::GET_UPDATES));
+        return new Updates($this->httpResponseApiMethod(ApiMethods::GET_UPDATES, $data));
     }
 
     public function setWebhook($data = []): ActionResult
     {
-        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_WEBHOOK,$data));
+        return new ActionResult($this->httpResponseApiMethod(ApiMethods::SET_WEBHOOK, $data));
     }
 
     public function deleteWebhook(): ActionResult
