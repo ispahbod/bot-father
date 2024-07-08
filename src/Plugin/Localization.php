@@ -14,10 +14,9 @@ class Localization
         $locate = empty($locate) ? $this->active_locate : $locate;
         $message = $this->translations[$locate][$key] ?? $this->translations['global'][$key] ?? '';
         $i = 0;
-        $message = preg_replace_callback('/::\w+/', function ($matches) use ($parameters, &$i) {
+        return preg_replace_callback('/::\w+/',static function ($matches) use ($parameters, &$i) {
             return $parameters[$i++] ?? '-';
         }, $message);
-        return $message;
     }
 
     public function setLocate($locate, $array): self
