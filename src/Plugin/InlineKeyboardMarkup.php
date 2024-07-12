@@ -4,11 +4,12 @@ namespace Ispahbod\BotFather\Plugin;
 
 use Ispahbod\BotFather\Constant\InlineKeyboardMarkupConfig;
 use Ispahbod\BotFather\Constant\ReplyKeyboardMarkupConfig;
+use Ispahbod\BotFather\Field\InlineKeyboardMarkupField;
 use Ispahbod\BotFather\Helper\ArrayDirManipulator;
 
 class InlineKeyboardMarkup
 {
-    public static function create(array $array, $config = []): array
+    public static function create(array $array, array $config = []): array
     {
         $array = isset($array[0][0]) ? $array : [$array];
         $dir = InlineKeyboardMarkupConfig::DIRECTION;
@@ -18,7 +19,7 @@ class InlineKeyboardMarkup
         return ['inline_keyboard' => $array];
     }
 
-    public static function createGrid($grids, $config = []): array
+    public static function createGrid(array $grids, array $config = []): array
     {
         $dir = ReplyKeyboardMarkupConfig::DIRECTION;
         if (isset($config[$dir])) {
@@ -37,7 +38,6 @@ class InlineKeyboardMarkup
     {
         $result = [];
         $total_items = count($array);
-        $total_orders = array_sum($chunk_lengths);
         $offset = 0;
         foreach ($chunk_lengths as $length) {
             $chunk = array_slice($array, $offset, $length);
@@ -62,7 +62,7 @@ class InlineKeyboardMarkup
         return $result;
     }
 
-    public static function grid(array $array, int|array $orders = 1, $exp = true): array
+    public static function grid(array $array, int|array $orders = 1, bool $exp = true): array
     {
         if (!$exp) {
             return [];
@@ -79,7 +79,7 @@ class InlineKeyboardMarkup
                 $item['order'] = $array_len + $item['order'] + 1;
             }
         }
-        usort($array, function ($a, $b) {
+        usort($array, static function ($a, $b) {
             return $a['order'] - $b['order'];
         });
         foreach ($array as &$item) {
@@ -98,19 +98,36 @@ class InlineKeyboardMarkup
         return $exp ? $array : [];
     }
 
-    public static function keyboard($array, bool $exp = true): array
+    public static function keyboard(array $array, bool $exp = true): array
     {
         return $exp ? $array : [];
     }
 
-    public static function doubleKeyboard($array1, $array2, bool $exp = true): array
+    public static function callbackKeyboard(string $text, string $callback, bool $exp = true): array
+    {
+        return self::keyboard([
+            InlineKeyboardMarkupField::TEXT => $text,
+            InlineKeyboardMarkupField::CALLBACK_DATA => $callback
+        ], $exp);
+    }
+
+    public static function urlKeyboard(string $text, string $url, bool $exp = true): array
+    {
+        return self::keyboard([
+            InlineKeyboardMarkupField::TEXT => $text,
+            InlineKeyboardMarkupField::URL => $url
+        ], $exp);
+    }
+
+    public static function doubleKeyboard(array $array1, array $array2, bool $exp = true): array
     {
         return $exp ? self::Row([
             self::Keyboard($array1),
             self::Keyboard($array2),
         ]) : [];
     }
-    public static function tripleKeyboard($array1, $array2, $array3, bool $exp = true): array
+
+    public static function tripleKeyboard(array $array1, array $array2, array $array3, bool $exp = true): array
     {
         return $exp ? self::Row([
             self::Keyboard($array1),
