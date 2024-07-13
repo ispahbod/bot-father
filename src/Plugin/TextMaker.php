@@ -185,8 +185,42 @@ class TextMaker
         return strip_tags(ucfirst($text));
     }
 
-    public static function if(bool $exp, string $if, $else = null)
+    public static function conditional(bool $condition, string $if, $else = null)
     {
-        return $exp ? $if : $else;
+        return $condition ? $if : $else;
+    }
+    public static function generateUserLink(int $userId): string
+    {
+        return "tg://user?id=$userId";
+    }
+    public static function generateNameForUser(?string $firstName, ?string $lastName, ?string $username, ?int $userId): string
+    {
+        if (!empty($firstName)) {
+            return "$firstName $lastName";
+        } elseif (!empty($username)) {
+            return $username;
+        } else {
+            return (string)$userId;
+        }
+    }
+    public static function generateTelegramLink(string $username, ?int $messageId = null): string
+    {
+        if ($messageId !== null) {
+            return "https://t.me/$username/$messageId";
+        }
+        return "https://t.me/$username";
+    }
+    public static function generateInviteLink(string $username, string $parameter): string
+    {
+        return "https://telegram.me/share/url?url=https://t.me/$username?start=$parameter";
+    }
+    public static function generateTelegraphLink(string $path): string
+    {
+        return "https://telegra.ph/$path";
+    }
+
+    public static function conditionalText(bool $condition, string $trueText, string $falseText): string
+    {
+        return $condition ? $trueText : $falseText;
     }
 }

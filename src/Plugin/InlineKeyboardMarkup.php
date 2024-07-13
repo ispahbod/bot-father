@@ -62,9 +62,9 @@ class InlineKeyboardMarkup
         return $result;
     }
 
-    public static function grid(array $array, int|array $orders = 1, bool $exp = true): array
+    public static function grid(array $array, int|array $orders = 1, bool $condition = true): array
     {
-        if (!$exp) {
+        if (!$condition) {
             return [];
         }
         if (is_int($orders)) {
@@ -93,43 +93,43 @@ class InlineKeyboardMarkup
         return self::custom_array_chunk($array, $orders);
     }
 
-    public static function row(array $array, bool $exp = true): array
+    public static function row(array $array, bool $condition = true): array
     {
-        return $exp ? $array : [];
+        return $condition ? $array : [];
     }
 
-    public static function keyboard(array $array, bool $exp = true): array
+    public static function keyboard(array $array, bool $condition = true): array
     {
-        return $exp ? $array : [];
+        return $condition ? $array : [];
     }
 
-    public static function callbackKeyboard(string $text, string $callback, bool $exp = true): array
+    public static function callbackKeyboard(string $text, string $callback, bool $condition = true): array
     {
         return self::keyboard([
             InlineKeyboardMarkupField::TEXT => $text,
             InlineKeyboardMarkupField::CALLBACK_DATA => $callback
-        ], $exp);
+        ], $condition);
     }
 
-    public static function urlKeyboard(string $text, string $url, bool $exp = true): array
+    public static function urlKeyboard(string $text, string $url, bool $condition = true): array
     {
         return self::keyboard([
             InlineKeyboardMarkupField::TEXT => $text,
             InlineKeyboardMarkupField::URL => $url
-        ], $exp);
+        ], $condition);
     }
 
-    public static function doubleKeyboard(array $array1, array $array2, bool $exp = true): array
+    public static function doubleKeyboard(array $array1, array $array2, bool $condition = true): array
     {
-        return $exp ? self::Row([
+        return $condition ? self::Row([
             self::Keyboard($array1),
             self::Keyboard($array2),
         ]) : [];
     }
 
-    public static function tripleKeyboard(array $array1, array $array2, array $array3, bool $exp = true): array
+    public static function tripleKeyboard(array $array1, array $array2, array $array3, bool $condition = true): array
     {
-        return $exp ? self::Row([
+        return $condition ? self::Row([
             self::Keyboard($array1),
             self::Keyboard($array2),
             self::Keyboard($array3),

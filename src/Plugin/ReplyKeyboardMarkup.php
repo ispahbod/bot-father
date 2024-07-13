@@ -33,9 +33,9 @@ class ReplyKeyboardMarkup
         return array_merge(['keyboard' => $mergedArray], $config);
     }
 
-    public static function row($array, $exp = true): array
+    public static function row($array, $condition = true): array
     {
-        return $exp ? $array : [];
+        return $condition ? $array : [];
     }
 
     public static function order(array $array, int $order): array
@@ -72,9 +72,9 @@ class ReplyKeyboardMarkup
         return $result;
     }
 
-    public static function grid(array $array, int|array $orders = 1, $exp = true): array
+    public static function grid(array $array, int|array $orders = 1, $condition = true): array
     {
-        if (!$exp) {
+        if (!$condition) {
             return [];
         }
         if (is_int($orders)) {
@@ -103,22 +103,22 @@ class ReplyKeyboardMarkup
         return self::custom_array_chunk($array, $orders);
     }
 
-    public static function keyboard($array, $exp = true): array
+    public static function keyboard($array, $condition = true): array
     {
-        return $exp ? $array : [];
+        return $condition ? $array : [];
     }
 
-    public static function doubleKeyboard($array1, $array2, bool $exp = true): array
+    public static function doubleKeyboard($array1, $array2, bool $condition = true): array
     {
-        return $exp ? self::Row([
+        return $condition ? self::Row([
             self::Keyboard($array1),
             self::Keyboard($array2),
         ]) : [];
     }
 
-    public static function tripleKeyboard($array1, $array2, $array3, bool $exp = true): array
+    public static function tripleKeyboard($array1, $array2, $array3, bool $condition = true): array
     {
-        return $exp ? self::Row([
+        return $condition ? self::Row([
             self::Keyboard($array1),
             self::Keyboard($array2),
             self::Keyboard($array3),
