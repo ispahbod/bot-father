@@ -48,4 +48,19 @@ final class File
     {
         return $this->data['file_path'] ?? null;
     }
+
+    /**
+     * Generates the full URL to download the file using the provided bot token.
+     *
+     * @param string $token The bot token.
+     * @return string|null The full URL to download the file or null if file path is not available.
+     */
+    public function generateFileUrl(string $token): ?string
+    {
+        $filePath = $this->getFilePath();
+        if ($filePath === null) {
+            return null;
+        }
+        return "https://api.telegram.org/file/bot$token/$filePath";
+    }
 }

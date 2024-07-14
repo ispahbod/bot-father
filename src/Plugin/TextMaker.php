@@ -223,4 +223,8 @@ class TextMaker
     {
         return $condition ? $trueText : $falseText;
     }
+    public static function generateFileLink(string $token, string $filePath): string
+    {
+        return "https://api.telegram.org/file/bot$token/$filePath";
+    }
 }
